@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Service Area — Island PT, Kīhei Maui</title>
+<meta name="description" content="In-home physical therapy across Maui. Central, South, West, Upcountry and North Shore. Based in Kīhei, serving the island, with virtual consultations for clients beyond." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper-00: oklch(98.4% 0.008 82);
+    --paper-05: oklch(96.2% 0.012 82);
+    --paper-10: oklch(93.4% 0.018 82);
+    --paper-15: oklch(89.6% 0.022 82);
+    --paper-25: oklch(82.0% 0.026 82);
+    --ink-95: oklch(16.0% 0.012 82);
+    --ink-80: oklch(28.0% 0.014 82);
+    --ink-60: oklch(46.0% 0.016 82);
+    --ink-40: oklch(64.0% 0.014 82);
+    --ink-20: oklch(78.0% 0.012 82);
+    --ocean-90: oklch(20.0% 0.038 145);
+    --ocean-70: oklch(34.0% 0.060 142);
+    --ocean-55: oklch(46.0% 0.072 140);
+    --coral-55: oklch(56.0% 0.150 38);
+    --coral-65: oklch(64.0% 0.140 40);
+    --sun-70: oklch(78.0% 0.130 82);
+    --sun-55: oklch(64.0% 0.150 70);
+    --bone: oklch(98.8% 0.006 82);
+    --bone-dim: oklch(94.0% 0.008 82);
+    --serif: "Instrument Serif", "Times New Roman", serif;
+    --sans: "Inter", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --t-cap: 12px;
+    --t-micro: 13px;
+    --t-body: 17px;
+    --t-lead: 22px;
+    --t-h4: 24px;
+    --t-h3: 34px;
+    --t-h2: 52px;
+    --t-h1: clamp(64px, 9vw, 128px);
+    --gap-xs: 8px;
+    --gap-s: 14px;
+    --gap-m: 24px;
+    --gap-l: 44px;
+    --gap-xl: 72px;
+    --gap-2x: 120px;
+    --r-flat: 2px;
+    --r-soft: 6px;
+    --r-pill: 999px;
+    --r-arc: 18px;
+    --line-hair: 1px solid var(--paper-25);
+    --line-rule: 1.5px solid var(--ink-20);
+    --line-bold: 2px solid var(--ink-95);
+    --ease-out-q: cubic-bezier(0.22, 1, 0.36, 1);
+    --dur-fast: 140ms;
+    --dur-mid: 240ms;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--paper-10);
+    color: var(--ink-95);
+    font-family: var(--sans);
+    font-size: var(--t-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  button { font: inherit; cursor: pointer; }
+
+  .skip {
+    position: absolute; left: -9999px; top: 0;
+    background: var(--ocean-90); color: var(--bone);
+    padding: 12px 18px; font-family: var(--mono);
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    text-decoration: none; z-index: 100;
+  }
+  .skip:focus { left: 16px; top: 16px; }
+  .wrap { max-width: 1350px; margin: 0 auto; padding: 0 25px; }
+
+  /* TOP BAR */
+  .top-bar {
+    background: var(--ocean-90); color: var(--bone);
+    border-bottom: 1px solid oklch(40% 0.014 82);
+  }
+  .top-bar-row {
+    max-width: none;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 18px; padding: 12px 24px;
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: oklch(94% 0.008 82 / 0.9);
+  }
+  .top-bar-row .stars { color: var(--sun-70); letter-spacing: 0.12em; }
+  .top-bar-row a { text-decoration: none; transition: color var(--dur-fast) var(--ease-out-q); }
+  .top-bar-row a:hover { color: var(--sun-70); }
+  .top-bar-row .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--sun-70); display: inline-block; margin: 0 14px; vertical-align: middle; }
+  @media (max-width: 720px) {
+    .top-bar-row .areas, .top-bar-row .dot { display: none; }
+  }
+
+  /* NAV */
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--paper-00);
+    border-bottom: var(--line-bold);
+    padding: 18px 0;
+    position: sticky; top: 0; z-index: 50;
+  }
+  .nav-inner {
+    max-width: 1350px; margin: 0 auto; padding: 0 25px;
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; gap: var(--gap-m);
+  }
+  .nav .brand {
+    display: inline-flex; align-items: center;
+    text-decoration: none; color: var(--ink-95); line-height: 1;
+  }
+  .nav .brand img { display: block; height: 55px; width: auto; }
+  @media (max-width: 720px) { .nav .brand img { height: 44px; } }
+  .nav ul {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; align-items: center; gap: 28px;
+    font-size: 15px;
+  }
+  .nav > .nav-inner > ul > li { display: inline-flex; align-items: center; }
+  .nav ul a {
+    text-decoration: none; color: var(--ink-95);
+    padding: 6px 2px;
+    border-bottom: 1.5px solid transparent;
+    transition: border-color var(--dur-fast) var(--ease-out-q);
+  }
+  .nav ul a:hover, .nav ul a[aria-current="page"] { border-bottom-color: var(--ocean-70); }
+  .nav-cta {
+    background: var(--ocean-70); color: var(--bone);
+    padding: 12px 18px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border-radius: var(--r-flat);
+    transition: background var(--dur-fast) var(--ease-out-q);
+  }
+  .nav-cta:hover { background: var(--ocean-90); }
+
+  /* Dropdowns */
+  .nav .has-submenu { position: relative; }
+  .nav .submenu-trigger {
+    appearance: none; background: transparent; border: 0;
+    font-family: inherit; font-size: 15px; color: var(--ink-95);
+    padding: 6px 2px; cursor: pointer;
+    border-bottom: 1.5px solid transparent;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: border-color var(--dur-fast) var(--ease-out-q);
+  }
+  .nav .submenu-trigger .caret {
+    font-size: 10px; transition: transform var(--dur-fast) var(--ease-out-q); line-height: 1;
+  }
+  .nav .has-submenu:hover .submenu-trigger,
+  .nav .has-submenu:focus-within .submenu-trigger { border-bottom-color: var(--ocean-70); }
+  .nav .has-submenu:hover .submenu-trigger .caret,
+  .nav .has-submenu:focus-within .submenu-trigger .caret { transform: rotate(180deg); }
+  .nav .submenu {
+    position: absolute; top: 100%; left: -18px;
+    min-width: 240px;
+    background: var(--paper-00);
+    border: var(--line-bold);
+    border-radius: var(--r-flat);
+    padding: 8px 0; margin: 0;
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0;
+    opacity: 0; pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 140ms var(--ease-out-q), transform 140ms var(--ease-out-q);
+    z-index: 60;
+  }
+  .nav .submenu::before {
+    content: ""; position: absolute; top: -18px; left: 0; right: 0; height: 18px;
+  }
+  .nav .has-submenu:hover .submenu, .nav .has-submenu:focus-within .submenu {
+    opacity: 1; pointer-events: auto; transform: translateY(0);
+  }
+  .nav .submenu li { border: 0; }
+  .nav .submenu a {
+    display: block;
+    padding: 12px 22px;
+    font-size: 14px; color: var(--ink-95);
+    border-bottom: 0;
+    white-space: nowrap;
+    transition: background var(--dur-fast) var(--ease-out-q), color var(--dur-fast) var(--ease-out-q);
+  }
+  .nav .submenu a:hover, .nav .submenu a[aria-current="page"] { background: var(--paper-10); color: var(--ocean-70); }
+  .nav .submenu a:focus-visible { outline: 2px solid var(--coral-55); outline-offset: -2px; }
+
+  /* Drawer */
+  .drawer-group { width: 100%; }
+  .drawer-group summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 4px;
+    font-family: var(--serif); font-size: 28px; line-height: 1;
+    letter-spacing: -0.018em; color: var(--ink-95);
+  }
+  .drawer-group summary::-webkit-details-marker { display: none; }
+  .drawer-group summary::after {
+    content: "+"; font-family: var(--mono); font-size: 22px; color: var(--ocean-70);
+    transition: transform var(--dur-fast) var(--ease-out-q);
+  }
+  .drawer-group[open] summary::after { content: "–"; }
+  .drawer-group .drawer-sub {
+    border-top: 0; padding: 0 0 14px 16px; margin: 0;
+    border-left: 1.5px solid var(--ocean-70);
+    margin-left: 4px;
+  }
+  .drawer-group .drawer-sub li { border-bottom: 0; }
+  .drawer-group .drawer-sub a {
+    padding: 12px 0; font-size: 18px; font-family: var(--serif);
+    letter-spacing: -0.01em;
+  }
+  .drawer-group .drawer-sub a[aria-current="page"] { color: var(--ocean-70); }
+
+  .nav-toggle {
+    display: none;
+    appearance: none; background: transparent; border: 1.5px solid var(--ink-95);
+    border-radius: var(--r-flat);
+    width: 44px; height: 44px;
+    align-items: center; justify-content: center;
+    padding: 0; cursor: pointer;
+  }
+  .nav-toggle:focus-visible { outline: 2px solid var(--coral-55); outline-offset: 3px; }
+  .nav-toggle .bars { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .nav-toggle .bars span {
+    display: block; width: 18px; height: 1.5px; background: var(--ink-95);
+    transition: transform var(--dur-fast) var(--ease-out-q), opacity var(--dur-fast) var(--ease-out-q);
+  }
+  .nav-toggle[aria-expanded="true"] .bars span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .bars span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .bars span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+  .nav-drawer {
+    display: none;
+    position: fixed; inset: 64px 0 0 0;
+    background: var(--paper-00);
+    z-index: 49;
+    padding: 32px 25px 120px;
+    overflow-y: auto;
+  }
+  .nav-drawer[data-open="true"] { display: block; }
+  .nav-drawer > ul {
+    list-style: none; margin: 0 0 32px; padding: 0;
+    display: flex; flex-direction: column; gap: 0;
+    border-top: var(--line-bold);
+  }
+  .nav-drawer > ul > li { border-bottom: var(--line-hair); }
+  .nav-drawer > ul > li > a {
+    display: block; padding: 22px 4px;
+    text-decoration: none; color: var(--ink-95);
+    font-family: var(--serif); font-size: 28px; line-height: 1;
+    letter-spacing: -0.018em;
+  }
+  .nav-drawer a { text-decoration: none; color: var(--ink-95); }
+  .nav-drawer a:hover, .nav-drawer a:focus-visible { color: var(--ocean-70); }
+  .nav-drawer .drawer-cta-row {
+    display: flex; flex-direction: column; gap: 14px;
+    padding-top: 32px; border-top: var(--line-hair);
+  }
+  .nav-drawer .drawer-cta-row .btn { justify-content: center; }
+  .nav-drawer .drawer-meta {
+    margin-top: 28px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-60);
+    line-height: 1.8;
+  }
+
+  .call-bar {
+    display: none;
+    position: fixed; left: 0; right: 0; bottom: 0;
+    background: var(--ocean-90); color: var(--bone);
+    z-index: 60;
+    padding: 14px 18px;
+    border-top: 1.5px solid oklch(40% 0.014 82);
+  }
+  .call-bar a {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    font-family: var(--sans); font-weight: 600; font-size: 16px;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: var(--r-soft);
+    background: var(--bone);
+    color: var(--ocean-90);
+  }
+  .call-bar a .icon { font-family: var(--serif); font-style: italic; font-size: 20px; line-height: 1; }
+  .call-bar .sub {
+    text-align: center; display: block;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: oklch(94% 0.008 82 / 0.75);
+    margin-top: 8px;
+  }
+
+  @media (max-width: 860px) {
+    .nav ul { display: none; }
+    .nav .nav-cta { display: none; }
+    .nav-toggle { display: inline-flex; }
+    body[data-drawer="open"] { overflow: hidden; }
+    .call-bar { display: block; }
+    main, footer { padding-bottom: 96px; }
+  }
+
+  /* EYEBROWS */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-95); font-weight: 600;
+  }
+  .eyebrow[data-style="rule"]::before { content: ""; width: 36px; height: 1.5px; background: var(--ocean-70); }
+  .eyebrow[data-style="dot"]::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--coral-55); }
+  .eyebrow.on-dark { color: oklch(94% 0.008 82 / 0.9); }
+  .eyebrow.on-dark[data-style="rule"]::before { background: var(--sun-70); }
+  .eyebrow.on-dark[data-style="dot"]::before { background: var(--sun-70); }
+
+  /* BUTTONS */
+  .btn {
+    appearance: none; border: 1.5px solid;
+    padding: 14px 22px;
+    font-family: var(--sans); font-size: 16px; font-weight: 600;
+    border-radius: var(--r-soft);
+    display: inline-flex; align-items: center; gap: 10px;
+    text-decoration: none; cursor: pointer;
+    transition: background var(--dur-fast) var(--ease-out-q), color var(--dur-fast) var(--ease-out-q);
+  }
+  .btn:focus-visible { outline: 2px solid var(--coral-55); outline-offset: 3px; }
+  .btn[data-variant="primary"] { background: var(--ocean-70); color: var(--bone); border-color: var(--ocean-70); }
+  .btn[data-variant="primary"]:hover { background: var(--ocean-90); border-color: var(--ocean-90); }
+  .btn[data-variant="outline"] { background: transparent; color: var(--ocean-70); border-color: var(--ocean-70); }
+  .btn[data-variant="outline"]:hover { background: var(--ocean-70); color: var(--bone); }
+  .btn[data-variant="primary-bone"] { background: var(--bone); color: var(--ocean-90); border-color: var(--bone); }
+  .btn[data-variant="primary-bone"]:hover { background: transparent; color: var(--bone); }
+  .btn[data-variant="outline-bone"] { background: transparent; color: var(--bone); border-color: var(--bone); }
+  .btn[data-variant="outline-bone"]:hover { background: var(--bone); color: var(--ocean-90); }
+  .btn .arrow { transition: transform var(--dur-mid) var(--ease-out-q); }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+    /* HERO · split asymmetric, drenched (photo left + ocean-90 right) */
+  .area-hero {
+    display: grid; grid-template-columns: 5fr 7fr;
+    align-items: stretch;
+    border-radius: var(--r-arc);
+    margin-top: 28px;
+    overflow: hidden;
+    min-height: 540px;
+  }
+  .area-hero .photo {
+    background: var(--paper-15);
+    position: relative; overflow: hidden;
+  }
+  .area-hero .photo img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
+    display: block;
+  }
+  .area-hero .photo .stamp {
+    position: absolute; bottom: 18px; left: 18px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--bone);
+    padding: 8px 12px; background: oklch(20% 0.040 145 / 0.6);
+    border-radius: var(--r-flat);
+  }
+  .area-hero .copy {
+    background: var(--ocean-90); color: var(--bone);
+    padding: 64px 64px 56px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    gap: var(--gap-l);
+  }
+  .area-hero .copy header { display: flex; flex-direction: column; gap: 22px; }
+  .area-hero .copy .eyebrow { color: oklch(94% 0.008 82 / 0.85); }
+  .area-hero .copy .eyebrow[data-style="rule"]::before { background: var(--sun-70); }
+  .area-hero h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(48px, 6.4vw, 96px);
+    line-height: 1.0; letter-spacing: -0.024em;
+    margin: 0; color: var(--bone); max-width: 14ch;
+  }
+  .area-hero h1 i { color: var(--sun-70); font-style: italic; }
+  .area-hero .lead {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(20px, 1.9vw, 26px);
+    line-height: 1.4; color: oklch(96% 0.006 82 / 0.94);
+    margin: 0; max-width: 42ch;
+  }
+  .area-hero .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  @media (max-width: 860px) {
+    .area-hero { grid-template-columns: 1fr; min-height: 0; }
+    .area-hero .photo { min-height: 320px; }
+    .area-hero .copy { padding: 36px 28px 32px; }
+  }
+    .area-hero .photo { min-height: 360px; }
+  }
+
+  /* SECTION CHROME */
+  section.block { padding: var(--gap-2x) 0; }
+  section.block.tight { padding: var(--gap-xl) 0; }
+  section.block.dark { background: var(--ocean-90); color: var(--bone); }
+
+  .section-head {
+    display: grid; grid-template-columns: 220px 1fr; gap: var(--gap-m);
+    align-items: end; margin-bottom: var(--gap-xl);
+  }
+  .section-head .num {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    color: var(--ink-60); font-weight: 600;
+    padding-top: 12px; border-top: var(--line-bold); align-self: start;
+  }
+  .section-head h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height: 1.04; letter-spacing: -0.018em;
+    margin: 0; max-width: 18ch;
+  }
+  .section-head h2 i { color: var(--ocean-70); font-style: italic; }
+  section.block.dark .section-head .num { color: oklch(94% 0.008 82 / 0.55); border-top-color: var(--sun-70); }
+  section.block.dark .section-head h2 { color: var(--bone); }
+  section.block.dark .section-head h2 i { color: var(--sun-70); }
+  @media (max-width: 720px) {
+    .section-head { grid-template-columns: 1fr; gap: 18px; }
+  }
+
+  /* INTRO · split (image left, copy right) */
+  .intro-anchor {
+    display: grid; grid-template-columns: 5fr 7fr;
+    gap: 64px; align-items: center;
+  }
+  .intro-anchor .photo { order: -1; }
+  .intro-anchor .copy { order: 1; display: flex; flex-direction: column; gap: 22px; padding-top: 8px; }
+  .intro-anchor .copy .lede {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(24px, 2.4vw, 32px); line-height: 1.3;
+    color: var(--coral-55); margin: 0 0 6px; max-width: 28ch;
+  }
+  .intro-anchor .copy p {
+    font-size: var(--t-body); line-height: 1.7; color: var(--ink-80);
+    margin: 0; max-width: 60ch;
+  }
+  .intro-anchor .copy .specs {
+    display: flex; flex-wrap: wrap; gap: 14px 28px;
+    padding-top: 22px; border-top: var(--line-hair);
+    margin-top: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-60); font-weight: 600;
+  }
+  .intro-anchor .copy .specs span { display: inline-flex; align-items: center; gap: 8px; }
+  .intro-anchor .copy .specs span::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ocean-70);
+  }
+  .intro-anchor .copy .specs b { color: var(--ink-95); font-weight: 700; }
+  .intro-anchor .photo {
+    margin: 0; aspect-ratio: 4 / 5; border-radius: var(--r-soft);
+    overflow: hidden; background: var(--paper-15); position: relative;
+  }
+  .intro-anchor .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .intro-anchor .photo .stamp {
+    position: absolute; bottom: 16px; left: 16px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--bone);
+    padding: 8px 12px; background: oklch(20% 0.040 145 / 0.6);
+    border-radius: var(--r-flat);
+  }
+  @media (max-width: 860px) {
+    .intro-anchor { grid-template-columns: 1fr; gap: 36px; }
+    .intro-anchor .photo { max-width: 460px; aspect-ratio: 4 / 5; }
+  }
+
+  /* COMMUNITIES — spread rows (Kīhei + Wailea) */
+  .spread { display: flex; flex-direction: column; gap: 96px; }
+  .spread-row { display: grid; align-items: center; gap: var(--gap-xl); }
+  .spread-row[data-layout="portrait-left"] { grid-template-columns: 5fr 7fr; }
+  .spread-row[data-layout="text-led"]      { grid-template-columns: 7fr 5fr; align-items: end; }
+  .spread-media {
+    margin: 0; position: relative;
+    border-radius: var(--r-soft); overflow: hidden;
+    background: var(--paper-15);
+  }
+  .spread-media img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 700ms var(--ease-out-q);
+  }
+  .spread-media:hover img { transform: scale(1.02); }
+  .spread-row[data-layout="portrait-left"] .spread-media { aspect-ratio: 4 / 5; }
+  .spread-row[data-layout="text-led"] .spread-media.small { aspect-ratio: 1 / 1; max-width: 380px; justify-self: end; width: 100%; }
+  .spread-media > figcaption {
+    position: absolute; bottom: 14px; left: 14px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--bone);
+    padding: 6px 10px; background: oklch(20% 0.040 145 / 0.6);
+    z-index: 2;
+  }
+  .spread-copy { display: flex; flex-direction: column; gap: 16px; }
+  .spread-copy h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 48px);
+    line-height: 1.06; letter-spacing: -0.02em;
+    color: var(--ink-95); margin: 6px 0 4px; max-width: 16ch;
+  }
+  .spread-copy h3 i { color: var(--ocean-70); font-style: italic; }
+  .spread-row[data-layout="text-led"] .spread-copy h3 {
+    font-size: clamp(34px, 4.6vw, 64px); max-width: 14ch;
+  }
+  .spread-copy p {
+    font-size: var(--t-body); line-height: 1.65;
+    color: var(--ink-80); max-width: 56ch; margin: 0;
+  }
+  .spread-copy .read-link {
+    margin-top: 10px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ocean-70);
+    text-decoration: none; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 10px;
+    align-self: flex-start;
+    border-bottom: 1.5px solid var(--ocean-70);
+    padding-bottom: 6px;
+  }
+  .spread-copy .read-link::after { content: "→"; transition: transform var(--dur-fast) var(--ease-out-q); }
+  .spread-copy .read-link:hover::after { transform: translateX(4px); }
+  @media (max-width: 860px) {
+    .spread { gap: 64px; }
+    .spread-row[data-layout="portrait-left"],
+    .spread-row[data-layout="text-led"] { grid-template-columns: 1fr; gap: 28px; }
+    .spread-row[data-layout="text-led"] .spread-media.small { justify-self: start; }
+  }
+
+  /* WHY SOUTH MAUI */
+  .why-south {
+    display: grid; grid-template-columns: 5fr 7fr;
+    gap: var(--gap-xl); align-items: start;
+  }
+  .why-south .lede {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(24px, 2.4vw, 32px); line-height: 1.3;
+    color: var(--coral-55); margin: 0; max-width: 22ch;
+  }
+  .why-south .body {
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .why-south .body p {
+    font-size: var(--t-body); line-height: 1.7; color: var(--ink-80);
+    margin: 0; max-width: 60ch;
+  }
+  .why-south .body strong {
+    display: block; font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-95); font-weight: 600;
+    margin: 22px 0 6px;
+  }
+  .why-south-list {
+    list-style: none; padding: 0; margin: 0;
+    border-top: var(--line-hair);
+  }
+  .why-south-list li {
+    display: grid; grid-template-columns: 28px 1fr; gap: 18px;
+    align-items: start; padding: 16px 0;
+    border-bottom: var(--line-hair);
+    font-size: var(--t-body); line-height: 1.5; color: var(--ink-80);
+  }
+  .why-south-list li::before {
+    content: "✓";
+    width: 22px; height: 22px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--ocean-70); color: var(--bone);
+    font-family: var(--serif); font-weight: 700; font-size: 14px; line-height: 1;
+    margin-top: 2px; border-radius: var(--r-flat);
+  }
+  @media (max-width: 860px) { .why-south { grid-template-columns: 1fr; gap: 28px; } }
+
+  /* SPECIALTIES — 3 column numbered (no card grid) */
+  .specialties-intro {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(22px, 2vw, 28px); line-height: 1.4;
+    color: var(--ocean-70); margin: 0 0 var(--gap-xl); max-width: 56ch;
+  }
+  .specialties-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap-l);
+    border-top: var(--line-bold);
+    padding-top: var(--gap-l);
+  }
+  .specialty {
+    display: flex; flex-direction: column; gap: 14px;
+    padding-right: 24px;
+    border-right: var(--line-hair);
+  }
+  .specialty:last-child { border-right: 0; }
+  .specialty .num {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(54px, 6vw, 80px);
+    line-height: 0.9; color: var(--ocean-70);
+  }
+  .specialty h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(24px, 2.4vw, 30px);
+    line-height: 1.18; letter-spacing: -0.012em;
+    color: var(--ink-95); margin: 0; max-width: 14ch;
+  }
+  .specialty h3 i { color: var(--ocean-70); font-style: italic; }
+  .specialty p {
+    font-size: var(--t-body); line-height: 1.6; color: var(--ink-80);
+    margin: 0; max-width: 38ch;
+  }
+  @media (max-width: 860px) {
+    .specialties-row { grid-template-columns: 1fr; gap: 28px; padding-top: 28px; }
+    .specialty { border-right: 0; border-bottom: var(--line-hair); padding: 0 0 24px; }
+    .specialty:last-child { border-bottom: 0; padding-bottom: 0; }
+  }
+
+  /* CLOSING CTA */
+  .closing-cta {
+    background: var(--ocean-90); color: var(--bone);
+    border-radius: var(--r-arc); padding: 88px 72px;
+    display: grid; grid-template-columns: 1fr auto; gap: var(--gap-xl);
+    align-items: end;
+  }
+  .closing-cta .eyebrow { color: oklch(94% 0.008 82 / 0.85); }
+  .closing-cta .eyebrow[data-style="rule"]::before { background: var(--sun-70); }
+  .closing-cta h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(44px, 6vw, 80px);
+    line-height: 1.0; letter-spacing: -0.024em;
+    margin: 18px 0 18px; max-width: 14ch;
+  }
+  .closing-cta h2 i { color: var(--sun-70); font-style: italic; }
+  .closing-cta p {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(20px, 1.85vw, 24px); line-height: 1.4;
+    color: oklch(96% 0.006 82 / 0.94);
+    margin: 0; max-width: 52ch;
+  }
+  .closing-cta .actions { display: flex; flex-direction: column; gap: 10px; }
+  .closing-cta .actions .btn { justify-content: center; padding: 14px 34px; }
+  .closing-cta .meta {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: oklch(94% 0.008 82 / 0.7);
+  }
+  @media (max-width: 860px) {
+    .closing-cta { grid-template-columns: 1fr; padding: 48px 28px; gap: 28px; }
+  }
+
+  /* FOOTER */
+  .footer-strip {
+    background: var(--ink-95); color: var(--bone);
+    padding: 80px 0 36px;
+    margin-top: var(--gap-xl);
+  }
+  .footer-strip .word-row {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: var(--gap-l); align-items: end;
+    margin: 0 0 48px;
+  }
+  .footer-strip .word {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(56px, 9vw, 96px);
+    line-height: 1; letter-spacing: -0.025em;
+    margin: 0; color: var(--bone);
+  }
+  .footer-strip .word i { color: var(--sun-70); font-style: italic; }
+  .footer-strip .word-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 22px;
+    background: var(--bone); color: var(--ink-95);
+    font-family: var(--sans); font-size: 15px; font-weight: 600;
+    text-decoration: none; border-radius: var(--r-soft);
+    border: 1.5px solid var(--bone);
+    transition: background var(--dur-fast) var(--ease-out-q), color var(--dur-fast) var(--ease-out-q);
+    align-self: end; white-space: nowrap;
+  }
+  .footer-strip .word-cta:hover { background: transparent; color: var(--bone); }
+  .footer-strip .word-cta .arrow { transition: transform var(--dur-mid) var(--ease-out-q); }
+  .footer-strip .word-cta:hover .arrow { transform: translateX(3px); }
+  .footer-strip .row {
+    display: grid; grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: var(--gap-l);
+    padding-bottom: 48px; border-bottom: 1px solid oklch(40% 0.014 82);
+  }
+  .footer-strip h5 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--sun-70); font-weight: 600;
+    margin: 0 0 18px;
+  }
+  .footer-strip a {
+    display: block; color: oklch(94% 0.008 82 / 0.85);
+    text-decoration: none; padding: 4px 0;
+    font-size: 14px; transition: color var(--dur-fast) var(--ease-out-q);
+  }
+  .footer-strip a:hover { color: var(--bone); }
+  .footer-strip p { font-size: 14px; max-width: 38ch; opacity: 0.85; margin: 0; line-height: 1.6; }
+  .footer-strip .contact-item { font-size: 14px; line-height: 1.6; color: oklch(94% 0.008 82 / 0.85); margin: 0 0 8px; }
+  .footer-strip .contact-item b { color: var(--bone); font-weight: 600; }
+  .footer-strip .legal {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    margin-top: 28px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: oklch(94% 0.008 82 / 0.6);
+  }
+  @media (max-width: 720px) {
+    .footer-strip .word-row { grid-template-columns: 1fr; align-items: start; gap: 24px; }
+    .footer-strip .word-cta { justify-self: start; }
+  }
+  @media (max-width: 860px) { .footer-strip .row { grid-template-columns: 1fr; gap: 32px; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-row">
+    <span><span class="stars">★★★★★</span> &nbsp; Rated 5.0 based on Google Reviews</span>
+    <span>
+      <span class="areas">Areas We Visit</span>
+      <span class="dot" aria-hidden="true"></span>
+      <a href="tel:808XXXXXXX">(808) XXX-XXXX</a>
+    </span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Island PT — home">
+      <img src="img/IPH_Logo.webp" alt="Island PT">
+    </a>
+    <ul role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li class="has-submenu">
+        <button type="button" class="submenu-trigger" aria-expanded="false" aria-controls="sub-services">Services <span class="caret" aria-hidden="true">▾</span></button>
+        <ul id="sub-services" class="submenu" role="list">
+          <li><a href="services.html">Services Overview</a></li>
+          <li><a href="mobile-physical-therapy.html">Mobile Physical Therapy</a></li>
+        </ul>
+      </li>
+      <li><a href="service-area.html" aria-current="page">Service Area</a></li>
+      <li><a href="why-cash-pay.html">Why Cash-Pay</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="schedule.html">Schedule</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="nav-drawer" aria-expanded="false">
+      <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</nav>
+
+<aside class="nav-drawer" id="nav-drawer" data-open="false" aria-hidden="true">
+  <ul role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li>
+      <details class="drawer-group">
+        <summary>Services</summary>
+        <ul role="list" class="drawer-sub">
+          <li><a href="services.html">Services Overview</a></li>
+          <li><a href="mobile-physical-therapy.html">Mobile Physical Therapy</a></li>
+        </ul>
+      </details>
+    </li>
+    <li><a href="service-area.html" aria-current="page">Service Area</a></li>
+    <li><a href="why-cash-pay.html">Why Cash-Pay</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="drawer-cta-row">
+    <a class="btn" data-variant="primary" href="schedule.html">Schedule <span class="arrow" aria-hidden="true">→</span></a>
+    <a class="btn" data-variant="outline" href="tel:808XXXXXXX">Call to book <span class="arrow" aria-hidden="true">→</span></a>
+  </div>
+  <p class="drawer-meta">
+    Mon – Fri · 8 AM – 6 PM<br>
+    Kīhei, Maui · In-home visits
+  </p>
+</aside>
+
+<main id="main">
+
+  <!-- HERO -->
+  <div class="wrap">
+
+    <section class="area-hero" aria-labelledby="hero-h">
+      <div class="photo" role="img" aria-label="South Maui coastal view">
+        <img src="img/runeasi%20campaign-137.jpg" alt="Physical therapy assessment session">
+        <span class="stamp">Kīhei · South Maui</span>
+      </div>
+      <div class="copy">
+        <header>
+          <span class="eyebrow" data-style="rule">Where We Practice</span>
+          <h1 id="hero-h">Our <i>Service Area.</i></h1>
+          <p class="lead">Personalized physical therapy across South Maui — in Kīhei, Wailea, and the communities in between.</p>
+        </header>
+        <div class="actions">
+          <a class="btn" data-variant="primary-bone" href="schedule.html">Request a Consultation <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn" data-variant="outline-bone" href="tel:808XXXXXXX">Call (808) XXX-XXXX <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- INTRO BLOCK -->
+  <section class="block">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">01 / LOCALLY ROOTED ON MAUI</div>
+        <h2>Care built around your <i>neighborhood.</i></h2>
+      </div>
+
+      <div class="intro-anchor">
+        <div class="copy">
+          <p>Island PT is based in Kīhei and serves patients across South Maui. We are a one-to-one practice, which means every visit is focused entirely on you. Whether you live a short walk from the clinic or come over from Wailea for your sessions, you will get the same level of attentive, hands-on care.</p>
+          <p>Below, you will find more on each of the areas we serve, along with what we treat and how we work with patients in each community.</p>
+
+          <div class="specs">
+            <span><b>Base</b> Kīhei, Maui</span>
+            <span><b>Model</b> One-to-one</span>
+            <span><b>Off-island</b> Virtual consultation</span>
+            <span><b>Window</b> Mon – Fri, 8 AM to 6 PM</span>
+          </div>
+        </div>
+
+        <figure class="photo">
+          <img src="img/runeasi%20campaign-137.jpg" alt="Physical therapy assessment session" loading="lazy">
+          <span class="stamp">Kīhei · South Maui</span>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITIES (AREAS WE SERVE) -->
+  <section class="block" id="communities">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">02 / AREAS WE SERVE</div>
+        <h2>Communities we <i>care for.</i></h2>
+      </div>
+
+      <div class="spread">
+
+        <!-- Area 01 — Kīhei (Home Base) -->
+        <article class="spread-row" data-layout="portrait-left">
+          <figure class="spread-media">
+            <img src="img/runeasi%20jpegs-155.jpg" alt="Physical therapy session in Kīhei" loading="lazy">
+            <figcaption>Area 01 · Home Base</figcaption>
+          </figure>
+          <div class="spread-copy">
+            <span class="eyebrow" data-style="rule">Area 01 · Home Base</span>
+            <h3>Physical Therapy in <i>Kīhei, HI.</i></h3>
+            <p>Kīhei is home for Island PT. It is where the clinic is based and where most of our in-person sessions happen. The town's active lifestyle, daily ocean swims, paddleboarding, long beach walks, and year-round outdoor living, means people here move a lot and feel the effects when something is off.</p>
+            <p>We help Kīhei residents with chronic back pain, post-surgical recovery, balance issues, and the everyday wear and tear that comes from staying active in your 40s, 50s, 60s, and beyond. Whether you are a longtime local or recently moved to the south side, we are here to help you keep doing the things you love.</p>
+            <a class="read-link" href="kihei-location.html">Learn More About PT in Kīhei</a>
+          </div>
+        </article>
+
+        <!-- Area 02 — Wailea (South of Kīhei) -->
+        <article class="spread-row" data-layout="text-led">
+          <div class="spread-copy">
+            <span class="eyebrow" data-style="rule">Area 02 · South of Kīhei</span>
+            <h3>Physical Therapy in <i>Wailea, HI.</i></h3>
+            <p>Just south of Kīhei, Wailea is a short drive to the clinic and a community we are proud to serve. From visitors recovering from a sports injury during their stay, to full-time residents managing back pain or planning for surgery recovery, our patients here are looking for one thing: focused, expert care that does not waste their time.</p>
+            <p>We work with Wailea residents and long-stay visitors on everything from spine and back care to mobility, balance, and post-operative rehab. For those who prefer it, virtual consultations are available as well.</p>
+            <a class="read-link" href="#">Learn More About PT in Wailea</a>
+          </div>
+          <figure class="spread-media small">
+            <img src="img/runeasi%20jpegs-348.jpg" alt="Physical therapy session" loading="lazy">
+            <figcaption>Area 02 · Wailea</figcaption>
+          </figure>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY SOUTH MAUI -->
+  <section class="block tight" id="why-south">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">03 / WHY SOUTH MAUI</div>
+        <h2>A practice close to the people we <i>serve.</i></h2>
+      </div>
+
+      <div class="why-south">
+        <p class="lede">South Maui is one of the most active parts of the island.</p>
+
+        <div class="body">
+          <p>Between morning paddles off Kīhei, golf at Wailea, hikes up to the lava fields, and a year-round calendar of triathlons and races, people here put real demands on their bodies.</p>
+          <p>We built Island PT to match. The clinic is positioned to be reachable from across the south side, with appointment availability that respects your time and a treatment model designed to get results in fewer visits, not more.</p>
+
+          <strong>What that means in practice</strong>
+          <ul class="why-south-list">
+            <li>Centrally located in Kīhei for easy access</li>
+            <li>Short drive from Wailea, Makena, Māʻalaea, and surrounding areas</li>
+            <li>Virtual consultations available for clients beyond the island</li>
+            <li>Focused 6 to 8 week treatment plans, designed to actually finish</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALTIES (WHAT WE TREAT) -->
+  <section class="block" id="specialties">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">04 / OUR SPECIALTIES</div>
+        <h2>What we help <i>with.</i></h2>
+      </div>
+
+      <p class="specialties-intro">No matter which part of South Maui you are coming from, our three care areas stay the same.</p>
+
+      <div class="specialties-row">
+        <div class="specialty">
+          <span class="num">01.</span>
+          <h3>Spine &amp; Back <i>Care.</i></h3>
+          <p>Evidence-based treatment for chronic back pain, disc issues, and postural concerns.</p>
+        </div>
+        <div class="specialty">
+          <span class="num">02.</span>
+          <h3>Mobility &amp; <i>Balance.</i></h3>
+          <p>Structured rehabilitation that restores range of motion, builds stability, and reduces fall risk.</p>
+        </div>
+        <div class="specialty">
+          <span class="num">03.</span>
+          <h3>Strength-Based <i>Therapy.</i></h3>
+          <p>Gentle, progressive strengthening to keep your body capable and independent for the long haul.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="block tight">
+    <div class="wrap">
+      <div class="closing-cta">
+        <div>
+          <span class="eyebrow" data-style="rule">Ready When You Are</span>
+          <h2>Looking for a physical therapist near <i>you?</i></h2>
+          <p>If you live in Kīhei, Wailea, or anywhere across South Maui, we would love to meet you. Reach out for a consultation and let us understand what you are dealing with, then build a plan that fits.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" data-variant="primary-bone" href="schedule.html">Request a Consultation <span class="arrow" aria-hidden="true">→</span></a>
+          <span class="meta">Mon – Fri · 8 AM to 6 PM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer-strip">
+  <div class="wrap">
+    <div class="word-row">
+      <h2 class="word">Island <i>PT.</i></h2>
+      <a class="word-cta" href="tel:808XXXXXXX">Call to book <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="row">
+      <div>
+        <h5>About</h5>
+        <p>Personalized physical therapy, spine care, and mobility rehabilitation. Rooted in Maui — serving our community with care.</p>
+      </div>
+      <div>
+        <h5>Practice</h5>
+        <a href="about.html">About Us</a>
+        <a href="#">Your Journey</a>
+        <a href="#">Running Assessment</a>
+        <a href="#">Our Approach</a>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="#">Spine &amp; Back Care</a>
+        <a href="#">Mobility &amp; Balance</a>
+        <a href="#">Strength Therapy</a>
+        <a href="#">Wellness Membership</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <p class="contact-item"><b>Location</b><br>Kīhei, Maui, Hawaiʻi</p>
+        <p class="contact-item"><b>Tel</b><br><a href="tel:808XXXXXXX" style="padding:0; display:inline">(808) XXX-XXXX</a></p>
+        <p class="contact-item"><b>Email</b><br><a href="mailto:hello@example.com" style="padding:0; display:inline">[email address]</a></p>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Island PT · All Rights Reserved</span>
+      <span>
+        <a href="privacy-policy.html" style="display:inline; padding:0">Privacy Policy</a>
+        &nbsp;·&nbsp;
+        <a href="terms.html" style="display:inline; padding:0">Terms &amp; Conditions</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<div class="call-bar" aria-label="Quick call">
+  <a href="tel:808XXXXXXX">
+    <span class="icon" aria-hidden="true">☎</span>
+    Call to book a session
+  </a>
+  <span class="sub">(808) XXX-XXXX · Mon – Fri</span>
+</div>
+
+<script>
+  (function () {
+    const toggle = document.querySelector('.nav-toggle');
+    const drawer = document.getElementById('nav-drawer');
+    if (!toggle || !drawer) return;
+    const close = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      drawer.dataset.open = 'false';
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.removeAttribute('data-drawer');
+    };
+    const open = () => {
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+      drawer.dataset.open = 'true';
+      drawer.setAttribute('aria-hidden', 'false');
+      document.body.setAttribute('data-drawer', 'open');
+    };
+    toggle.addEventListener('click', () => {
+      (toggle.getAttribute('aria-expanded') === 'true' ? close : open)();
+    });
+    drawer.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') close();
+    });
+  })();
+</script>
+
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js"></script>
+<!-- impeccable-live-end -->
+</body>
+</html>

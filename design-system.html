@@ -1,0 +1,2779 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Island PT — Design System Specimen</title>
+<meta name="description" content="Component specimen sheet for Island PT. Isolated tokens, type, color, and components — not a page." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* =================================================================
+     TOKENS — single source of truth
+     Neutrals tinted toward the brand hue (warm earth ~80deg).
+     Chroma kept low at the lightness extremes, OKLCH throughout.
+     ================================================================= */
+  :root {
+    /* Surface — warm paper scale */
+    --paper-00: oklch(98.4% 0.008 82);   /* lightest */
+    --paper-05: oklch(96.2% 0.012 82);
+    --paper-10: oklch(93.4% 0.018 82);   /* page bg */
+    --paper-15: oklch(89.6% 0.022 82);
+    --paper-25: oklch(82.0% 0.026 82);   /* hairline-on-paper */
+
+    /* Ink — tinted near-blacks (never #000) */
+    --ink-95:  oklch(16.0% 0.012 82);    /* primary text */
+    --ink-80:  oklch(28.0% 0.014 82);    /* body */
+    --ink-60:  oklch(46.0% 0.016 82);    /* muted */
+    --ink-40:  oklch(64.0% 0.014 82);    /* placeholder */
+    --ink-20:  oklch(78.0% 0.012 82);    /* divider */
+
+    /* Brand — ocean / forest */
+    --ocean-90: oklch(20.0% 0.038 145);
+    --ocean-70: oklch(34.0% 0.060 142);  /* primary brand */
+    --ocean-55: oklch(46.0% 0.072 140);
+
+    /* Accent — coral (warning/CTA spark) */
+    --coral-55: oklch(56.0% 0.150 38);
+    --coral-65: oklch(64.0% 0.140 40);
+
+    /* Accent — sun gold (italic highlight, success) */
+    --sun-70:  oklch(78.0% 0.130 82);
+    --sun-55:  oklch(64.0% 0.150 70);
+
+    /* Soft white — never #fff */
+    --bone:    oklch(98.8% 0.006 82);
+    --bone-dim: oklch(94.0% 0.008 82);
+
+    /* Type */
+    --serif: "Instrument Serif", "Times New Roman", serif;
+    --sans:  "Inter", system-ui, sans-serif;
+    --mono:  "JetBrains Mono", ui-monospace, monospace;
+
+    /* Type scale (modular, ratio 1.28) */
+    --t-cap:   12px;
+    --t-micro: 13px;
+    --t-body:  17px;
+    --t-lead:  22px;
+    --t-h4:    24px;
+    --t-h3:    34px;
+    --t-h2:    52px;
+    --t-h1:    clamp(64px, 9vw, 128px);
+
+    /* Rhythm — varied, not uniform */
+    --gap-xs: 8px;
+    --gap-s:  14px;
+    --gap-m:  24px;
+    --gap-l:  44px;
+    --gap-xl: 72px;
+    --gap-2x: 120px;
+
+    /* Radii — varied per component class */
+    --r-flat:  2px;     /* fields, chips */
+    --r-soft:  6px;     /* default surfaces */
+    --r-pill:  999px;
+    --r-arc:   18px;    /* feature panels */
+
+    /* Borders */
+    --line-hair:  1px solid var(--paper-25);
+    --line-rule:  1.5px solid var(--ink-20);
+    --line-bold:  2px solid var(--ink-95);
+
+    /* Motion */
+    --ease-out-q: cubic-bezier(0.22, 1, 0.36, 1);
+    --dur-fast: 140ms;
+    --dur-mid:  240ms;
+  }
+
+  /* =================================================================
+     SPECIMEN SHELL — documentation chrome, not page chrome
+     ================================================================= */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--paper-10); color: var(--ink-95); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  body { font-size: var(--t-body); line-height: 1.55; }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  .doc {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 56px 40px 160px;
+  }
+  @media (max-width: 720px) { .doc { padding: 40px 18px 80px; } }
+
+  /* Specimen masthead */
+  .mast {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: var(--gap-m);
+    padding-bottom: var(--gap-l);
+    border-bottom: var(--line-bold);
+    margin-bottom: var(--gap-2x);
+  }
+  .mast h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(44px, 7vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .mast h1 i { color: var(--ocean-70); }
+  .mast .meta {
+    font-family: var(--mono);
+    font-size: var(--t-cap);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: right;
+    color: var(--ink-60);
+    line-height: 1.6;
+  }
+  .mast .meta b { color: var(--ink-95); display: block; }
+
+  /* Section — each component family */
+  .family {
+    margin-bottom: var(--gap-2x);
+  }
+  .family > header {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: var(--gap-m);
+    align-items: baseline;
+    margin-bottom: var(--gap-l);
+    padding-bottom: var(--gap-m);
+    border-bottom: var(--line-hair);
+  }
+  .family > header .idx {
+    font-family: var(--mono);
+    font-size: var(--t-cap);
+    letter-spacing: 0.22em;
+    color: var(--ink-60);
+    font-weight: 500;
+  }
+  .family > header h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .family > header p {
+    grid-column: 2;
+    margin: 8px 0 0;
+    color: var(--ink-60);
+    max-width: 58ch;
+    font-size: 15px;
+  }
+
+  /* Specimen — the box that frames each component */
+  .specimen {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 0;
+    border: var(--line-hair);
+    background: var(--paper-00);
+    margin-bottom: var(--gap-m);
+  }
+  @media (max-width: 900px) {
+    .specimen { grid-template-columns: 1fr; }
+  }
+  .specimen-stage {
+    padding: 36px;
+    overflow: hidden;
+    border-right: var(--line-hair);
+    position: relative;
+  }
+  @media (max-width: 900px) { .specimen-stage { border-right: none; border-bottom: var(--line-hair); } }
+  .specimen-tokens {
+    padding: 28px 24px;
+    background: var(--paper-05);
+    font-family: var(--mono);
+    font-size: var(--t-cap);
+    line-height: 1.85;
+    color: var(--ink-80);
+    overflow-x: auto;
+  }
+  .specimen-label {
+    position: absolute;
+    top: 14px; left: 14px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    background: var(--paper-00);
+    padding: 4px 10px;
+    border: var(--line-hair);
+  }
+  .specimen-tokens b {
+    color: var(--ink-95);
+    font-weight: 500;
+  }
+  .specimen-tokens .k { color: var(--coral-55); }
+  .specimen-tokens .v { color: var(--ocean-55); }
+
+  /* Tight specimen — short visual + inline tokens */
+  .specimen.compact .specimen-stage { padding: 28px; }
+
+  /* ==== Audit callouts ==== */
+  .audit {
+    background: var(--paper-05);
+    border: var(--line-hair);
+    padding: 32px 36px;
+    margin-bottom: var(--gap-2x);
+  }
+  .audit h3 {
+    font-family: var(--mono);
+    font-size: var(--t-cap);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin: 0 0 var(--gap-m);
+    font-weight: 600;
+  }
+  .audit ol {
+    margin: 0; padding: 0; list-style: none;
+    columns: 2; column-gap: 56px;
+  }
+  @media (max-width: 720px) { .audit ol { columns: 1; } }
+  .audit li {
+    break-inside: avoid;
+    padding: 12px 0 12px 32px;
+    border-top: var(--line-hair);
+    position: relative;
+    font-size: 15px;
+    color: var(--ink-80);
+  }
+  .audit li::before {
+    content: attr(data-n);
+    position: absolute;
+    left: 0; top: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--coral-55);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .audit li b { color: var(--ink-95); font-weight: 600; }
+
+  /* =================================================================
+     COMPONENT STYLES — scoped, isolated
+     ================================================================= */
+
+  /* ---- Color swatches ---- */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--paper-15);
+    border: var(--line-hair);
+  }
+  .swatch {
+    background: var(--paper-00);
+    padding: 0;
+    display: flex; flex-direction: column;
+  }
+  .swatch-chip {
+    aspect-ratio: 5/3;
+  }
+  .swatch-meta {
+    padding: 14px 16px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.55;
+    color: var(--ink-60);
+  }
+  .swatch-meta b {
+    display: block;
+    color: var(--ink-95);
+    font-size: var(--t-cap);
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  /* ---- Type scale ---- */
+  .type-row {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: var(--gap-m);
+    align-items: baseline;
+    padding: 24px 0;
+    border-top: var(--line-hair);
+  }
+  .type-row:last-child { border-bottom: var(--line-hair); }
+  .type-row .role {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+    padding-top: 8px;
+  }
+  .type-row .role span { display: block; color: var(--ink-95); margin-top: 4px; font-weight: 500; }
+  .type-row .sample { font-family: var(--serif); font-weight: 400; line-height: 1; letter-spacing: -0.022em; color: var(--ink-95); }
+  .type-row[data-tier="h1"]   .sample { font-size: var(--t-h1); }
+  .type-row[data-tier="h2"]   .sample { font-size: var(--t-h2); }
+  .type-row[data-tier="h3"]   .sample { font-size: var(--t-h3); }
+  .type-row[data-tier="h4"]   .sample { font-size: var(--t-h4); font-family: var(--sans); font-weight: 600; letter-spacing: -0.005em; }
+  .type-row[data-tier="lead"] .sample { font-size: var(--t-lead); font-family: var(--serif); font-style: italic; color: var(--ocean-70); line-height: 1.3; }
+  .type-row[data-tier="body"] .sample { font-size: var(--t-body); font-family: var(--sans); line-height: 1.5; color: var(--ink-80); }
+  .type-row[data-tier="micro"] .sample { font-size: var(--t-micro); font-family: var(--mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-60); }
+  .type-row[data-tier="cap"]  .sample { font-size: var(--t-cap); font-family: var(--sans); color: var(--ink-60); }
+
+  /* ---- Buttons ---- */
+  .btn-row {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    align-items: center;
+  }
+  .btn {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 14px 22px;
+    border-radius: var(--r-soft);
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: transform var(--dur-fast) var(--ease-out-q),
+                background var(--dur-fast) var(--ease-out-q),
+                color var(--dur-fast) var(--ease-out-q),
+                border-color var(--dur-fast) var(--ease-out-q);
+    display: inline-flex; align-items: center; gap: 10px;
+    line-height: 1;
+  }
+  .btn:focus-visible { outline: 2px solid var(--coral-55); outline-offset: 3px; }
+  .btn[data-variant="primary"] { background: var(--ocean-70); color: var(--bone); border-color: var(--ocean-70); }
+  .btn[data-variant="primary"]:hover { background: var(--ocean-90); border-color: var(--ocean-90); }
+  .btn[data-variant="secondary"] { background: var(--paper-00); color: var(--ink-95); border-color: var(--ink-95); }
+  .btn[data-variant="secondary"]:hover { background: var(--ink-95); color: var(--bone); }
+  .btn[data-variant="outline"] { background: transparent; color: var(--ocean-70); border-color: var(--ocean-70); }
+  .btn[data-variant="outline"]:hover { background: var(--ocean-70); color: var(--bone); }
+  .btn[data-variant="ghost"] { background: transparent; color: var(--ink-95); border-color: transparent; padding-left: 6px; padding-right: 6px; }
+  .btn[data-variant="ghost"]:hover { color: var(--ocean-70); }
+  .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+  .btn[data-state="hover"] { background: var(--ocean-90); color: var(--bone); border-color: var(--ocean-90); }
+  .btn[data-state="focus"] { outline: 2px solid var(--coral-55); outline-offset: 3px; }
+  .btn .arrow { transition: transform var(--dur-mid) var(--ease-out-q); }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* ---- Navigation ---- */
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 28px;
+    background: var(--paper-00);
+    border-bottom: var(--line-bold);
+    gap: var(--gap-m);
+  }
+  .nav .brand {
+    font-family: var(--serif);
+    font-size: 28px;
+    letter-spacing: -0.02em;
+  }
+  .nav .brand i { color: var(--ocean-70); }
+  .nav ul {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; gap: 28px;
+    font-size: 15px;
+  }
+  .nav ul a {
+    text-decoration: none;
+    color: var(--ink-95);
+    padding: 6px 2px;
+    border-bottom: 1.5px solid transparent;
+    transition: border-color var(--dur-fast) var(--ease-out-q);
+  }
+  .nav ul a:hover, .nav ul a[aria-current="page"] { border-bottom-color: var(--ocean-70); }
+  .nav .nav-cta {
+    background: var(--ocean-70);
+    color: var(--bone);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: var(--r-flat);
+  }
+  .nav.is-dark { background: var(--ocean-90); border-bottom-color: var(--ocean-90); }
+  .nav.is-dark a, .nav.is-dark .brand { color: var(--bone); }
+  .nav.is-dark .brand i { color: var(--sun-70); }
+  .nav.is-dark .nav-cta { background: var(--bone); color: var(--ocean-90); }
+  @media (max-width: 720px) { .nav ul { display: none; } }
+
+  /* ---- Hero variants ---- */
+  .hero { position: relative; padding: 64px 40px; overflow: hidden; }
+
+  /* Variant A — editorial type-led, no photo */
+  .hero[data-variant="editorial"] {
+    background: var(--paper-00);
+    border: var(--line-bold);
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    align-items: end;
+    gap: var(--gap-l);
+    min-height: 420px;
+  }
+  .hero[data-variant="editorial"] .display {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(44px, 7.5vw, 96px);
+    line-height: 0.96;
+    letter-spacing: -0.028em;
+    margin: 0;
+    max-width: 14ch;
+  }
+  .hero[data-variant="editorial"] .display i { color: var(--ocean-70); }
+  .hero[data-variant="editorial"] .index {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--ink-60);
+    line-height: 1.8;
+    text-align: right;
+    text-transform: uppercase;
+  }
+  .hero[data-variant="editorial"] .index hr {
+    border: 0; border-top: var(--line-rule); margin: 6px 0 14px;
+  }
+
+  /* Variant B — asymmetric split with image + offset caption */
+  .hero[data-variant="split"] {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    background: var(--ocean-90);
+    color: var(--bone);
+    padding: 0;
+    min-height: 420px;
+  }
+  @media (max-width: 720px) { .hero[data-variant="split"] { grid-template-columns: 1fr; } }
+  .hero[data-variant="split"] .copy {
+    padding: 56px 44px 44px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    gap: var(--gap-l);
+  }
+  .hero[data-variant="split"] h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.0;
+    letter-spacing: -0.022em;
+    margin: 0;
+    max-width: 14ch;
+  }
+  .hero[data-variant="split"] h2 i { color: var(--sun-70); }
+  .hero[data-variant="split"] .signoff {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    color: oklch(85% 0.020 82); text-transform: uppercase;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero[data-variant="split"] .signoff::before {
+    content: ""; width: 36px; height: 1.5px; background: var(--sun-70);
+  }
+  .hero[data-variant="split"] .photo {
+    background: linear-gradient(135deg, var(--ocean-70), var(--ocean-55) 40%, var(--sun-70));
+    position: relative;
+  }
+  .hero[data-variant="split"] .photo::after {
+    content: "01 / SPECIMEN";
+    position: absolute; bottom: 24px; right: 24px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    color: var(--bone); padding: 6px 10px;
+    background: oklch(20% 0.040 145 / 0.6);
+  }
+
+  /* Variant D — photographic hero with overlay */
+  .hero[data-variant="photo"] {
+    position: relative;
+    color: var(--bone);
+    border-radius: var(--r-arc);
+    overflow: hidden;
+    min-height: 380px;
+    padding: 44px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    isolation: isolate;
+  }
+  .hero[data-variant="photo"] .bg {
+    position: absolute; inset: 0;
+    background-image: url("img/runeasi campaign-137.jpg");
+    background-size: cover;
+    background-position: center 30%;
+    z-index: -2;
+  }
+  .hero[data-variant="photo"] .scrim {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        oklch(20% 0.038 145 / 0.45) 0%,
+        oklch(20% 0.038 145 / 0.30) 38%,
+        oklch(16% 0.040 145 / 0.85) 100%
+      );
+    z-index: -1;
+  }
+  .hero[data-variant="photo"] .eyebrow-photo {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--bone); font-weight: 600;
+    align-self: flex-start;
+    padding: 8px 14px;
+    border: 1.5px solid oklch(98.8% 0.006 82 / 0.55);
+    border-radius: var(--r-flat);
+    backdrop-filter: blur(2px);
+  }
+  .hero[data-variant="photo"] .eyebrow-photo .live {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--sun-70);
+    box-shadow: 0 0 0 4px oklch(78% 0.130 82 / 0.25);
+  }
+  .hero[data-variant="photo"] .body {
+    max-width: 42ch;
+  }
+  .hero[data-variant="photo"] h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(40px, 5.2vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.022em;
+    margin: 0 0 20px;
+    color: var(--bone);
+    max-width: 18ch;
+  }
+  .hero[data-variant="photo"] h2 i { color: var(--sun-70); }
+  .hero[data-variant="photo"] p {
+    font-family: var(--sans);
+    font-size: 18px;
+    line-height: 1.55;
+    color: oklch(96% 0.006 82 / 0.92);
+    max-width: 48ch;
+    margin: 0;
+  }
+  .hero[data-variant="photo"] .cta {
+    margin-top: 36px;
+    align-self: flex-start;
+    background: var(--bone);
+    color: var(--ocean-90);
+    padding: 18px 26px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 16px;
+    border: 1.5px solid var(--bone);
+    border-radius: var(--r-soft);
+    display: inline-flex; align-items: center; gap: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background var(--dur-fast) var(--ease-out-q),
+                color var(--dur-fast) var(--ease-out-q);
+  }
+  .hero[data-variant="photo"] .cta:hover {
+    background: transparent;
+    color: var(--bone);
+  }
+  .hero[data-variant="photo"] .cta .arrow {
+    transition: transform var(--dur-mid) var(--ease-out-q);
+  }
+  .hero[data-variant="photo"] .cta:hover .arrow { transform: translateX(4px); }
+  .hero[data-variant="photo"] .signature {
+    position: absolute; bottom: 22px; right: 24px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: oklch(96% 0.006 82 / 0.65);
+    z-index: 1;
+  }
+
+  @media (max-width: 720px) {
+    .hero[data-variant="photo"] { padding: 36px 24px; min-height: 460px; }
+    .hero[data-variant="photo"] .signature { display: none; }
+  }
+
+  /* Wide specimen — breaks out of the doc container for full-bleed components */
+  .specimen-wide {
+    width: 100vw;
+    max-width: 1350px;
+    margin: 0 auto var(--gap-m);
+    padding: 0 25px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .specimen-wide .specimen-label {
+    position: relative;
+    display: inline-block;
+    top: auto; left: auto;
+    margin-bottom: 14px;
+    background: var(--paper-00);
+    padding: 4px 10px;
+    border: var(--line-hair);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+  }
+  .specimen-wide .tokens-row {
+    margin-top: var(--gap-m);
+    padding: 24px 28px;
+    background: var(--paper-05);
+    border: var(--line-hair);
+    font-family: var(--mono);
+    font-size: var(--t-cap);
+    line-height: 1.85;
+    color: var(--ink-80);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 900px) {
+    .specimen-wide .tokens-row { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .specimen-wide .tokens-row { grid-template-columns: 1fr; }
+  }
+  .specimen-wide .tokens-row .col b {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink-95);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .specimen-wide .tokens-row .k { color: var(--coral-55); }
+  .specimen-wide .tokens-row .v { color: var(--ocean-55); }
+
+  /* ---- Services · sticky-scroll diptych ---- */
+  .diptych {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    background: var(--paper-00);
+    border: var(--line-hair);
+    border-radius: var(--r-arc);
+    padding: 48px;
+    position: relative;
+  }
+  .diptych-photo {
+    position: sticky;
+    top: 40px;
+    align-self: start;
+    height: fit-content;
+  }
+  .diptych-frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--r-soft);
+    overflow: hidden;
+    background: var(--paper-15);
+  }
+  .diptych-frame img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 500ms var(--ease-out-q);
+  }
+  .diptych-frame img.is-active { opacity: 1; }
+  .diptych-frame::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, oklch(20% 0.038 145 / 0.35) 100%);
+    pointer-events: none;
+  }
+  .diptych-caption {
+    position: absolute;
+    bottom: 18px; left: 20px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--bone);
+    z-index: 2;
+  }
+
+  .diptych-phase {
+    display: flex; gap: 12px;
+    margin-top: 22px;
+  }
+  .phase-step {
+    flex: 1;
+    padding-top: 14px;
+    border-top: 1.5px solid var(--ink-20);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    color: var(--ink-40);
+    transition: color var(--dur-mid) var(--ease-out-q),
+                border-color var(--dur-mid) var(--ease-out-q);
+  }
+  .phase-step.is-active {
+    color: var(--ink-95);
+    border-color: var(--ocean-70);
+  }
+
+  .diptych-text {
+    display: flex;
+    flex-direction: column;
+    gap: 88px;
+    padding: 20px 0 40px;
+  }
+  .service-block {
+    display: flex; flex-direction: column; gap: 16px;
+    min-height: 360px;
+  }
+  .service-block .eyebrow { margin-bottom: 6px; }
+  .service-block h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    margin: 0;
+    max-width: 16ch;
+    color: var(--ink-95);
+  }
+  .service-block h3 i { color: var(--ocean-70); }
+  .service-block p {
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-80);
+    max-width: 50ch;
+    margin: 0;
+  }
+  .service-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 28px;
+    margin: 14px 0 0;
+    padding-top: 22px;
+    border-top: var(--line-hair);
+  }
+  .service-meta > div { margin: 0; }
+  .service-meta dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    color: var(--ink-60); text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .service-meta dd {
+    margin: 0;
+    font-family: var(--sans); font-size: 14px;
+    color: var(--ink-95);
+  }
+
+  @media (max-width: 900px) {
+    .diptych {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 28px;
+    }
+    .diptych-photo { position: static; }
+    .diptych-text { gap: 56px; padding-top: 0; }
+    .service-block { min-height: auto; }
+  }
+
+  /* ---- Services · asymmetric photo spread ---- */
+  .spread {
+    display: flex;
+    flex-direction: column;
+    gap: 110px;
+  }
+
+  /* Row 1 — portrait left, text right */
+  .spread-row[data-layout="portrait-left"] {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .spread-row[data-layout="portrait-left"] .spread-media {
+    aspect-ratio: 4 / 5;
+    border-radius: var(--r-soft);
+  }
+
+  /* Row 2 — wide landscape, overlay copy */
+  .spread-row[data-layout="overlay"] .spread-media.overlay {
+    position: relative;
+    aspect-ratio: 16 / 7;
+    border-radius: var(--r-arc);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .spread-row[data-layout="overlay"] .spread-media.overlay::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(115deg,
+      oklch(16% 0.040 145 / 0.85) 0%,
+      oklch(16% 0.040 145 / 0.40) 45%,
+      transparent 72%);
+    pointer-events: none;
+  }
+  .overlay-copy {
+    position: absolute;
+    bottom: 44px; left: 44px;
+    z-index: 2;
+    max-width: 42ch;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .overlay-copy .eyebrow { color: var(--bone); }
+  .overlay-copy .eyebrow[data-style="dot"]::before { background: var(--sun-70); }
+  .overlay-copy h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(32px, 4vw, 52px); line-height: 1.04;
+    letter-spacing: -0.02em; margin: 0;
+    color: var(--bone); max-width: 14ch;
+  }
+  .overlay-copy h3 i { color: var(--sun-70); }
+  .overlay-copy p {
+    font-family: var(--sans); font-size: 17px; line-height: 1.55;
+    color: oklch(96% 0.006 82 / 0.92);
+    margin: 0; max-width: 46ch;
+  }
+
+  /* Row 3 — text-led left, small square right */
+  .spread-row[data-layout="text-led"] {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 56px;
+    align-items: end;
+  }
+  .spread-row[data-layout="text-led"] .spread-media.small {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--r-soft);
+    max-width: 380px;
+    justify-self: end;
+    width: 100%;
+  }
+  .spread-row[data-layout="text-led"] .spread-copy h3 {
+    font-size: clamp(34px, 4.6vw, 64px);
+    max-width: 13ch;
+  }
+
+  /* Shared media + copy */
+  .spread-media {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    background: var(--paper-15);
+  }
+  .spread-media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 700ms var(--ease-out-q);
+  }
+  .spread-media:hover img { transform: scale(1.02); }
+  .spread-media > figcaption {
+    position: absolute;
+    bottom: 14px; left: 16px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    color: var(--bone); z-index: 2;
+    text-transform: uppercase;
+    text-shadow: 0 1px 8px oklch(20% 0.04 145 / 0.6);
+  }
+
+  .spread-copy {
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .spread-copy .eyebrow { margin-bottom: 2px; }
+  .spread-copy h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 48px);
+    line-height: 1.05; letter-spacing: -0.018em;
+    margin: 0; max-width: 16ch;
+    color: var(--ink-95);
+  }
+  .spread-copy h3 i { color: var(--ocean-70); }
+  .spread-copy p {
+    font-family: var(--sans); font-size: 17px; line-height: 1.55;
+    color: var(--ink-80);
+    max-width: 50ch; margin: 0;
+  }
+  .spread-copy .read-link {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ocean-70);
+    text-decoration: none; margin-top: 10px;
+    display: inline-flex; gap: 8px; align-items: center;
+    width: fit-content;
+  }
+  .spread-copy .read-link::after {
+    content: "→";
+    transition: transform var(--dur-fast) var(--ease-out-q);
+  }
+  .spread-copy .read-link:hover::after { transform: translateX(4px); }
+
+  .spread-meta {
+    display: flex; flex-wrap: wrap;
+    gap: 24px 48px;
+    margin: 16px 0 0;
+    padding-top: 22px;
+    border-top: var(--line-hair);
+  }
+  .spread-meta > div { margin: 0; }
+  .spread-meta dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    color: var(--ink-60); text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .spread-meta dd {
+    margin: 0;
+    font-family: var(--sans); font-size: 14px;
+    color: var(--ink-95);
+  }
+
+  @media (max-width: 900px) {
+    .spread { gap: 64px; }
+    .spread-row[data-layout="portrait-left"],
+    .spread-row[data-layout="text-led"] {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .spread-row[data-layout="text-led"] .spread-media.small {
+      max-width: none;
+      aspect-ratio: 4 / 3;
+      justify-self: stretch;
+    }
+    .spread-row[data-layout="overlay"] .spread-media.overlay {
+      aspect-ratio: 4 / 5;
+    }
+    .overlay-copy {
+      bottom: 24px; left: 24px; right: 24px;
+      max-width: none;
+    }
+  }
+
+  /* ---- About · A · Editorial signed letter ---- */
+  .about-letter {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 72px;
+    background: var(--paper-00);
+    border: var(--line-hair);
+    border-radius: var(--r-arc);
+    padding: 56px 56px 64px;
+    align-items: start;
+  }
+  .about-letter .portrait {
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--r-soft);
+    background: var(--paper-15);
+    position: relative;
+  }
+  .about-letter .portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .about-letter .portrait .stamp {
+    position: absolute;
+    top: 18px; left: 18px;
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--bone);
+    background: oklch(20% 0.04 145 / 0.5);
+    padding: 6px 10px;
+    border-radius: var(--r-flat);
+    backdrop-filter: blur(2px);
+  }
+  .about-letter .letter { padding-top: 4px; }
+  .about-letter .salutation {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 64px);
+    color: var(--coral-55);
+    line-height: 1;
+    margin: 0 0 36px;
+  }
+  .about-letter .lead {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(22px, 2.2vw, 28px);
+    line-height: 1.35;
+    color: var(--ink-95);
+    margin: 0 0 28px;
+    max-width: 30ch;
+    letter-spacing: -0.012em;
+  }
+  .about-letter .lead i { color: var(--ocean-70); font-style: italic; }
+  .about-letter .body-p {
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-80);
+    margin: 0 0 18px;
+    max-width: 52ch;
+  }
+  .about-letter .body-p:last-of-type { margin-bottom: 0; }
+  .about-letter .signature {
+    margin-top: 44px;
+    display: inline-flex; flex-direction: column;
+    align-items: flex-start; gap: 4px;
+  }
+  .about-letter .sig-name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 48px;
+    color: var(--ocean-90);
+    line-height: 1;
+  }
+  .about-letter .sig-line {
+    width: 110px; height: 14px;
+    color: var(--ocean-70);
+    margin-left: 14px;
+  }
+  .about-letter .sig-role {
+    margin-top: 14px;
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-60); font-weight: 500;
+  }
+  .about-letter .credentials {
+    margin-top: 44px;
+    padding-top: 24px;
+    border-top: var(--line-hair);
+    display: flex; flex-wrap: wrap;
+    gap: 10px 28px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+  }
+  .about-letter .credentials span {
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .about-letter .credentials span::before {
+    content: ""; width: 6px; height: 6px;
+    background: var(--ocean-70);
+    border-radius: 50%;
+  }
+  .about-letter .credentials b {
+    color: var(--ink-95); font-weight: 600;
+  }
+  @media (max-width: 900px) {
+    .about-letter {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding: 32px 28px 40px;
+    }
+    .about-letter .portrait { max-width: 360px; }
+  }
+
+  /* ---- About · B · Timeline ---- */
+  .about-timeline {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    align-items: start;
+    background: var(--paper-00);
+    border: var(--line-hair);
+    border-radius: var(--r-arc);
+    padding: 48px 48px 56px;
+  }
+  .about-timeline .portrait-tall {
+    margin: 0;
+    border-radius: var(--r-soft);
+    overflow: hidden;
+    background: var(--paper-15);
+    position: relative;
+    aspect-ratio: 4 / 5;
+  }
+  .about-timeline .portrait-tall img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .about-timeline .portrait-tall::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, oklch(20% 0.04 145 / 0.6));
+    pointer-events: none;
+  }
+  .about-timeline .portrait-caption {
+    position: absolute;
+    left: 22px; bottom: 22px;
+    color: var(--bone);
+    z-index: 2;
+  }
+  .about-timeline .portrait-caption .name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.1;
+    margin: 0 0 6px;
+  }
+  .about-timeline .portrait-caption .name .last { color: var(--sun-70); }
+  .about-timeline .portrait-caption .role {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: oklch(94% 0.006 82 / 0.85);
+    margin: 0;
+  }
+
+  .timeline-col {
+    display: flex; flex-direction: column;
+    min-height: 100%;
+  }
+  .timeline-col .eyebrow { margin-bottom: 16px; }
+  .timeline-col .title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(30px, 3.6vw, 48px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 36px;
+    max-width: 15ch;
+    color: var(--ink-95);
+  }
+  .timeline-col .title i { color: var(--ocean-70); font-style: italic; }
+
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 6px 0 0 30px;
+    border-left: 1.5px solid var(--ink-20);
+    display: flex; flex-direction: column;
+    gap: 28px;
+  }
+  .timeline li { position: relative; margin: 0; padding: 0; }
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    left: -36px;
+    top: 4px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--paper-00);
+    border: 1.5px solid var(--ocean-70);
+    transition: background var(--dur-mid) var(--ease-out-q),
+                box-shadow var(--dur-mid) var(--ease-out-q);
+  }
+  .timeline li[data-now="true"]::before {
+    background: var(--ocean-70);
+    box-shadow: 0 0 0 5px oklch(34% 0.060 142 / 0.18);
+  }
+  .timeline .year {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--coral-55);
+    margin: 0 0 6px;
+    font-weight: 600;
+    display: block;
+  }
+  .timeline .event {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 0 0 6px;
+    color: var(--ink-95);
+    letter-spacing: -0.01em;
+    max-width: 26ch;
+  }
+  .timeline .event i { color: var(--ocean-70); font-style: italic; }
+  .timeline .detail {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-60);
+    margin: 0;
+    max-width: 48ch;
+  }
+
+  .timeline-col .closer {
+    margin-top: auto;
+    padding-top: 28px;
+    border-top: var(--line-hair);
+    display: flex; align-items: center;
+    justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .timeline-col .closer-spacer {
+    height: 36px; flex: none;
+  }
+  .timeline-col .closer p {
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-80);
+    margin: 0;
+    max-width: 40ch;
+  }
+  @media (max-width: 900px) {
+    .about-timeline {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .about-timeline .portrait-tall {
+      max-width: 420px;
+      aspect-ratio: 4 / 5;
+      min-height: 0;
+    }
+  }
+
+  /* Variant C — drenched accent, oversized italic */
+  .hero[data-variant="drenched"] {
+    background: var(--coral-55);
+    color: var(--bone);
+    text-align: left;
+    border-radius: var(--r-arc);
+    min-height: 380px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    gap: var(--gap-l);
+  }
+  .hero[data-variant="drenched"] .kicker {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: oklch(94% 0.030 40);
+  }
+  .hero[data-variant="drenched"] .display {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(48px, 8vw, 112px); line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin: 0; max-width: 12ch;
+  }
+  .hero[data-variant="drenched"] .footer-row {
+    display: flex; justify-content: space-between; align-items: end;
+    gap: var(--gap-m); flex-wrap: wrap;
+    font-size: 14px;
+  }
+  .hero[data-variant="drenched"] .footer-row .stat b {
+    font-family: var(--serif); font-size: 32px; font-style: italic;
+    color: var(--bone); display: block; line-height: 1;
+  }
+
+  /* ---- Section headers / eyebrows ---- */
+  .eyebrow-set { display: flex; flex-direction: column; gap: 28px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-95); font-weight: 600;
+  }
+  .eyebrow[data-style="rule"]::before {
+    content: ""; width: 36px; height: 1.5px; background: var(--ocean-70);
+  }
+  .eyebrow[data-style="dot"]::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--coral-55);
+  }
+  .eyebrow[data-style="num"] {
+    border-top: var(--line-bold); padding-top: 10px;
+    color: var(--ink-60);
+  }
+  .eyebrow[data-style="pill"] {
+    border: 1.5px solid var(--ink-95); padding: 6px 12px; border-radius: var(--r-pill);
+  }
+
+  .section-head-demo {
+    display: grid; grid-template-columns: 220px 1fr; gap: var(--gap-l);
+    align-items: baseline; padding-top: 18px; border-top: var(--line-rule);
+  }
+  .section-head-demo .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; color: var(--ink-60); font-weight: 600; }
+  .section-head-demo h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(28px, 4vw, 44px); line-height: 1.05;
+    letter-spacing: -0.018em; margin: 0; max-width: 20ch;
+  }
+  .section-head-demo h3 i { color: var(--ocean-70); }
+  @media (max-width: 720px) { .section-head-demo { grid-template-columns: 1fr; gap: 14px; } }
+
+  /* ---- Cards — three intentionally distinct species ---- */
+
+  /* Service card — numbered, full-bleed, no image */
+  .card-service {
+    background: var(--paper-00);
+    padding: 36px 32px 40px;
+    border: var(--line-bold);
+    border-radius: var(--r-soft);
+    display: flex; flex-direction: column; gap: 20px;
+    max-width: 360px;
+    transition: transform var(--dur-mid) var(--ease-out-q);
+  }
+  .card-service:hover { transform: translateY(-3px); }
+  .card-service .num {
+    font-family: var(--serif); font-size: 56px; line-height: 1;
+    color: var(--ocean-70); font-style: italic;
+  }
+  .card-service h4 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 28px; line-height: 1.1; letter-spacing: -0.012em; margin: 0;
+    max-width: 14ch;
+  }
+  .card-service p {
+    color: var(--ink-80); margin: 0; font-size: 15px; line-height: 1.55;
+  }
+  .card-service .link {
+    margin-top: auto; font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ocean-70); text-decoration: none; display: inline-flex; gap: 8px;
+  }
+  .card-service .link::after { content: "→"; transition: transform var(--dur-fast) var(--ease-out-q); }
+  .card-service:hover .link::after { transform: translateX(3px); }
+
+  /* Testimonial card — pull-quote, no image; deliberately wider, no border */
+  .card-testimonial {
+    background: var(--ocean-90);
+    color: var(--bone);
+    padding: 48px 44px;
+    border-radius: var(--r-arc);
+    max-width: 580px;
+    position: relative;
+  }
+  .card-testimonial .mark {
+    font-family: var(--serif); font-style: italic;
+    font-size: 96px; line-height: 0.6;
+    color: var(--sun-70); margin-bottom: 8px;
+    display: block;
+  }
+  .card-testimonial blockquote {
+    margin: 0;
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: 28px; line-height: 1.25; letter-spacing: -0.012em;
+    color: var(--bone);
+  }
+  .card-testimonial figcaption {
+    margin-top: 28px;
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: oklch(85% 0.020 82);
+  }
+  .card-testimonial figcaption .avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--sun-70), var(--coral-55));
+  }
+  .card-testimonial figcaption b { color: var(--bone); display: block; font-weight: 600; }
+
+  /* Feature card — icon-led, compact, no border, on paper-05 */
+  .card-feature {
+    background: var(--paper-05);
+    padding: 26px 28px;
+    border-radius: var(--r-soft);
+    display: grid; grid-template-columns: 36px 1fr; gap: 18px; align-items: start;
+    max-width: 460px;
+  }
+  .card-feature .icon {
+    width: 36px; height: 36px;
+    display: grid; place-items: center;
+    background: var(--ocean-70); color: var(--bone);
+    border-radius: var(--r-flat);
+    font-family: var(--serif); font-style: italic; font-size: 22px;
+  }
+  .card-feature h4 {
+    font-family: var(--sans); font-weight: 600; font-size: 17px;
+    margin: 0 0 6px; letter-spacing: -0.005em;
+  }
+  .card-feature p {
+    margin: 0; font-size: 14px; line-height: 1.55; color: var(--ink-60);
+  }
+
+  /* ---- Form elements ---- */
+  .form-demo {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 22px 28px;
+    max-width: 640px;
+  }
+  @media (max-width: 720px) { .form-demo { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field.full { grid-column: 1 / -1; }
+  .field > label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-95); font-weight: 600;
+  }
+  .field > label .opt {
+    font-family: var(--sans); font-size: 11px; letter-spacing: 0.04em;
+    color: var(--ink-60); text-transform: none; margin-left: 8px; font-weight: 400;
+  }
+  .field input[type="text"], .field input[type="email"], .field input[type="tel"],
+  .field select, .field textarea {
+    font-family: var(--sans); font-size: 16px; color: var(--ink-95);
+    padding: 14px 16px;
+    background: var(--paper-00);
+    border: 1.5px solid var(--ink-20);
+    border-radius: var(--r-flat);
+    transition: border-color var(--dur-fast) var(--ease-out-q),
+                background var(--dur-fast) var(--ease-out-q);
+  }
+  .field input::placeholder, .field textarea::placeholder { color: var(--ink-40); }
+  .field input:hover, .field select:hover, .field textarea:hover { border-color: var(--ink-60); }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--ocean-70);
+    background: var(--bone);
+  }
+  .field textarea { min-height: 130px; resize: vertical; font-family: var(--sans); line-height: 1.5; }
+  .field select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--ink-60) 50%),
+                      linear-gradient(135deg, var(--ink-60) 50%, transparent 50%);
+    background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 44px;
+  }
+  .field[data-state="error"] input,
+  .field[data-state="error"] textarea { border-color: var(--coral-55); }
+  .field[data-state="error"] .hint { color: var(--coral-55); }
+  .hint { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--ink-60); }
+
+  .checkbox {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 14px; color: var(--ink-80); cursor: pointer;
+  }
+  .checkbox input { appearance: none; width: 18px; height: 18px;
+    border: 1.5px solid var(--ink-60); border-radius: var(--r-flat);
+    background: var(--paper-00); flex: none; margin-top: 2px;
+    display: grid; place-items: center;
+    transition: background var(--dur-fast) var(--ease-out-q),
+                border-color var(--dur-fast) var(--ease-out-q);
+  }
+  .checkbox input:checked { background: var(--ocean-70); border-color: var(--ocean-70); }
+  .checkbox input:checked::after {
+    content: "✓"; color: var(--bone); font-size: 11px; line-height: 1;
+  }
+
+  /* ---- Footer strip ---- */
+  .footer-strip {
+    background: var(--ink-95);
+    color: var(--bone);
+    padding: 56px 44px 32px;
+  }
+  .footer-strip .word {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(56px, 9vw, 96px); line-height: 0.9;
+    letter-spacing: -0.025em; margin: 0 0 36px;
+  }
+  .footer-strip .word i { color: var(--sun-70); }
+  .footer-strip .row {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 32px; padding-top: 28px; border-top: 1px solid oklch(40% 0.014 82);
+  }
+  @media (max-width: 720px) { .footer-strip .row { grid-template-columns: 1fr 1fr; } }
+  .footer-strip h5 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    color: var(--sun-70); margin: 0 0 14px; font-weight: 600;
+  }
+  .footer-strip a {
+    display: block; padding: 4px 0; font-size: 14px;
+    color: var(--bone); text-decoration: none;
+    opacity: 0.85; transition: opacity var(--dur-fast) var(--ease-out-q);
+  }
+  .footer-strip a:hover { opacity: 1; }
+  .footer-strip .legal {
+    margin-top: 44px; padding-top: 18px; border-top: 1px solid oklch(40% 0.014 82);
+    display: flex; justify-content: space-between; gap: var(--gap-m);
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    color: oklch(70% 0.014 82);
+  }
+  .footer-strip p { font-size: 14px; max-width: 36ch; opacity: 0.85; margin: 0; line-height: 1.6; }
+
+  /* ---- Photo galleries — three layouts ---- */
+
+  /* Gallery A — asymmetric grid (anchor + supporting) */
+  .gallery-asym {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: 200px 200px;
+    gap: 8px;
+  }
+  .gallery-asym > div {
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--ocean-55), var(--paper-15));
+  }
+  .gallery-asym > div:nth-child(1) {
+    grid-row: 1 / 3;
+    background: linear-gradient(135deg, var(--ocean-90), var(--ocean-55));
+  }
+  .gallery-asym > div:nth-child(3) {
+    background: linear-gradient(135deg, var(--sun-70), var(--coral-55));
+  }
+
+  /* Gallery B — horizontal scroll strip */
+  .gallery-strip {
+    display: flex; gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+  }
+  .gallery-strip > div {
+    flex: none; width: 240px; aspect-ratio: 3/4;
+    background: linear-gradient(160deg, var(--ocean-70), var(--paper-15));
+    border-radius: var(--r-soft);
+    position: relative;
+  }
+  .gallery-strip > div::after {
+    content: attr(data-cap);
+    position: absolute; bottom: 12px; left: 12px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    color: var(--bone);
+    text-transform: uppercase;
+  }
+  .gallery-strip > div:nth-child(2n) { background: linear-gradient(160deg, var(--coral-55), var(--sun-70)); }
+  .gallery-strip > div:nth-child(3n) { background: linear-gradient(160deg, var(--ocean-90), var(--ocean-55)); }
+
+  /* Gallery C — hero + thumbnails */
+  .gallery-hero {
+    display: grid;
+    grid-template-columns: 1fr 110px;
+    gap: 10px;
+    height: 320px;
+  }
+  .gallery-hero .main {
+    background: linear-gradient(135deg, var(--ocean-70), var(--sun-70));
+    border-radius: var(--r-soft);
+  }
+  .gallery-hero .thumbs {
+    display: grid; grid-template-rows: 1fr 1fr 1fr; gap: 10px;
+  }
+  .gallery-hero .thumbs > div {
+    background: linear-gradient(135deg, var(--paper-25), var(--ocean-55));
+    border-radius: var(--r-soft);
+    opacity: 0.75;
+    transition: opacity var(--dur-fast) var(--ease-out-q);
+  }
+  .gallery-hero .thumbs > div:hover { opacity: 1; }
+  .gallery-hero .thumbs > div:nth-child(2) { background: linear-gradient(135deg, var(--coral-55), var(--ocean-90)); }
+  .gallery-hero .thumbs > div:nth-child(3) { background: linear-gradient(135deg, var(--sun-70), var(--coral-55)); }
+
+  /* helpers for in-stage labels */
+  .stage-caption {
+    position: absolute; bottom: 14px; right: 14px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    color: var(--ink-60); text-transform: uppercase;
+  }
+
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<main class="doc">
+
+  <!-- Masthead -->
+  <header class="mast">
+    <h1>Specimen <i>Sheet.</i></h1>
+    <div class="meta">
+      <b>Island PT · Design System</b>
+      v0.1 · Brand register
+    </div>
+  </header>
+
+  <!-- Audit summary -->
+  <section class="audit" aria-labelledby="audit-h">
+    <h3 id="audit-h">Audit · anti-patterns this system corrects</h3>
+    <ol>
+      <li data-n="01"><b>#000 / #fff reflex.</b> Replaced with tinted ink + bone in OKLCH.</li>
+      <li data-n="02"><b>Identical card grids.</b> Three intentionally distinct card species, never lined up uniformly.</li>
+      <li data-n="03"><b>Hero-metric template.</b> Three hero variants, none with "big number + small label" strips.</li>
+      <li data-n="04"><b>Em-dash overload.</b> All system copy uses commas, colons, periods.</li>
+      <li data-n="05"><b>Uniform radii.</b> Four radius tokens — flat, soft, pill, arc — applied per component class.</li>
+      <li data-n="06"><b>Italic-serif tic.</b> Italic accents are now scoped (display headings, brand lockup) not sprinkled per heading.</li>
+      <li data-n="07"><b>Flat rhythm.</b> Six gap tokens; no component shares the same vertical breathing room by default.</li>
+      <li data-n="08"><b>Restrained-by-reflex palette.</b> Coral and sun-gold promoted to named roles; drenched variant added.</li>
+      <li data-n="09"><b>No form tokens.</b> Inputs, selects, textareas, checkboxes, hover/focus/error states are all defined.</li>
+      <li data-n="10"><b>!important cascades.</b> No !important anywhere in this file.</li>
+      <li data-n="11"><b>Hardcoded gallery grid.</b> Three reusable gallery layouts: asymmetric, strip, hero+thumbs.</li>
+      <li data-n="12"><b>No motion language.</b> Single ease-out-quart curve, two durations — fast (140) and mid (240).</li>
+    </ol>
+  </section>
+
+  <!-- ============= 01 · COLOR ============= -->
+  <section class="family" id="color">
+    <header>
+      <div class="idx">01 / COLOR</div>
+      <h2>Palette</h2>
+      <p>OKLCH throughout. Neutrals tinted toward the warm earth hue (82°). Chroma kept low at lightness extremes to avoid garish whites or blacks. Never <code>#fff</code> or <code>#000</code>.</p>
+    </header>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Palette · Surface + Ink</span>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch-chip" style="background: var(--paper-00);"></div><div class="swatch-meta"><b>--paper-00</b>oklch(98.4% 0.008 82)<br/>lightest paper</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--paper-05);"></div><div class="swatch-meta"><b>--paper-05</b>oklch(96.2% 0.012 82)<br/>card surface</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--paper-10);"></div><div class="swatch-meta"><b>--paper-10</b>oklch(93.4% 0.018 82)<br/>page bg</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--paper-15);"></div><div class="swatch-meta"><b>--paper-15</b>oklch(89.6% 0.022 82)<br/>tonal panel</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--paper-25);"></div><div class="swatch-meta"><b>--paper-25</b>oklch(82.0% 0.026 82)<br/>hairline-on-paper</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--ink-20);"></div><div class="swatch-meta"><b>--ink-20</b>oklch(78% 0.012 82)<br/>divider</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--ink-60);"></div><div class="swatch-meta"><b>--ink-60</b>oklch(46% 0.016 82)<br/>muted text</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--ink-80);"></div><div class="swatch-meta"><b>--ink-80</b>oklch(28% 0.014 82)<br/>body text</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--ink-95);"></div><div class="swatch-meta"><b>--ink-95</b>oklch(16% 0.012 82)<br/>primary text</div></div>
+        </div>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">--paper-00</span>: <span class="v">oklch(98.4% .008 82)</span>;<br>
+<span class="k">--paper-05</span>: <span class="v">oklch(96.2% .012 82)</span>;<br>
+<span class="k">--paper-10</span>: <span class="v">oklch(93.4% .018 82)</span>;<br>
+<span class="k">--paper-15</span>: <span class="v">oklch(89.6% .022 82)</span>;<br>
+<span class="k">--paper-25</span>: <span class="v">oklch(82.0% .026 82)</span>;<br>
+<br>
+<span class="k">--ink-20</span>: <span class="v">oklch(78% .012 82)</span>;<br>
+<span class="k">--ink-40</span>: <span class="v">oklch(64% .014 82)</span>;<br>
+<span class="k">--ink-60</span>: <span class="v">oklch(46% .016 82)</span>;<br>
+<span class="k">--ink-80</span>: <span class="v">oklch(28% .014 82)</span>;<br>
+<span class="k">--ink-95</span>: <span class="v">oklch(16% .012 82)</span>;
+      </aside>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Palette · Brand + Accent</span>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch-chip" style="background: var(--ocean-90);"></div><div class="swatch-meta"><b>--ocean-90</b>oklch(20% 0.038 145)<br/>brand · deep</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--ocean-70);"></div><div class="swatch-meta"><b>--ocean-70</b>oklch(34% 0.060 142)<br/>brand · primary</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--ocean-55);"></div><div class="swatch-meta"><b>--ocean-55</b>oklch(46% 0.072 140)<br/>brand · soft</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--coral-55);"></div><div class="swatch-meta"><b>--coral-55</b>oklch(56% 0.150 38)<br/>accent · spark</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--coral-65);"></div><div class="swatch-meta"><b>--coral-65</b>oklch(64% 0.140 40)<br/>accent · warm</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--sun-70);"></div><div class="swatch-meta"><b>--sun-70</b>oklch(78% 0.130 82)<br/>highlight · gold</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--sun-55);"></div><div class="swatch-meta"><b>--sun-55</b>oklch(64% 0.150 70)<br/>highlight · amber</div></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--bone);"></div><div class="swatch-meta"><b>--bone</b>oklch(98.8% 0.006 82)<br/>"white" replacement</div></div>
+        </div>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">--ocean-90</span>: <span class="v">oklch(20% .038 145)</span>;<br>
+<span class="k">--ocean-70</span>: <span class="v">oklch(34% .060 142)</span>;<br>
+<span class="k">--ocean-55</span>: <span class="v">oklch(46% .072 140)</span>;<br>
+<br>
+<span class="k">--coral-55</span>: <span class="v">oklch(56% .150 38)</span>;<br>
+<span class="k">--coral-65</span>: <span class="v">oklch(64% .140 40)</span>;<br>
+<br>
+<span class="k">--sun-70</span>: <span class="v">oklch(78% .130 82)</span>;<br>
+<span class="k">--sun-55</span>: <span class="v">oklch(64% .150 70)</span>;<br>
+<br>
+<span class="k">--bone</span>:    <span class="v">oklch(98.8% .006 82)</span>;
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============= 02 · TYPOGRAPHY ============= -->
+  <section class="family" id="type">
+    <header>
+      <div class="idx">02 / TYPE</div>
+      <h2>Scale</h2>
+      <p>Three families, one purpose each. Instrument Serif for display + italic accent. Inter for body + UI. JetBrains Mono for labels + tokens. Modular ratio ≈ 1.28 between display tiers.</p>
+    </header>
+
+    <div class="specimen">
+      <div class="specimen-stage" style="padding-top: 12px; padding-bottom: 12px;">
+        <span class="specimen-label">Type · Scale</span>
+        <div class="type-row" data-tier="h1"><div class="role">Display 1<span>--t-h1</span></div><div class="sample">Recover</div></div>
+        <div class="type-row" data-tier="h2"><div class="role">Display 2<span>--t-h2</span></div><div class="sample">Care that lasts</div></div>
+        <div class="type-row" data-tier="h3"><div class="role">Heading 3<span>--t-h3</span></div><div class="sample">Spine & back care</div></div>
+        <div class="type-row" data-tier="h4"><div class="role">Heading 4<span>--t-h4</span></div><div class="sample">Mobility & balance</div></div>
+        <div class="type-row" data-tier="lead"><div class="role">Lead<span>--t-lead</span></div><div class="sample">Pain should never decide how you live.</div></div>
+        <div class="type-row" data-tier="body"><div class="role">Body<span>--t-body</span></div><div class="sample">We build a treatment plan tailored to your body, your history, and your goals. Every session is one-to-one with your therapist.</div></div>
+        <div class="type-row" data-tier="micro"><div class="role">Micro · mono<span>--t-micro</span></div><div class="sample">01 / OUR APPROACH</div></div>
+        <div class="type-row" data-tier="cap"><div class="role">Caption<span>--t-cap</span></div><div class="sample">Photo: Teddy Zabel, DPT. Kīhei, Maui.</div></div>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">--serif</span>: <span class="v">"Instrument Serif"</span>;<br>
+<span class="k">--sans</span>:  <span class="v">"Inter"</span>;<br>
+<span class="k">--mono</span>:  <span class="v">"JetBrains Mono"</span>;<br>
+<br>
+<span class="k">--t-h1</span>:    <span class="v">clamp(64px,9vw,128px)</span>;<br>
+<span class="k">--t-h2</span>:    <span class="v">52px</span>;<br>
+<span class="k">--t-h3</span>:    <span class="v">34px</span>;<br>
+<span class="k">--t-h4</span>:    <span class="v">24px</span>;<br>
+<span class="k">--t-lead</span>:  <span class="v">22px</span>;<br>
+<span class="k">--t-body</span>:  <span class="v">17px</span>;<br>
+<span class="k">--t-micro</span>: <span class="v">13px / 0.22em</span>;<br>
+<span class="k">--t-cap</span>:   <span class="v">12px</span>;
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============= 03 · NAVIGATION ============= -->
+  <section class="family" id="nav">
+    <header>
+      <div class="idx">03 / NAVIGATION</div>
+      <h2>Bar</h2>
+      <p>Two surface modes: light (paper) and dark (ocean). Flat radius on CTA; underline tracks <code>aria-current</code>.</p>
+    </header>
+
+    <div class="specimen">
+      <div class="specimen-stage" style="padding: 0;">
+        <span class="specimen-label" style="z-index:2">Nav · Light</span>
+        <nav class="nav" aria-label="Demo">
+          <a class="brand" href="#">Island <i>PT.</i></a>
+          <ul role="list">
+            <li><a href="#" aria-current="page">Approach</a></li>
+            <li><a href="#">Journey</a></li>
+            <li><a href="#">Assessment</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <a class="nav-cta" href="#">Sign waiver</a>
+        </nav>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">background</span>:    <span class="v">--paper-00</span><br>
+<span class="k">border-bottom</span>: <span class="v">--line-bold</span><br>
+<span class="k">link · color</span>:  <span class="v">--ink-95</span><br>
+<span class="k">hover · border</span>: <span class="v">--ocean-70</span><br>
+<span class="k">cta · bg</span>:      <span class="v">--ocean-70</span><br>
+<span class="k">cta · color</span>:   <span class="v">--bone</span><br>
+<span class="k">cta · radius</span>:  <span class="v">--r-flat (2px)</span>
+      </aside>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-stage" style="padding: 0;">
+        <span class="specimen-label" style="z-index:2">Nav · Dark</span>
+        <nav class="nav is-dark" aria-label="Demo dark">
+          <a class="brand" href="#">Island <i>PT.</i></a>
+          <ul role="list">
+            <li><a href="#" aria-current="page">Approach</a></li>
+            <li><a href="#">Journey</a></li>
+            <li><a href="#">Assessment</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <a class="nav-cta" href="#">Sign waiver</a>
+        </nav>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">background</span>:   <span class="v">--ocean-90</span><br>
+<span class="k">link · color</span>: <span class="v">--bone</span><br>
+<span class="k">brand · italic</span>: <span class="v">--sun-70</span><br>
+<span class="k">cta · bg</span>:     <span class="v">--bone</span><br>
+<span class="k">cta · color</span>:  <span class="v">--ocean-90</span>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============= 04 · HEROES ============= -->
+  <section class="family" id="hero">
+    <header>
+      <div class="idx">04 / HERO</div>
+      <h2>Variants</h2>
+      <p>Three commitments. Editorial: type-led, no photo, low chroma. Split: asymmetric with photographic anchor. Drenched: brand register at full saturation — for campaigns, never as default.</p>
+    </header>
+
+    <div class="specimen">
+      <div class="specimen-stage" style="padding: 22px;">
+        <span class="specimen-label">Hero · A · Editorial</span>
+        <section class="hero" data-variant="editorial">
+          <h1 class="display">Recover with confidence. Perform your <i>best.</i> Live fully.</h1>
+          <div class="index">
+            01 Approach
+            <hr>
+            02 Journey
+            <hr>
+            03 Assessment
+          </div>
+        </section>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">surface</span>:  <span class="v">--paper-00</span><br>
+<span class="k">border</span>:   <span class="v">--line-bold</span><br>
+<span class="k">display</span>:  <span class="v">--serif · clamp(44,7.5vw,96)</span><br>
+<span class="k">accent</span>:   <span class="v">--ocean-70 (italic)</span><br>
+<span class="k">photo</span>:    <span class="v">none</span><br>
+<br>
+when to use: low-chroma editorial moment;<br>brand minimalism; reading-led pages.
+      </aside>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-stage" style="padding: 22px;">
+        <span class="specimen-label">Hero · B · Split</span>
+        <section class="hero" data-variant="split">
+          <div class="copy">
+            <div>
+              <div class="signoff" style="margin-bottom: 22px;">Maui · physical therapy</div>
+              <h2>Care that listens. Treatment that <i>lasts.</i></h2>
+            </div>
+            <div class="signoff">Now accepting new patients · Kīhei</div>
+          </div>
+          <div class="photo" role="img" aria-label="Photographic anchor placeholder"></div>
+        </section>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">surface</span>:    <span class="v">--ocean-90</span><br>
+<span class="k">ink</span>:        <span class="v">--bone</span><br>
+<span class="k">accent</span>:     <span class="v">--sun-70 (italic)</span><br>
+<span class="k">grid</span>:       <span class="v">1.2fr / 1fr</span><br>
+<span class="k">min-height</span>: <span class="v">420px</span><br>
+<br>
+when to use: identity moments; the <br>default brand hero. Photographic.
+      </aside>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-stage" style="padding: 22px;">
+        <span class="specimen-label">Hero · C · Drenched</span>
+        <section class="hero" data-variant="drenched">
+          <div>
+            <div class="kicker">Maui Marathon · Running Assessment</div>
+          </div>
+          <h2 class="display">Know how your body moves.</h2>
+          <div class="footer-row">
+            <div class="stat"><b>5 min</b><span>capture</span></div>
+            <div class="stat"><b>Lab-grade</b><span>biomechanics</span></div>
+            <div class="stat"><b>Worldwide</b><span>virtual follow-up</span></div>
+          </div>
+        </section>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">surface</span>:   <span class="v">--coral-55</span><br>
+<span class="k">ink</span>:       <span class="v">--bone</span><br>
+<span class="k">display</span>:   <span class="v">--serif · italic · clamp(48,8vw,112)</span><br>
+<span class="k">radius</span>:    <span class="v">--r-arc (18px)</span><br>
+<br>
+when to use: campaign, event, or<br>limited-time moment. Never the<br>default hero.
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============= 05 · BUTTONS ============= -->
+  <section class="family" id="buttons">
+    <header>
+      <div class="idx">05 / BUTTONS</div>
+      <h2>States</h2>
+      <p>Four variants, four states each. Primary inverts to deep on hover (not transparent). Focus ring is coral, offset 3px. Disabled is opacity, not a separate color.</p>
+    </header>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Buttons · Variants</span>
+        <div class="btn-row">
+          <button class="btn" data-variant="primary">Book a session <span class="arrow">→</span></button>
+          <button class="btn" data-variant="secondary">Sign waiver</button>
+          <button class="btn" data-variant="outline">Learn approach</button>
+          <button class="btn" data-variant="ghost">Skip for now</button>
+        </div>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">.btn[data-variant="primary"]</span><br>
+  <span class="k">bg</span>:     <span class="v">--ocean-70</span><br>
+  <span class="k">color</span>:  <span class="v">--bone</span><br>
+  <span class="k">border</span>: <span class="v">--ocean-70</span><br>
+<br>
+<span class="k">.btn[data-variant="secondary"]</span><br>
+  <span class="k">bg</span>:     <span class="v">--paper-00</span><br>
+  <span class="k">color</span>:  <span class="v">--ink-95</span><br>
+  <span class="k">border</span>: <span class="v">--ink-95</span><br>
+<br>
+<span class="k">.btn[data-variant="outline"]</span><br>
+  <span class="k">bg</span>:     <span class="v">transparent</span><br>
+  <span class="k">color</span>:  <span class="v">--ocean-70</span><br>
+  <span class="k">border</span>: <span class="v">--ocean-70</span><br>
+<br>
+<span class="k">.btn[data-variant="ghost"]</span><br>
+  <span class="k">bg</span>:     <span class="v">transparent</span><br>
+  <span class="k">color</span>:  <span class="v">--ink-95</span>
+      </aside>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Buttons · States · Primary</span>
+        <div class="btn-row">
+          <button class="btn" data-variant="primary">Default</button>
+          <button class="btn" data-variant="primary" data-state="hover">Hover</button>
+          <button class="btn" data-variant="primary" data-state="focus">Focus</button>
+          <button class="btn" data-variant="primary" disabled>Disabled</button>
+        </div>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">:hover</span>      → <span class="v">bg --ocean-90</span><br>
+<span class="k">:focus-vis</span>  → <span class="v">outline --coral-55 / 2px / 3px offset</span><br>
+<span class="k">[disabled]</span>  → <span class="v">opacity 0.4</span><br>
+<br>
+<span class="k">transition</span>: <span class="v">140ms ease-out-quart</span><br>
+<span class="k">arrow nudge</span>: <span class="v">translateX(3px) @ 240ms</span>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============= 06 · SECTION HEADERS / EYEBROWS ============= -->
+  <section class="family" id="eyebrows">
+    <header>
+      <div class="idx">06 / EYEBROWS</div>
+      <h2>Section labels</h2>
+      <p>Four eyebrow styles for different weights. The <code>num</code> variant pairs with section headers; <code>pill</code> for badges; <code>dot</code> for live/status; <code>rule</code> for sub-section beats.</p>
+    </header>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Eyebrow · Variants</span>
+        <div class="eyebrow-set">
+          <span class="eyebrow" data-style="rule">Our Approach</span>
+          <span class="eyebrow" data-style="dot">Now accepting new patients</span>
+          <span class="eyebrow" data-style="num">01 / OUR APPROACH</span>
+          <span class="eyebrow" data-style="pill">Powered by RunEasi</span>
+        </div>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">.eyebrow</span><br>
+  <span class="k">font</span>:  <span class="v">--mono · 11px</span><br>
+  <span class="k">track</span>: <span class="v">0.22em</span><br>
+  <span class="k">case</span>:  <span class="v">uppercase</span><br>
+  <span class="k">color</span>: <span class="v">--ink-95</span><br>
+<br>
+<span class="k">[data-style="rule"]</span> → 36px line, --ocean-70<br>
+<span class="k">[data-style="dot"]</span>  → 8px dot, --coral-55<br>
+<span class="k">[data-style="num"]</span>  → top border, --line-bold<br>
+<span class="k">[data-style="pill"]</span> → 1.5px outline, --r-pill
+      </aside>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Section header · paired</span>
+        <div class="section-head-demo">
+          <div class="num">02 / SPECIALTIES</div>
+          <h3>Three focused areas of <i>expert care.</i></h3>
+        </div>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">layout</span>:  <span class="v">220px 1fr</span><br>
+<span class="k">number</span>:  <span class="v">--mono / --ink-60</span><br>
+<span class="k">heading</span>: <span class="v">--serif · clamp(28,4vw,44)</span><br>
+<span class="k">accent</span>:  <span class="v">--ocean-70 (italic span)</span>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============= 07 · CARDS ============= -->
+  <section class="family" id="cards">
+    <header>
+      <div class="idx">07 / CARDS</div>
+      <h2>Species</h2>
+      <p>Three intentionally distinct species — they should never appear in a uniform grid together. Service: bordered, numbered. Testimonial: drenched, no border. Feature: tonal, icon-led.</p>
+    </header>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Card · Service</span>
+        <article class="card-service">
+          <div class="num">01</div>
+          <h4>Spine & back care</h4>
+          <p>Evidence-based treatment for chronic back pain, disc concerns, and postural rehab. We help you move with confidence again.</p>
+          <a class="link" href="#">Read protocol</a>
+        </article>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">surface</span>: <span class="v">--paper-00</span><br>
+<span class="k">border</span>:  <span class="v">--line-bold</span><br>
+<span class="k">radius</span>:  <span class="v">--r-soft</span><br>
+<span class="k">numeral</span>: <span class="v">--serif italic · 56px · --ocean-70</span><br>
+<span class="k">hover</span>:   <span class="v">translateY(-3px) @ 240ms</span><br>
+<br>
+use in: services lineup, but vary <br>numerals/titles — never three identical.
+      </aside>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Card · Testimonial</span>
+        <figure class="card-testimonial">
+          <span class="mark" aria-hidden="true">"</span>
+          <blockquote>I came in barely able to walk. Six weeks later, I was back on the trail. The difference is the attention.</blockquote>
+          <figcaption>
+            <span class="avatar" aria-hidden="true"></span>
+            <span><b>Mara K.</b>Patient · Wailuku</span>
+          </figcaption>
+        </figure>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">surface</span>: <span class="v">--ocean-90</span><br>
+<span class="k">ink</span>:     <span class="v">--bone</span><br>
+<span class="k">quote-mark</span>: <span class="v">--serif italic · 96px · --sun-70</span><br>
+<span class="k">radius</span>:  <span class="v">--r-arc (18px)</span><br>
+<span class="k">border</span>:  <span class="v">none</span><br>
+<br>
+deliberately wider than service-card<br>so they don't grid together.
+      </aside>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Card · Feature</span>
+        <article class="card-feature">
+          <div class="icon" aria-hidden="true">✓</div>
+          <div>
+            <h4>One-to-one, every session</h4>
+            <p>Your therapist sees you, not a chart. No rotating rooms, no shared protocols.</p>
+          </div>
+        </article>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">surface</span>: <span class="v">--paper-05</span><br>
+<span class="k">icon · bg</span>: <span class="v">--ocean-70</span><br>
+<span class="k">icon · char</span>: <span class="v">--serif italic</span><br>
+<span class="k">radius</span>:  <span class="v">--r-soft</span><br>
+<span class="k">border</span>:  <span class="v">none</span><br>
+<br>
+stack in pairs or singles; not a grid.
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============= 08 · FORM ============= -->
+  <section class="family" id="form">
+    <header>
+      <div class="idx">08 / FORM</div>
+      <h2>Fields</h2>
+      <p>Flat radius, hairline border, focus shifts both border and surface. Labels are micro-mono. Hint text doubles as error text under <code>[data-state="error"]</code>.</p>
+    </header>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Form · Fields</span>
+        <form class="form-demo" onsubmit="event.preventDefault()">
+          <div class="field">
+            <label for="f-name">Full name</label>
+            <input id="f-name" type="text" placeholder="Mara Kahale" />
+          </div>
+          <div class="field">
+            <label for="f-email">Email <span class="opt">required</span></label>
+            <input id="f-email" type="email" placeholder="you@example.com" />
+          </div>
+          <div class="field">
+            <label for="f-care">Care area</label>
+            <select id="f-care">
+              <option>Spine & back</option>
+              <option>Mobility & balance</option>
+              <option>Strength therapy</option>
+              <option>Running assessment</option>
+            </select>
+          </div>
+          <div class="field" data-state="error">
+            <label for="f-phone">Phone</label>
+            <input id="f-phone" type="tel" value="not a phone" />
+            <span class="hint">Enter a valid phone number.</span>
+          </div>
+          <div class="field full">
+            <label for="f-msg">Tell us more <span class="opt">optional</span></label>
+            <textarea id="f-msg" placeholder="A few sentences about what you're working through."></textarea>
+          </div>
+          <div class="field full">
+            <label class="checkbox">
+              <input type="checkbox" checked>
+              <span>I have read the practice <a href="#" style="text-decoration: underline; text-underline-offset: 3px;">privacy notice</a>.</span>
+            </label>
+          </div>
+          <div class="field full">
+            <button type="submit" class="btn" data-variant="primary">Submit request <span class="arrow">→</span></button>
+          </div>
+        </form>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">field · bg</span>:     <span class="v">--paper-00</span><br>
+<span class="k">field · border</span>: <span class="v">1.5px --ink-20</span><br>
+<span class="k">field · radius</span>: <span class="v">--r-flat (2px)</span><br>
+<span class="k">field · pad</span>:    <span class="v">14px 16px</span><br>
+<br>
+<span class="k">:hover · border</span>:  <span class="v">--ink-60</span><br>
+<span class="k">:focus · border</span>:  <span class="v">--ocean-70</span><br>
+<span class="k">:focus · bg</span>:      <span class="v">--bone</span><br>
+<br>
+<span class="k">[data-state=error]</span> → <span class="v">--coral-55</span><br>
+<br>
+<span class="k">label</span>: --mono · 11px · 0.18em<br>
+<span class="k">hint</span>:  --mono · 11px · --ink-60
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============= 09 · GALLERIES ============= -->
+  <section class="family" id="gallery">
+    <header>
+      <div class="idx">09 / GALLERY</div>
+      <h2>Photo layouts</h2>
+      <p>Three reusable photo arrangements. Asymmetric for editorial weight, strip for horizontal browsing, hero+thumbs for product/feature focus. Gradients here stand in for real imagery.</p>
+    </header>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Gallery · Asymmetric</span>
+        <div class="gallery-asym" aria-label="Asymmetric gallery placeholder">
+          <div></div><div></div><div></div>
+        </div>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">grid-cols</span>: <span class="v">1.4fr 1fr</span><br>
+<span class="k">grid-rows</span>: <span class="v">200px 200px</span><br>
+<span class="k">child 1</span>:   <span class="v">spans rows 1 / 3 (anchor)</span><br>
+<span class="k">gap</span>:       <span class="v">8px</span><br>
+<br>
+use for: editorial moments,<br>portrait + supporting frames.
+      </aside>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Gallery · Scroll strip</span>
+        <div class="gallery-strip" aria-label="Horizontal scroll strip">
+          <div data-cap="01 · CAMP"></div>
+          <div data-cap="02 · GAIT"></div>
+          <div data-cap="03 · TRAIL"></div>
+          <div data-cap="04 · RECOVER"></div>
+          <div data-cap="05 · TEAM"></div>
+          <div data-cap="06 · COAST"></div>
+        </div>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">layout</span>:    <span class="v">flex · overflow-x: auto</span><br>
+<span class="k">item · w</span>:  <span class="v">240px</span><br>
+<span class="k">item · ar</span>: <span class="v">3 / 4</span><br>
+<span class="k">gap</span>:       <span class="v">12px</span><br>
+<span class="k">caption</span>:   <span class="v">--mono · 10px · 0.22em</span><br>
+<br>
+use for: process moments, full album,<br>"behind the scenes" rows.
+      </aside>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-stage">
+        <span class="specimen-label">Gallery · Hero + thumbs</span>
+        <div class="gallery-hero" aria-label="Hero and thumbnails">
+          <div class="main"></div>
+          <div class="thumbs">
+            <div></div><div></div><div></div>
+          </div>
+        </div>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">grid-cols</span>:  <span class="v">1fr 110px</span><br>
+<span class="k">height</span>:     <span class="v">320px</span><br>
+<span class="k">thumbs</span>:     <span class="v">3 rows · gap 10px</span><br>
+<span class="k">thumb · opacity</span>: <span class="v">0.75 → 1 on hover</span><br>
+<br>
+use for: assessment showcase, specialty<br>detail page hero, before/after sets.
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============= 10 · FOOTER ============= -->
+  <section class="family" id="footer">
+    <header>
+      <div class="idx">10 / FOOTER</div>
+      <h2>Strip</h2>
+      <p>Dark surface (<code>--ink-95</code>), bone ink. Word-mark sets the scale; columns are dense but readable. Gold accents on column headings only — never on links.</p>
+    </header>
+
+    <div class="specimen">
+      <div class="specimen-stage" style="padding: 0;">
+        <span class="specimen-label" style="z-index:2; background: var(--bone); color: var(--ink-95);">Footer · Strip</span>
+        <footer class="footer-strip">
+          <h2 class="word">Island <i>PT.</i></h2>
+          <div class="row">
+            <p>Personalized physical therapy, spine care, and mobility rehabilitation. Rooted in Maui, serving our community with care.</p>
+            <div>
+              <h5>Services</h5>
+              <a href="#">Spine & back</a>
+              <a href="#">Mobility & balance</a>
+              <a href="#">Strength therapy</a>
+              <a href="#">RunEasi assessment</a>
+            </div>
+            <div>
+              <h5>Practice</h5>
+              <a href="#">About</a>
+              <a href="#">Journey</a>
+              <a href="#">Approach</a>
+              <a href="#">Contact</a>
+            </div>
+            <div>
+              <h5>Visit</h5>
+              <a href="#">Kīhei, Maui</a>
+              <a href="#">In-person care</a>
+              <a href="#">Virtual consult</a>
+            </div>
+          </div>
+          <div class="legal">
+            <span>© 2026 Island PT · All rights reserved</span>
+            <span>HI · Licensed DPT</span>
+          </div>
+        </footer>
+      </div>
+      <aside class="specimen-tokens">
+<span class="k">surface</span>:   <span class="v">--ink-95</span><br>
+<span class="k">ink</span>:       <span class="v">--bone (opacity .85)</span><br>
+<span class="k">wordmark</span>:  <span class="v">--serif · clamp(56,9vw,96)</span><br>
+<span class="k">italic</span>:    <span class="v">--sun-70</span><br>
+<span class="k">heading</span>:   <span class="v">--mono · 11px · --sun-70</span><br>
+<span class="k">divider</span>:   <span class="v">oklch(40% .014 82)</span><br>
+<br>
+links never use --sun-70, only<br>headings do.
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============= 11 · HERO · PHOTOGRAPHIC ============= -->
+  <section class="family" id="hero-photo">
+    <header>
+      <div class="idx">11 / HERO · PHOTO</div>
+      <h2>Photographic</h2>
+      <p>Full-bleed image hero with all four content tokens: eyebrow, heading, paragraph, CTA. Scrim is a tinted ocean gradient (not pure black) so the underlying photograph stays warm. Use when a single photograph carries the moment — campaign launch, assessment booking, or a featured patient story.</p>
+    </header>
+
+    <div class="specimen-wide">
+      <span class="specimen-label">Hero · D · Photographic — 1350 / 25px lateral</span>
+      <section class="hero" data-variant="photo" aria-labelledby="photo-hero-h">
+        <div class="bg" role="img" aria-label="Background photograph placeholder"></div>
+        <div class="scrim" aria-hidden="true"></div>
+
+        <span class="eyebrow-photo">
+          <span class="live" aria-hidden="true"></span>
+          Lorem ipsum · Dolor sit amet
+        </span>
+
+        <div class="body">
+          <h2 id="photo-hero-h">Lorem ipsum dolor sit amet, consectetur <i>adipiscing.</i></h2>
+          <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <a href="#" class="cta">
+            Lorem ipsum dolor
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <span class="signature">01 / SPECIMEN · LOREM</span>
+      </section>
+
+      <div class="tokens-row">
+        <div class="col">
+          <b>Container</b>
+          <span class="k">max-width</span>: <span class="v">1350px</span><br>
+          <span class="k">padding-x</span>: <span class="v">25px</span><br>
+          <span class="k">margin</span>: <span class="v">0 auto</span><br>
+          <span class="k">radius</span>: <span class="v">--r-arc (18px)</span><br>
+          <span class="k">min-h</span>: <span class="v">520px</span>
+        </div>
+        <div class="col">
+          <b>Surface</b>
+          <span class="k">photo</span>: <span class="v">background-image</span><br>
+          <span class="k">scrim</span>: <span class="v">--ocean-90</span><br>
+          <span class="k">α range</span>: <span class="v">.45 → .85</span><br>
+          <span class="k">ink</span>: <span class="v">--bone</span>
+        </div>
+        <div class="col">
+          <b>Eyebrow</b>
+          <span class="k">font</span>: <span class="v">--mono 11/.22em</span><br>
+          <span class="k">border</span>: <span class="v">1.5px bone/.55</span><br>
+          <span class="k">dot</span>: <span class="v">--sun-70 + halo</span><br>
+          <span class="k">radius</span>: <span class="v">--r-flat (2px)</span>
+        </div>
+        <div class="col">
+          <b>Heading + Paragraph</b>
+          <span class="k">h2</span>: <span class="v">--serif clamp(44,6.5vw,88)</span><br>
+          <span class="k">italic</span>: <span class="v">--sun-70 (one word)</span><br>
+          <span class="k">p</span>: <span class="v">--sans 18 / 1.55</span><br>
+          <span class="k">p · max</span>: <span class="v">48ch</span>
+        </div>
+        <div class="col">
+          <b>CTA</b>
+          <span class="k">bg</span>: <span class="v">--bone</span><br>
+          <span class="k">color</span>: <span class="v">--ocean-90</span><br>
+          <span class="k">hover</span>: <span class="v">transparent / bone</span><br>
+          <span class="k">arrow</span>: <span class="v">translateX(4px)</span>
+        </div>
+        <div class="col">
+          <b>Motion</b>
+          <span class="k">cta</span>: <span class="v">140ms ease-out-quart</span><br>
+          <span class="k">arrow</span>: <span class="v">240ms ease-out-quart</span>
+        </div>
+        <div class="col">
+          <b>Use when</b>
+          campaign hero · single-image moment · booking-led page · event launch
+        </div>
+        <div class="col">
+          <b>Avoid when</b>
+          editorial reading page · low-chroma moments · multiple stacked heroes
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= 12 · SERVICES · STICKY DIPTYCH ============= -->
+  <section class="family" id="services">
+    <header>
+      <div class="idx">12 / SERVICES</div>
+      <h2>Sticky diptych</h2>
+      <p>Three services without a card grid. A single photographic anchor stays sticky on the left while three text blocks scroll past on the right; the anchor image swaps when each block enters the active band. Reads cinematic, not catalog.</p>
+    </header>
+
+    <div class="specimen-wide">
+      <span class="specimen-label">Services · Sticky-scroll diptych — 1350 / 25px lateral</span>
+
+      <div class="diptych" id="diptych-1">
+        <aside class="diptych-photo">
+          <div class="diptych-frame">
+            <img src="img/runeasi jpegs-155.jpg" alt="" data-idx="1" class="is-active" loading="lazy">
+            <img src="img/runeasi jpegs-348.jpg" alt="" data-idx="2" loading="lazy">
+            <img src="img/runeasi campaign-137.jpg" alt="" data-idx="3" loading="lazy">
+            <span class="diptych-caption" data-cap-for="1">01 / LOREM IPSUM</span>
+          </div>
+          <div class="diptych-phase" role="tablist" aria-label="Service navigation">
+            <span class="phase-step is-active" data-idx="1">01 · Lorem</span>
+            <span class="phase-step" data-idx="2">02 · Ipsum</span>
+            <span class="phase-step" data-idx="3">03 · Dolor</span>
+          </div>
+        </aside>
+
+        <div class="diptych-text">
+          <article class="service-block" data-idx="1">
+            <span class="eyebrow" data-style="rule">01 · Lorem ipsum</span>
+            <h3>Lorem ipsum dolor sit amet, <i>consectetur.</i></h3>
+            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <dl class="service-meta">
+              <div><dt>Lorem</dt><dd>Ipsum dolor sit</dd></div>
+              <div><dt>Ipsum</dt><dd>Amet consectetur</dd></div>
+              <div><dt>Dolor</dt><dd>Adipiscing elit</dd></div>
+              <div><dt>Amet</dt><dd>Sed do eiusmod</dd></div>
+            </dl>
+          </article>
+
+          <article class="service-block" data-idx="2">
+            <span class="eyebrow" data-style="rule">02 · Sit amet</span>
+            <h3>Duis aute irure dolor in <i>reprehenderit.</i></h3>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+            <dl class="service-meta">
+              <div><dt>Tempor</dt><dd>Incididunt ut</dd></div>
+              <div><dt>Labore</dt><dd>Et dolore magna</dd></div>
+              <div><dt>Aliqua</dt><dd>Ut enim ad minim</dd></div>
+              <div><dt>Veniam</dt><dd>Quis nostrud</dd></div>
+            </dl>
+          </article>
+
+          <article class="service-block" data-idx="3">
+            <span class="eyebrow" data-style="rule">03 · Consectetur</span>
+            <h3>Nemo enim ipsam voluptatem <i>quia voluptas.</i></h3>
+            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
+            <dl class="service-meta">
+              <div><dt>Magni</dt><dd>Dolores eos</dd></div>
+              <div><dt>Ratione</dt><dd>Voluptatem sequi</dd></div>
+              <div><dt>Nesciunt</dt><dd>Neque porro</dd></div>
+              <div><dt>Quisquam</dt><dd>Est qui dolorem</dd></div>
+            </dl>
+          </article>
+        </div>
+      </div>
+
+      <div class="tokens-row">
+        <div class="col">
+          <b>Container</b>
+          <span class="k">max-width</span>: <span class="v">1350px</span><br>
+          <span class="k">padding-x</span>: <span class="v">25px</span><br>
+          <span class="k">layout</span>: <span class="v">grid 1fr / 1fr</span><br>
+          <span class="k">gap</span>: <span class="v">64px</span><br>
+          <span class="k">radius</span>: <span class="v">--r-arc</span>
+        </div>
+        <div class="col">
+          <b>Photo column</b>
+          <span class="k">position</span>: <span class="v">sticky</span><br>
+          <span class="k">top</span>: <span class="v">40px</span><br>
+          <span class="k">aspect</span>: <span class="v">4 / 5</span><br>
+          <span class="k">radius</span>: <span class="v">--r-soft</span><br>
+          <span class="k">fade</span>: <span class="v">500ms ease-out-q</span>
+        </div>
+        <div class="col">
+          <b>Phase nav</b>
+          <span class="k">font</span>: <span class="v">--mono 11/.22em</span><br>
+          <span class="k">idle</span>: <span class="v">--ink-40 / --ink-20</span><br>
+          <span class="k">active</span>: <span class="v">--ink-95 / --ocean-70</span><br>
+          <span class="k">top-rule</span>: <span class="v">1.5px</span>
+        </div>
+        <div class="col">
+          <b>Service block</b>
+          <span class="k">h3</span>: <span class="v">--serif clamp(30,3.8vw,48)</span><br>
+          <span class="k">h3 · max</span>: <span class="v">16ch</span><br>
+          <span class="k">italic</span>: <span class="v">--ocean-70 (last word)</span><br>
+          <span class="k">p</span>: <span class="v">--sans 17 / 1.55</span><br>
+          <span class="k">min-h</span>: <span class="v">360px</span>
+        </div>
+        <div class="col">
+          <b>Meta grid</b>
+          <span class="k">layout</span>: <span class="v">2 × repeat</span><br>
+          <span class="k">gap</span>: <span class="v">20/28px</span><br>
+          <span class="k">dt</span>: <span class="v">--mono 10 · --ink-60</span><br>
+          <span class="k">dd</span>: <span class="v">--sans 14 · --ink-95</span>
+        </div>
+        <div class="col">
+          <b>Behavior</b>
+          <span class="k">observer</span>: <span class="v">IntersectionObserver</span><br>
+          <span class="k">root-margin</span>: <span class="v">-30% / -50%</span><br>
+          <span class="k">trigger</span>: <span class="v">block in band</span><br>
+          <span class="k">swap</span>: <span class="v">opacity, not display</span>
+        </div>
+        <div class="col">
+          <b>Use when</b>
+          services share a venue/feeling and gain from one photographic spine; mid-length pages
+        </div>
+        <div class="col">
+          <b>Avoid when</b>
+          services are visually unrelated, or each needs its own photo at equal weight (use spread)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= 13 · SERVICES · ASYMMETRIC SPREAD ============= -->
+  <section class="family" id="services-spread">
+    <header>
+      <div class="idx">13 / SERVICES</div>
+      <h2>Asymmetric spread</h2>
+      <p>Same three services, opposite philosophy. No shared anchor, no sticky behavior — each row is its own editorial composition. Portrait + text, full-bleed landscape with overlay copy, then text-led with a small square. Photo size, ratio, and position change every row so the result cannot read as a grid.</p>
+    </header>
+
+    <div class="specimen-wide">
+      <span class="specimen-label">Services · Asymmetric photo spread — 1350 / 25px lateral</span>
+
+      <div class="spread">
+
+        <!-- Row 1 — portrait left, text right -->
+        <article class="spread-row" data-layout="portrait-left">
+          <figure class="spread-media">
+            <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy">
+            <figcaption>01 / Lorem</figcaption>
+          </figure>
+          <div class="spread-copy">
+            <span class="eyebrow" data-style="num">01 / Lorem Ipsum</span>
+            <h3>Lorem ipsum dolor sit amet, <i>consectetur.</i></h3>
+            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <dl class="spread-meta">
+              <div><dt>Lorem</dt><dd>Ipsum dolor sit</dd></div>
+              <div><dt>Ipsum</dt><dd>Amet consectetur</dd></div>
+              <div><dt>Dolor</dt><dd>Adipiscing elit</dd></div>
+            </dl>
+            <a class="read-link" href="#">Lorem ipsum dolor</a>
+          </div>
+        </article>
+
+        <!-- Row 2 — full-bleed landscape with overlay copy -->
+        <article class="spread-row" data-layout="overlay">
+          <figure class="spread-media overlay">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1600&q=80&auto=format&fit=crop" alt="" loading="lazy">
+            <div class="overlay-copy">
+              <span class="eyebrow" data-style="dot">02 · Sit amet</span>
+              <h3>Duis aute irure dolor in <i>reprehenderit.</i></h3>
+              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </figure>
+        </article>
+
+        <!-- Row 3 — text-led left, small square right -->
+        <article class="spread-row" data-layout="text-led">
+          <div class="spread-copy">
+            <span class="eyebrow" data-style="num">03 / Adipiscing Elit</span>
+            <h3>Neque porro quisquam est, <i>qui dolorem.</i></h3>
+            <p>Ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+            <a class="read-link" href="#">Lorem ipsum dolor</a>
+          </div>
+          <figure class="spread-media small">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80&auto=format&fit=crop" alt="" loading="lazy">
+            <figcaption>03 / Ipsum</figcaption>
+          </figure>
+        </article>
+
+      </div>
+
+      <div class="tokens-row">
+        <div class="col">
+          <b>Container</b>
+          <span class="k">max-width</span>: <span class="v">1350px</span><br>
+          <span class="k">padding-x</span>: <span class="v">25px</span><br>
+          <span class="k">layout</span>: <span class="v">flex column</span><br>
+          <span class="k">row-gap</span>: <span class="v">110px (varied)</span>
+        </div>
+        <div class="col">
+          <b>Row 01 · portrait</b>
+          <span class="k">cols</span>: <span class="v">5fr 7fr</span><br>
+          <span class="k">align</span>: <span class="v">center</span><br>
+          <span class="k">aspect</span>: <span class="v">4 / 5</span><br>
+          <span class="k">radius</span>: <span class="v">--r-soft</span>
+        </div>
+        <div class="col">
+          <b>Row 02 · overlay</b>
+          <span class="k">aspect</span>: <span class="v">16 / 7</span><br>
+          <span class="k">radius</span>: <span class="v">--r-arc</span><br>
+          <span class="k">scrim</span>: <span class="v">115deg ocean-90</span><br>
+          <span class="k">copy · pos</span>: <span class="v">absolute bottom-left</span>
+        </div>
+        <div class="col">
+          <b>Row 03 · text-led</b>
+          <span class="k">cols</span>: <span class="v">7fr 5fr</span><br>
+          <span class="k">align</span>: <span class="v">end</span><br>
+          <span class="k">photo</span>: <span class="v">1 / 1 · max 380px</span><br>
+          <span class="k">h3 · scale</span>: <span class="v">clamp(34,4.6vw,64)</span>
+        </div>
+        <div class="col">
+          <b>Typography</b>
+          <span class="k">h3</span>: <span class="v">--serif clamp(30,3.8vw,48)</span><br>
+          <span class="k">italic</span>: <span class="v">--ocean-70 / --sun-70 on overlay</span><br>
+          <span class="k">p</span>: <span class="v">--sans 17 / 1.55</span><br>
+          <span class="k">link</span>: <span class="v">--mono 11 · --ocean-70</span>
+        </div>
+        <div class="col">
+          <b>Motion</b>
+          <span class="k">image</span>: <span class="v">scale(1.02) @ 700ms</span><br>
+          <span class="k">arrow</span>: <span class="v">translateX(4px) @ 140ms</span>
+        </div>
+        <div class="col">
+          <b>Use when</b>
+          services are visually distinct, each deserves its own moment; longer marketing pages
+        </div>
+        <div class="col">
+          <b>Avoid when</b>
+          services share venue/feeling that benefits from one anchor (use diptych instead)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= 14 · ABOUT · A · SIGNED LETTER ============= -->
+  <section class="family" id="about-letter">
+    <header>
+      <div class="idx">14 / ABOUT · A</div>
+      <h2>Signed letter</h2>
+      <p>About section as a hand-signed editorial letter. Portrait anchors the composition; the right column reads as personal correspondence with an italic salutation, a serif lead, two sans-serif body paragraphs, and a signature flourish. Credentials become a footer of dot-separated mono labels — never a big-number stat strip.</p>
+    </header>
+
+    <div class="specimen-wide">
+      <span class="specimen-label">About · A · Editorial signed letter — 1350 / 25px lateral</span>
+
+      <article class="about-letter">
+        <figure class="portrait">
+          <img src="https://kokua-physical-therapy-vermont.com/wp-content/uploads/2025/06/Teddy-Zabel-Certified-Physical-Therapist-in-Northern-Vermont-683x1024.webp" alt="Portrait of Teddy Zabel, Doctor of Physical Therapy">
+          <span class="stamp">Kīhei · Maui</span>
+        </figure>
+
+        <div class="letter">
+          <p class="salutation">Aloha,</p>
+
+          <p class="lead">Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i> — sed do eiusmod tempor incididunt ut labore.</p>
+
+          <p class="body-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+          <p class="body-p">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+          <div class="signature">
+            <span class="sig-name">Teddy</span>
+            <svg class="sig-line" viewBox="0 0 110 14" aria-hidden="true">
+              <path d="M2 9 Q 18 3, 38 7 T 78 6 T 108 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="sig-role">Founder · Doctor of Physical Therapy</span>
+          </div>
+
+          <div class="credentials" aria-label="Credentials">
+            <span><b>DPT</b> · Doctor of Physical Therapy</span>
+            <span><b>10+</b> · Years of clinical practice</span>
+            <span><b>500+</b> · Patients cared for</span>
+            <span><b>HI</b> · Licensed in Hawai‘i</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="tokens-row">
+        <div class="col">
+          <b>Container</b>
+          <span class="k">max-w</span>: <span class="v">1350px</span><br>
+          <span class="k">padding-x</span>: <span class="v">25px</span><br>
+          <span class="k">layout</span>: <span class="v">5fr / 7fr</span><br>
+          <span class="k">gap</span>: <span class="v">72px</span><br>
+          <span class="k">surface</span>: <span class="v">--paper-00</span><br>
+          <span class="k">radius</span>: <span class="v">--r-arc</span>
+        </div>
+        <div class="col">
+          <b>Portrait</b>
+          <span class="k">aspect</span>: <span class="v">4 / 5</span><br>
+          <span class="k">radius</span>: <span class="v">--r-soft</span><br>
+          <span class="k">stamp</span>: <span class="v">--mono · scrim --ocean-90/.5</span>
+        </div>
+        <div class="col">
+          <b>Salutation</b>
+          <span class="k">font</span>: <span class="v">--serif italic</span><br>
+          <span class="k">size</span>: <span class="v">clamp(40,5vw,64)</span><br>
+          <span class="k">color</span>: <span class="v">--coral-55</span>
+        </div>
+        <div class="col">
+          <b>Lead + body</b>
+          <span class="k">lead</span>: <span class="v">--serif clamp(22,2.2vw,28)</span><br>
+          <span class="k">body</span>: <span class="v">--sans 17 / 1.65</span><br>
+          <span class="k">color</span>: <span class="v">--ink-80</span><br>
+          <span class="k">max</span>: <span class="v">52ch</span>
+        </div>
+        <div class="col">
+          <b>Signature</b>
+          <span class="k">name</span>: <span class="v">--serif italic · 48px</span><br>
+          <span class="k">color</span>: <span class="v">--ocean-90</span><br>
+          <span class="k">flourish</span>: <span class="v">inline SVG · --ocean-70</span><br>
+          <span class="k">role</span>: <span class="v">--mono · 11px</span>
+        </div>
+        <div class="col">
+          <b>Credentials</b>
+          <span class="k">font</span>: <span class="v">--mono 11 / .18em</span><br>
+          <span class="k">b · color</span>: <span class="v">--ink-95</span><br>
+          <span class="k">marker</span>: <span class="v">6px dot --ocean-70</span><br>
+          <span class="k">no-stat</span>: <span class="v">inline, not strip</span>
+        </div>
+        <div class="col">
+          <b>Use when</b>
+          founder-led practice; trust comes from voice and personal tone; first deep visit to the page
+        </div>
+        <div class="col">
+          <b>Avoid when</b>
+          team-led practice with multiple authors, or no real copy yet — empty letter feels fake
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= 15 · ABOUT · B · TIMELINE ============= -->
+  <section class="family" id="about-timeline">
+    <header>
+      <div class="idx">15 / ABOUT · B</div>
+      <h2>Trajectory</h2>
+      <p>About section as a clinical trajectory. Portrait holds the left column with name and role overlaid in scrim; right column is a four-point timeline with hairline rail, dot markers, year, event, and short detail. The current year gets a filled marker with a soft halo. Replaces the original credentials strip — narrative, not metrics.</p>
+    </header>
+
+    <div class="specimen-wide">
+      <span class="specimen-label">About · B · Timeline trajectory — 1350 / 25px lateral</span>
+
+      <article class="about-timeline">
+        <figure class="portrait-tall">
+          <img src="https://kokua-physical-therapy-vermont.com/wp-content/uploads/2025/06/Teddy-Zabel-Certified-Physical-Therapist-in-Northern-Vermont-683x1024.webp" alt="Portrait of Teddy Zabel, Doctor of Physical Therapy">
+          <div class="portrait-caption">
+            <p class="name">Teddy <span class="last">Z.</span></p>
+            <p class="role">DPT · Founder · Maui</p>
+          </div>
+        </figure>
+
+        <div class="timeline-col">
+          <span class="eyebrow" data-style="rule">04 / About the practice</span>
+          <h3 class="title">Locally rooted, <i>clinically trusted.</i></h3>
+
+          <ol class="timeline">
+            <li>
+              <span class="year">2014</span>
+              <p class="event">Lorem ipsum dolor sit amet.</p>
+              <p class="detail">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </li>
+            <li>
+              <span class="year">2017</span>
+              <p class="event">Ut enim ad minim <i>veniam.</i></p>
+              <p class="detail">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </li>
+            <li>
+              <span class="year">2021</span>
+              <p class="event">Duis aute irure dolor.</p>
+              <p class="detail">In reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </li>
+            <li data-now="true">
+              <span class="year">2026 · NOW</span>
+              <p class="event">Excepteur sint <i>occaecat cupidatat.</i></p>
+              <p class="detail">Sunt in culpa qui officia deserunt mollit anim id est laborum. Now accepting patients on the island.</p>
+            </li>
+          </ol>
+
+          <div class="closer">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</p>
+            <button class="btn" data-variant="primary">Book consult <span class="arrow">→</span></button>
+          </div>
+        </div>
+      </article>
+
+      <div class="tokens-row">
+        <div class="col">
+          <b>Container</b>
+          <span class="k">max-w</span>: <span class="v">1350px</span><br>
+          <span class="k">padding-x</span>: <span class="v">25px</span><br>
+          <span class="k">layout</span>: <span class="v">4.5fr / 7fr</span><br>
+          <span class="k">gap</span>: <span class="v">80px</span><br>
+          <span class="k">align</span>: <span class="v">stretch</span>
+        </div>
+        <div class="col">
+          <b>Portrait-tall</b>
+          <span class="k">aspect</span>: <span class="v">4 / 5.4</span><br>
+          <span class="k">radius</span>: <span class="v">--r-arc</span><br>
+          <span class="k">scrim</span>: <span class="v">--ocean-90 / .6 bottom</span><br>
+          <span class="k">caption</span>: <span class="v">--serif italic 28px</span>
+        </div>
+        <div class="col">
+          <b>Timeline rail</b>
+          <span class="k">border-left</span>: <span class="v">1.5px --ink-20</span><br>
+          <span class="k">padding-l</span>: <span class="v">28px</span><br>
+          <span class="k">gap</span>: <span class="v">30px</span>
+        </div>
+        <div class="col">
+          <b>Marker</b>
+          <span class="k">size</span>: <span class="v">11 × 11</span><br>
+          <span class="k">border</span>: <span class="v">1.5px --ocean-70</span><br>
+          <span class="k">offset</span>: <span class="v">-36px / top 9px</span><br>
+          <span class="k">[now]</span>: <span class="v">fill + halo 5px</span>
+        </div>
+        <div class="col">
+          <b>Year + event</b>
+          <span class="k">year</span>: <span class="v">--mono 12 · --coral-55</span><br>
+          <span class="k">event</span>: <span class="v">--serif 24 / 1.2</span><br>
+          <span class="k">italic</span>: <span class="v">--ocean-70 (key word)</span><br>
+          <span class="k">detail</span>: <span class="v">--sans 15 · --ink-60</span>
+        </div>
+        <div class="col">
+          <b>Closer</b>
+          <span class="k">border-top</span>: <span class="v">--line-hair</span><br>
+          <span class="k">layout</span>: <span class="v">flex · space-between</span><br>
+          <span class="k">cta</span>: <span class="v">.btn[data-variant="primary"]</span>
+        </div>
+        <div class="col">
+          <b>Use when</b>
+          founder has real trajectory worth narrating; you want to replace stat-strips with narrative time
+        </div>
+        <div class="col">
+          <b>Avoid when</b>
+          no real dates / events to anchor; team practice without single trajectory (use letter instead)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top: 80px; padding-top: 28px; border-top: var(--line-hair); font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--ink-60); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <span>ISLAND PT · DESIGN SYSTEM v0.1</span>
+    <span>15 FAMILIES · 32 SPECIMENS · 1 SOURCE</span>
+  </footer>
+
+</main>
+
+<script>
+  (function () {
+    const diptych = document.getElementById('diptych-1');
+    if (!diptych) return;
+
+    const photos = diptych.querySelectorAll('.diptych-frame img');
+    const steps  = diptych.querySelectorAll('.phase-step');
+    const blocks = diptych.querySelectorAll('.service-block');
+    const caption = diptych.querySelector('.diptych-caption');
+
+    const captions = {
+      '1': '01 / LOREM IPSUM',
+      '2': '02 / SIT AMET',
+      '3': '03 / CONSECTETUR'
+    };
+
+    const setActive = (idx) => {
+      photos.forEach(p => p.classList.toggle('is-active', p.dataset.idx === idx));
+      steps.forEach(s => s.classList.toggle('is-active', s.dataset.idx === idx));
+      if (caption) caption.textContent = captions[idx] || '';
+    };
+
+    if (!('IntersectionObserver' in window)) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+        .forEach(e => setActive(e.target.dataset.idx));
+    }, {
+      rootMargin: '-30% 0px -50% 0px',
+      threshold: [0, 0.25, 0.5, 0.75, 1]
+    });
+
+    blocks.forEach(b => io.observe(b));
+  })();
+</script>
+
+</body>
+</html>

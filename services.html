@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Physical Therapy Services — Island PT, Kīhei Maui</title>
+<meta name="description" content="One-to-one physical therapy services on Maui: spine &amp; back care, mobility &amp; balance, strength-based therapy, and running gait assessments." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* =================================================================
+     TOKENS
+     ================================================================= */
+  :root {
+    --paper-00: oklch(98.4% 0.008 82);
+    --paper-05: oklch(96.2% 0.012 82);
+    --paper-10: oklch(93.4% 0.018 82);
+    --paper-15: oklch(89.6% 0.022 82);
+    --paper-25: oklch(82.0% 0.026 82);
+
+    --ink-95:  oklch(16.0% 0.012 82);
+    --ink-80:  oklch(28.0% 0.014 82);
+    --ink-60:  oklch(46.0% 0.016 82);
+    --ink-40:  oklch(64.0% 0.014 82);
+    --ink-20:  oklch(78.0% 0.012 82);
+
+    --ocean-90: oklch(20.0% 0.038 145);
+    --ocean-70: oklch(34.0% 0.060 142);
+    --ocean-55: oklch(46.0% 0.072 140);
+
+    --coral-55: oklch(56.0% 0.150 38);
+    --coral-65: oklch(64.0% 0.140 40);
+
+    --sun-70:  oklch(78.0% 0.130 82);
+    --sun-55:  oklch(64.0% 0.150 70);
+
+    --bone:    oklch(98.8% 0.006 82);
+    --bone-dim: oklch(94.0% 0.008 82);
+
+    --serif: "Instrument Serif", "Times New Roman", serif;
+    --sans:  "Inter", system-ui, sans-serif;
+    --mono:  "JetBrains Mono", ui-monospace, monospace;
+
+    --t-cap:   12px;
+    --t-micro: 13px;
+    --t-body:  17px;
+    --t-lead:  22px;
+    --t-h4:    24px;
+    --t-h3:    34px;
+    --t-h2:    52px;
+    --t-h1:    clamp(64px, 9vw, 128px);
+
+    --gap-xs: 8px;
+    --gap-s:  14px;
+    --gap-m:  24px;
+    --gap-l:  44px;
+    --gap-xl: 72px;
+    --gap-2x: 120px;
+
+    --r-flat:  2px;
+    --r-soft:  6px;
+    --r-pill:  999px;
+    --r-arc:   18px;
+
+    --line-hair:  1px solid var(--paper-25);
+    --line-rule:  1.5px solid var(--ink-20);
+    --line-bold:  2px solid var(--ink-95);
+
+    --ease-out-q: cubic-bezier(0.22, 1, 0.36, 1);
+    --dur-fast: 140ms;
+    --dur-mid:  240ms;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--paper-10);
+    color: var(--ink-95);
+    font-family: var(--sans);
+    font-size: var(--t-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  button { font: inherit; cursor: pointer; }
+
+  .skip {
+    position: absolute; left: -9999px; top: 0;
+    background: var(--ocean-90); color: var(--bone);
+    padding: 12px 18px; font-family: var(--mono);
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    text-decoration: none; z-index: 100;
+  }
+  .skip:focus { left: 16px; top: 16px; }
+
+  .wrap {
+    max-width: 1350px;
+    margin: 0 auto;
+    padding: 0 25px;
+  }
+
+  /* =================================================================
+     TOP BAR
+     ================================================================= */
+  .top-bar {
+    background: var(--ocean-90);
+    color: var(--bone);
+    border-bottom: 1px solid oklch(40% 0.014 82);
+  }
+  .top-bar-row {
+    max-width: none;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 18px; padding: 12px 24px;
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: oklch(94% 0.008 82 / 0.9);
+  }
+  .top-bar-row .stars { color: var(--sun-70); letter-spacing: 0.12em; }
+  .top-bar-row a { text-decoration: none; transition: color var(--dur-fast) var(--ease-out-q); }
+  .top-bar-row a:hover { color: var(--sun-70); }
+  .top-bar-row .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--sun-70); display: inline-block; margin: 0 14px; vertical-align: middle; }
+  @media (max-width: 720px) {
+    .top-bar-row .areas, .top-bar-row .dot { display: none; }
+  }
+
+  /* =================================================================
+     NAV
+     ================================================================= */
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--paper-00);
+    border-bottom: var(--line-bold);
+    padding: 18px 0;
+    position: sticky; top: 0; z-index: 50;
+  }
+  .nav-inner {
+    max-width: 1350px; margin: 0 auto; padding: 0 25px;
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; gap: var(--gap-m);
+  }
+  .nav .brand {
+    display: inline-flex; align-items: center;
+    text-decoration: none; color: var(--ink-95); line-height: 1;
+  }
+  .nav .brand img { display: block; height: 55px; width: auto; }
+  @media (max-width: 720px) {
+    .nav .brand img { height: 44px; }
+  }
+  .nav ul {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; align-items: center; gap: 28px;
+    font-size: 15px;
+  }
+  .nav > .nav-inner > ul > li {
+    display: inline-flex; align-items: center;
+  }
+  .nav ul a {
+    text-decoration: none; color: var(--ink-95);
+    padding: 6px 2px;
+    border-bottom: 1.5px solid transparent;
+    transition: border-color var(--dur-fast) var(--ease-out-q);
+  }
+  .nav ul a:hover, .nav ul a[aria-current="page"] { border-bottom-color: var(--ocean-70); }
+  .nav-cta {
+    background: var(--ocean-70); color: var(--bone);
+    padding: 12px 18px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border-radius: var(--r-flat);
+    transition: background var(--dur-fast) var(--ease-out-q);
+  }
+  .nav-cta:hover { background: var(--ocean-90); }
+
+  /* Dropdowns */
+  .nav .has-submenu { position: relative; }
+  .nav .submenu-trigger {
+    appearance: none; background: transparent; border: 0;
+    font-family: inherit; font-size: 15px; color: var(--ink-95);
+    padding: 6px 2px; cursor: pointer;
+    border-bottom: 1.5px solid transparent;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: border-color var(--dur-fast) var(--ease-out-q);
+  }
+  .nav .submenu-trigger .caret {
+    font-size: 10px; transition: transform var(--dur-fast) var(--ease-out-q);
+    line-height: 1;
+  }
+  .nav .has-submenu:hover .submenu-trigger,
+  .nav .has-submenu:focus-within .submenu-trigger {
+    border-bottom-color: var(--ocean-70);
+  }
+  .nav .has-submenu:hover .submenu-trigger .caret,
+  .nav .has-submenu:focus-within .submenu-trigger .caret {
+    transform: rotate(180deg);
+  }
+  .nav .submenu {
+    position: absolute; top: 100%; left: -18px;
+    min-width: 240px;
+    background: var(--paper-00);
+    border: var(--line-bold);
+    border-radius: var(--r-flat);
+    padding: 8px 0; margin: 0;
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0;
+    opacity: 0; pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 140ms var(--ease-out-q), transform 140ms var(--ease-out-q);
+    z-index: 60;
+  }
+  .nav .submenu::before {
+    content: ""; position: absolute; top: -18px; left: 0; right: 0; height: 18px;
+  }
+  .nav .has-submenu:hover .submenu,
+  .nav .has-submenu:focus-within .submenu {
+    opacity: 1; pointer-events: auto; transform: translateY(0);
+  }
+  .nav .submenu li { border: 0; }
+  .nav .submenu a {
+    display: block;
+    padding: 12px 22px;
+    font-size: 14px; color: var(--ink-95);
+    border-bottom: 0;
+    white-space: nowrap;
+    transition: background var(--dur-fast) var(--ease-out-q), color var(--dur-fast) var(--ease-out-q);
+  }
+  .nav .submenu a:hover { background: var(--paper-10); color: var(--ocean-70); }
+  .nav .submenu a:focus-visible {
+    outline: 2px solid var(--coral-55); outline-offset: -2px;
+  }
+
+  /* Drawer disclosure groups (mobile) */
+  .drawer-group { width: 100%; }
+  .drawer-group summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 4px;
+    font-family: var(--serif); font-size: 28px; line-height: 1;
+    letter-spacing: -0.018em; color: var(--ink-95);
+  }
+  .drawer-group summary::-webkit-details-marker { display: none; }
+  .drawer-group summary::after {
+    content: "+"; font-family: var(--mono); font-size: 22px; color: var(--ocean-70);
+    transition: transform var(--dur-fast) var(--ease-out-q);
+  }
+  .drawer-group[open] summary::after { content: "–"; }
+  .drawer-group .drawer-sub {
+    border-top: 0; padding: 0 0 14px 16px; margin: 0;
+    border-left: 1.5px solid var(--ocean-70);
+    margin-left: 4px;
+  }
+  .drawer-group .drawer-sub li { border-bottom: 0; }
+  .drawer-group .drawer-sub a {
+    padding: 12px 0; font-size: 18px; font-family: var(--serif);
+    letter-spacing: -0.01em;
+  }
+
+  /* Hamburger button */
+  .nav-toggle {
+    display: none;
+    appearance: none; background: transparent; border: 1.5px solid var(--ink-95);
+    border-radius: var(--r-flat);
+    width: 44px; height: 44px;
+    align-items: center; justify-content: center;
+    padding: 0; cursor: pointer;
+  }
+  .nav-toggle:focus-visible { outline: 2px solid var(--coral-55); outline-offset: 3px; }
+  .nav-toggle .bars {
+    display: flex; flex-direction: column; gap: 4px; align-items: center;
+  }
+  .nav-toggle .bars span {
+    display: block; width: 18px; height: 1.5px; background: var(--ink-95);
+    transition: transform var(--dur-fast) var(--ease-out-q), opacity var(--dur-fast) var(--ease-out-q);
+  }
+  .nav-toggle[aria-expanded="true"] .bars span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .bars span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .bars span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+  /* Mobile drawer */
+  .nav-drawer {
+    display: none;
+    position: fixed; inset: 64px 0 0 0;
+    background: var(--paper-00);
+    z-index: 49;
+    padding: 32px 25px 120px;
+    overflow-y: auto;
+  }
+  .nav-drawer[data-open="true"] { display: block; }
+  .nav-drawer > ul {
+    list-style: none; margin: 0 0 32px; padding: 0;
+    display: flex; flex-direction: column; gap: 0;
+    border-top: var(--line-bold);
+  }
+  .nav-drawer > ul > li { border-bottom: var(--line-hair); }
+  .nav-drawer > ul > li > a {
+    display: block; padding: 22px 4px;
+    text-decoration: none; color: var(--ink-95);
+    font-family: var(--serif); font-size: 28px; line-height: 1;
+    letter-spacing: -0.018em;
+  }
+  .nav-drawer a { text-decoration: none; color: var(--ink-95); }
+  .nav-drawer a:hover, .nav-drawer a:focus-visible { color: var(--ocean-70); }
+  .nav-drawer .drawer-cta-row {
+    display: flex; flex-direction: column; gap: 14px;
+    padding-top: 32px; border-top: var(--line-hair);
+  }
+  .nav-drawer .drawer-cta-row .btn { justify-content: center; }
+  .nav-drawer .drawer-meta {
+    margin-top: 28px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-60);
+    line-height: 1.8;
+  }
+
+  /* Sticky mobile call-now bar */
+  .call-bar {
+    display: none;
+    position: fixed; left: 0; right: 0; bottom: 0;
+    background: var(--ocean-90); color: var(--bone);
+    z-index: 60;
+    padding: 14px 18px;
+    border-top: 1.5px solid oklch(40% 0.014 82);
+  }
+  .call-bar a {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    font-family: var(--sans); font-weight: 600; font-size: 16px;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: var(--r-soft);
+    background: var(--bone);
+    color: var(--ocean-90);
+  }
+  .call-bar a .icon { font-family: var(--serif); font-style: italic; font-size: 20px; line-height: 1; }
+  .call-bar .sub {
+    text-align: center; display: block;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: oklch(94% 0.008 82 / 0.75);
+    margin-top: 8px;
+  }
+
+  @media (max-width: 860px) {
+    .nav ul { display: none; }
+    .nav .nav-cta { display: none; }
+    .nav-toggle { display: inline-flex; }
+    body[data-drawer="open"] { overflow: hidden; }
+    .call-bar { display: block; }
+    main, footer { padding-bottom: 96px; }
+  }
+
+  /* =================================================================
+     EYEBROWS
+     ================================================================= */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-95); font-weight: 600;
+  }
+  .eyebrow[data-style="rule"]::before { content: ""; width: 36px; height: 1.5px; background: var(--ocean-70); }
+  .eyebrow[data-style="dot"]::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--coral-55); }
+  .eyebrow[data-style="num"] { display: block; padding-top: 12px; border-top: var(--line-bold); }
+  .eyebrow.on-dark { color: oklch(94% 0.008 82 / 0.9); }
+  .eyebrow.on-dark[data-style="rule"]::before { background: var(--sun-70); }
+
+  /* =================================================================
+     BUTTONS
+     ================================================================= */
+  .btn {
+    appearance: none; border: 1.5px solid;
+    padding: 14px 22px;
+    font-family: var(--sans); font-size: 16px; font-weight: 600;
+    border-radius: var(--r-soft);
+    display: inline-flex; align-items: center; gap: 10px;
+    text-decoration: none; cursor: pointer;
+    transition: background var(--dur-fast) var(--ease-out-q), color var(--dur-fast) var(--ease-out-q);
+  }
+  .btn:focus-visible { outline: 2px solid var(--coral-55); outline-offset: 3px; }
+  .btn[data-variant="primary"]   { background: var(--ocean-70); color: var(--bone); border-color: var(--ocean-70); }
+  .btn[data-variant="primary"]:hover { background: var(--ocean-90); border-color: var(--ocean-90); }
+  .btn[data-variant="outline"]   { background: transparent; color: var(--ocean-70); border-color: var(--ocean-70); }
+  .btn[data-variant="outline"]:hover { background: var(--ocean-70); color: var(--bone); }
+  .btn[data-variant="primary-bone"] { background: var(--bone); color: var(--ocean-90); border-color: var(--bone); }
+  .btn[data-variant="primary-bone"]:hover { background: transparent; color: var(--bone); }
+  .btn .arrow { transition: transform var(--dur-mid) var(--ease-out-q); }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+    /* HERO · split asymmetric, drenched (photo left + ocean-90 right) */
+  .services-hero {
+    display: grid; grid-template-columns: 5fr 7fr;
+    align-items: stretch;
+    border-radius: var(--r-arc);
+    margin-top: 28px;
+    overflow: hidden;
+    min-height: 540px;
+  }
+  .services-hero .photo {
+    background: var(--paper-15);
+    position: relative; overflow: hidden;
+  }
+  .services-hero .photo img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
+    display: block;
+  }
+  .services-hero .photo .stamp {
+    position: absolute; bottom: 18px; left: 18px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--bone);
+    padding: 8px 12px; background: oklch(20% 0.040 145 / 0.6);
+    border-radius: var(--r-flat);
+  }
+  .services-hero .copy {
+    background: var(--ocean-90); color: var(--bone);
+    padding: 64px 64px 56px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    gap: var(--gap-l);
+  }
+  .services-hero .copy header { display: flex; flex-direction: column; gap: 22px; }
+  .services-hero .copy .eyebrow { color: oklch(94% 0.008 82 / 0.85); }
+  .services-hero .copy .eyebrow[data-style="rule"]::before { background: var(--sun-70); }
+  .services-hero h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(48px, 6.4vw, 96px);
+    line-height: 1.0; letter-spacing: -0.024em;
+    margin: 0; color: var(--bone); max-width: 14ch;
+  }
+  .services-hero h1 i { color: var(--sun-70); font-style: italic; }
+  .services-hero .lead {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(20px, 1.9vw, 26px);
+    line-height: 1.4; color: oklch(96% 0.006 82 / 0.94);
+    margin: 0; max-width: 42ch;
+  }
+  .services-hero .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  @media (max-width: 860px) {
+    .services-hero { grid-template-columns: 1fr; min-height: 0; }
+    .services-hero .photo { min-height: 320px; }
+    .services-hero .copy { padding: 36px 28px 32px; }
+  }
+    .services-hero .photo { min-height: 360px; }
+  }
+
+  /* =================================================================
+     SECTION CHROME
+     ================================================================= */
+  section.block { padding: var(--gap-2x) 0; }
+  section.block.tight { padding: var(--gap-xl) 0; }
+  section.block.dark { background: var(--ocean-90); color: var(--bone); }
+  section.block.drenched { background: var(--ocean-90); color: var(--bone); }
+
+  .section-head {
+    display: grid; grid-template-columns: 220px 1fr; gap: var(--gap-m);
+    align-items: end; margin-bottom: var(--gap-xl);
+  }
+  .section-head .num {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    color: var(--ink-60); font-weight: 600;
+    padding-top: 12px; border-top: var(--line-bold); align-self: start;
+  }
+  .section-head h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height: 1.04; letter-spacing: -0.018em;
+    margin: 0; max-width: 18ch;
+  }
+  .section-head h2 i { color: var(--ocean-70); font-style: italic; }
+  section.block.dark .section-head .num,
+  section.block.drenched .section-head .num { color: oklch(94% 0.008 82 / 0.55); border-top-color: var(--sun-70); }
+  section.block.dark .section-head h2,
+  section.block.drenched .section-head h2 { color: var(--bone); }
+  section.block.dark .section-head h2 i,
+  section.block.drenched .section-head h2 i { color: var(--sun-70); }
+  @media (max-width: 720px) {
+    .section-head { grid-template-columns: 1fr; gap: 18px; }
+  }
+
+  /* =================================================================
+     INTRO BLOCK
+     ================================================================= */
+  .intro-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-xl);
+    align-items: start;
+  }
+  .intro-grid .lead {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px); line-height: 1.3;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+    color: var(--ocean-70);
+    margin: 20px 0 28px; max-width: 22ch;
+  }
+  .intro-grid .body p {
+    font-size: var(--t-body); line-height: 1.65; color: var(--ink-80);
+    max-width: 52ch; margin: 0 0 18px;
+  }
+  @media (max-width: 860px) {
+    .intro-grid { grid-template-columns: 1fr; gap: var(--gap-l); }
+  }
+
+  /* =================================================================
+     SPREAD (Three Specialties)
+     ================================================================= */
+  .spread { display: flex; flex-direction: column; gap: 110px; }
+  .spread-row { display: grid; align-items: center; gap: var(--gap-xl); }
+  .spread-row[data-layout="portrait-left"]   { grid-template-columns: 5fr 7fr; }
+  .spread-row[data-layout="text-led"]        { grid-template-columns: 7fr 5fr; align-items: end; }
+  .spread-row[data-layout="overlay"]         { grid-template-columns: 1fr; }
+
+  .spread-media {
+    margin: 0; position: relative;
+    border-radius: var(--r-soft); overflow: hidden;
+    background: var(--paper-15);
+  }
+  .spread-media img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 700ms var(--ease-out-q);
+  }
+  .spread-media:hover img { transform: scale(1.02); }
+  .spread-row[data-layout="portrait-left"] .spread-media { aspect-ratio: 4 / 5; }
+  .spread-row[data-layout="text-led"] .spread-media.small { aspect-ratio: 1 / 1; max-width: 380px; justify-self: end; width: 100%; }
+  .spread-row[data-layout="overlay"] .spread-media.overlay { aspect-ratio: 16 / 7; border-radius: var(--r-arc); position: relative; }
+  .spread-row[data-layout="overlay"] .spread-media.overlay::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, transparent 30%, oklch(14% 0.040 145 / 1) 100%),
+      linear-gradient(90deg, oklch(14% 0.040 145 / 0.6) 0%, transparent 60%);
+  }
+  .spread-media > figcaption {
+    position: absolute; bottom: 14px; left: 14px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--bone);
+    padding: 6px 10px; background: oklch(20% 0.040 145 / 0.6);
+    z-index: 2;
+  }
+
+  .overlay-copy {
+    position: absolute; bottom: 36px; left: 36px; right: 36px;
+    z-index: 1; color: var(--bone);
+    max-width: 36ch;
+  }
+  .overlay-copy .eyebrow { color: var(--bone); }
+  .overlay-copy .eyebrow[data-style="dot"]::before { background: var(--sun-70); }
+  .overlay-copy h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(30px, 3.6vw, 48px);
+    line-height: 1.04; letter-spacing: -0.02em;
+    color: var(--bone); margin: 12px 0 14px; max-width: 18ch;
+    text-shadow: 0 1px 16px oklch(14% 0.040 145 / 0.6);
+  }
+  .overlay-copy h3 i { color: var(--sun-70); font-style: italic; }
+  .overlay-copy p {
+    font-size: var(--t-body); line-height: 1.55;
+    color: oklch(98% 0.006 82 / 0.96); max-width: 52ch; margin: 0;
+    text-shadow: 0 1px 16px oklch(14% 0.040 145 / 0.6);
+  }
+
+  .spread-copy { display: flex; flex-direction: column; gap: 16px; }
+  .spread-copy h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(30px, 3.8vw, 48px);
+    line-height: 1.06; letter-spacing: -0.02em;
+    color: var(--ink-95); margin: 6px 0 4px; max-width: 16ch;
+  }
+  .spread-copy h3 i { color: var(--ocean-70); font-style: italic; }
+  .spread-row[data-layout="text-led"] .spread-copy h3 {
+    font-size: clamp(34px, 4.6vw, 64px); max-width: 14ch;
+  }
+  .spread-copy p {
+    font-size: var(--t-body); line-height: 1.6;
+    color: var(--ink-80); max-width: 56ch; margin: 0;
+  }
+  .spread-copy .focus-tags {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-60); font-weight: 600;
+    margin-top: 8px;
+  }
+  .spread-copy .read-link {
+    margin-top: 10px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ocean-70);
+    text-decoration: none; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 10px;
+    align-self: flex-start;
+    border-bottom: 1.5px solid var(--ocean-70);
+    padding-bottom: 6px;
+  }
+  .spread-copy .read-link::after { content: "→"; transition: transform var(--dur-fast) var(--ease-out-q); }
+  .spread-copy .read-link:hover::after { transform: translateX(4px); }
+
+  @media (max-width: 860px) {
+    .spread { gap: 64px; }
+    .spread-row[data-layout="portrait-left"],
+    .spread-row[data-layout="text-led"] { grid-template-columns: 1fr; gap: 28px; }
+    .spread-row[data-layout="text-led"] .spread-media.small { justify-self: start; }
+    .spread-row[data-layout="overlay"] .spread-media.overlay { aspect-ratio: 4 / 5; }
+    .overlay-copy { left: 22px; right: 22px; bottom: 22px; }
+  }
+
+  /* =================================================================
+     RUNNING ASSESSMENT
+     ================================================================= */
+  .running-section {
+    background: var(--paper-00);
+    border: var(--line-bold);
+    border-radius: var(--r-arc);
+    padding: 64px;
+    display: grid; grid-template-columns: 5fr 7fr;
+    gap: 72px; align-items: start;
+  }
+  .running-section .visual {
+    margin: 0; position: relative;
+    aspect-ratio: 4 / 5; border-radius: var(--r-soft); overflow: hidden;
+    background: var(--paper-15);
+  }
+  .running-section .visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .running-section .visual .stamp {
+    position: absolute; bottom: 16px; left: 16px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--bone);
+    padding: 8px 12px; background: oklch(20% 0.040 145 / 0.6);
+  }
+  .running-section .copy { display: flex; flex-direction: column; gap: 20px; }
+  .running-section .copy h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.04; letter-spacing: -0.022em;
+    margin: 8px 0 0; color: var(--ink-95);
+  }
+  .running-section .copy h2 i { color: var(--ocean-70); font-style: italic; }
+  .running-section .copy p {
+    font-size: var(--t-body); line-height: 1.7; color: var(--ink-80);
+    margin: 0; max-width: 60ch;
+  }
+  .running-list {
+    list-style: none; padding: 0; margin: 12px 0 0;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .running-list li {
+    display: grid; grid-template-columns: 28px 1fr; gap: 14px;
+    align-items: start;
+    font-size: var(--t-body); line-height: 1.5; color: var(--ink-80);
+  }
+  .running-list li::before {
+    content: "✓";
+    width: 22px; height: 22px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--ocean-70); color: var(--bone);
+    font-family: var(--serif); font-weight: 700; font-size: 14px; line-height: 1;
+    margin-top: 2px;
+    border-radius: var(--r-flat);
+  }
+  @media (max-width: 860px) {
+    .running-section { grid-template-columns: 1fr; padding: 36px 24px; gap: 36px; }
+    .running-section .visual { max-width: 380px; }
+  }
+
+  /* =================================================================
+     FORMATS (In-Person + Virtual)
+     ================================================================= */
+  .formats-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: var(--gap-xl);
+  }
+  .format-card {
+    background: var(--paper-00);
+    border: var(--line-bold);
+    border-radius: var(--r-soft);
+    padding: 44px 36px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .format-card h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(26px, 2.6vw, 34px);
+    line-height: 1.16; letter-spacing: -0.014em;
+    color: var(--ink-95); margin: 0; max-width: 16ch;
+  }
+  .format-card h3 i { color: var(--ocean-70); font-style: italic; }
+  .format-card p {
+    font-size: var(--t-body); line-height: 1.6; color: var(--ink-80);
+    margin: 0; max-width: 48ch;
+  }
+  @media (max-width: 860px) {
+    .formats-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  /* =================================================================
+     PHASES (Your Journey)
+     ================================================================= */
+  .phases {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: var(--line-bold);
+    background: var(--paper-00);
+  }
+  .phase {
+    padding: 44px 36px;
+    border-right: var(--line-bold);
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .phase:last-child { border-right: 0; }
+  .phase .marker {
+    font-family: var(--serif); font-style: italic;
+    font-size: 56px; color: var(--ocean-70); line-height: 1;
+  }
+  .phase .label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-60); font-weight: 600;
+  }
+  .phase h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(24px, 2.4vw, 30px);
+    line-height: 1.18; letter-spacing: -0.014em;
+    color: var(--ink-95); margin: 0; max-width: 16ch;
+  }
+  .phase h3 i { color: var(--ocean-70); font-style: italic; }
+  .phase p {
+    font-size: var(--t-body); line-height: 1.6; color: var(--ink-80);
+    margin: 6px 0 0; max-width: 36ch;
+  }
+  @media (max-width: 860px) {
+    .phases { grid-template-columns: 1fr; }
+    .phase { border-right: 0; border-bottom: var(--line-bold); }
+    .phase:last-child { border-bottom: 0; }
+  }
+
+  /* =================================================================
+     WHO WE HELP
+     ================================================================= */
+  .who-grid {
+    display: grid; grid-template-columns: 5fr 7fr;
+    gap: var(--gap-xl); align-items: start;
+  }
+  .who-grid .lede {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(24px, 2.4vw, 32px); line-height: 1.3;
+    color: var(--ocean-70); margin: 0; max-width: 22ch;
+  }
+  .who-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 0;
+    border-top: 1.5px solid var(--ink-20);
+  }
+  .who-list li {
+    display: grid; grid-template-columns: 28px 1fr; gap: 18px;
+    align-items: start;
+    padding: 18px 0;
+    border-bottom: 1.5px solid var(--ink-20);
+    font-size: var(--t-body); line-height: 1.5; color: var(--ink-80);
+  }
+  .who-list li::before {
+    content: "✓";
+    width: 22px; height: 22px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--ocean-70); color: var(--bone);
+    font-family: var(--serif); font-weight: 700; font-size: 14px; line-height: 1;
+    margin-top: 2px;
+    border-radius: var(--r-flat);
+  }
+  @media (max-width: 860px) {
+    .who-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  /* =================================================================
+     CLOSING CTA
+     ================================================================= */
+  .closing-cta {
+    background: var(--ocean-90); color: var(--bone);
+    border-radius: var(--r-arc); padding: 88px 72px;
+    display: grid; grid-template-columns: 1fr auto; gap: var(--gap-xl);
+    align-items: end;
+  }
+  .closing-cta .eyebrow { color: oklch(94% 0.008 82 / 0.85); }
+  .closing-cta .eyebrow[data-style="rule"]::before { background: var(--sun-70); }
+  .closing-cta h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(44px, 6vw, 80px);
+    line-height: 1.0; letter-spacing: -0.024em;
+    margin: 18px 0 18px; max-width: 16ch;
+  }
+  .closing-cta h2 i { color: var(--sun-70); font-style: italic; }
+  .closing-cta p {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(20px, 1.85vw, 24px); line-height: 1.4;
+    color: oklch(96% 0.006 82 / 0.94);
+    margin: 0; max-width: 52ch;
+  }
+  .closing-cta .actions { display: flex; flex-direction: column; gap: 10px; }
+  .closing-cta .actions .btn { justify-content: center; padding: 14px 34px; }
+  .closing-cta .meta {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: oklch(94% 0.008 82 / 0.7);
+  }
+  @media (max-width: 860px) {
+    .closing-cta { grid-template-columns: 1fr; padding: 48px 28px; gap: 28px; }
+  }
+
+  /* =================================================================
+     FOOTER
+     ================================================================= */
+  .footer-strip {
+    background: var(--ink-95); color: var(--bone);
+    padding: 80px 0 36px;
+    margin-top: var(--gap-xl);
+  }
+  .footer-strip .word-row {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: var(--gap-l); align-items: end;
+    margin: 0 0 48px;
+  }
+  .footer-strip .word {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(56px, 9vw, 96px);
+    line-height: 1; letter-spacing: -0.025em;
+    margin: 0; color: var(--bone);
+  }
+  .footer-strip .word i { color: var(--sun-70); font-style: italic; }
+  .footer-strip .word-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 22px;
+    background: var(--bone); color: var(--ink-95);
+    font-family: var(--sans); font-size: 15px; font-weight: 600;
+    text-decoration: none; border-radius: var(--r-soft);
+    border: 1.5px solid var(--bone);
+    transition: background var(--dur-fast) var(--ease-out-q), color var(--dur-fast) var(--ease-out-q);
+    align-self: end; white-space: nowrap;
+  }
+  .footer-strip .word-cta:hover { background: transparent; color: var(--bone); }
+  .footer-strip .word-cta .arrow { transition: transform var(--dur-mid) var(--ease-out-q); }
+  .footer-strip .word-cta:hover .arrow { transform: translateX(3px); }
+  @media (max-width: 720px) {
+    .footer-strip .word-row { grid-template-columns: 1fr; align-items: start; gap: 24px; }
+    .footer-strip .word-cta { justify-self: start; }
+  }
+  .footer-strip .row {
+    display: grid; grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: var(--gap-l);
+    padding-bottom: 48px; border-bottom: 1px solid oklch(40% 0.014 82);
+  }
+  .footer-strip h5 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--sun-70); font-weight: 600;
+    margin: 0 0 18px;
+  }
+  .footer-strip a {
+    display: block; color: oklch(94% 0.008 82 / 0.85);
+    text-decoration: none; padding: 4px 0;
+    font-size: 14px; transition: color var(--dur-fast) var(--ease-out-q);
+  }
+  .footer-strip a:hover { color: var(--bone); }
+  .footer-strip p {
+    font-size: 14px; max-width: 38ch; opacity: 0.85; margin: 0; line-height: 1.6;
+  }
+  .footer-strip .contact-item {
+    font-size: 14px; line-height: 1.6; color: oklch(94% 0.008 82 / 0.85);
+    margin: 0 0 8px;
+  }
+  .footer-strip .contact-item b { color: var(--bone); font-weight: 600; }
+  .footer-strip .legal {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    margin-top: 28px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: oklch(94% 0.008 82 / 0.6);
+  }
+  @media (max-width: 860px) {
+    .footer-strip .row { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============= TOP BAR ============= -->
+<div class="top-bar">
+  <div class="top-bar-row">
+    <span><span class="stars">★★★★★</span> &nbsp; Rated 5.0 based on Google Reviews</span>
+    <span>
+      <span class="areas">Areas We Visit</span>
+      <span class="dot" aria-hidden="true"></span>
+      <a href="tel:808XXXXXXX">(808) XXX-XXXX</a>
+    </span>
+  </div>
+</div>
+
+<!-- ============= NAV ============= -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Island PT — home">
+      <img src="img/IPH_Logo.webp" alt="Island PT">
+    </a>
+    <ul role="list">
+      <li><a href="index.html">Home</a></li>
+      <li class="has-submenu">
+        <button type="button" class="submenu-trigger" aria-expanded="false" aria-controls="sub-about">About <span class="caret" aria-hidden="true">▾</span></button>
+        <ul id="sub-about" class="submenu" role="list">
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="meet-the-team.html">Meet The Team</a></li>
+          <li><a href="service-area.html">Service Area</a></li>
+          <li><a href="kihei-location.html">Kīhei Location</a></li>
+        </ul>
+      </li>
+      <li class="has-submenu">
+        <button type="button" class="submenu-trigger" aria-expanded="false" aria-controls="sub-services">Services <span class="caret" aria-hidden="true">▾</span></button>
+        <ul id="sub-services" class="submenu" role="list">
+          <li><a href="services.html" aria-current="page">Services Overview</a></li>
+          <li><a href="mobile-physical-therapy.html">Mobile Physical Therapy</a></li>
+        </ul>
+      </li>
+      <li><a href="why-cash-pay.html">Why Cash-Pay</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="schedule.html">Schedule</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="nav-drawer" aria-expanded="false">
+      <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</nav>
+
+<aside class="nav-drawer" id="nav-drawer" data-open="false" aria-hidden="true">
+  <ul role="list">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <details class="drawer-group">
+        <summary>About</summary>
+        <ul role="list" class="drawer-sub">
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="meet-the-team.html">Meet The Team</a></li>
+          <li><a href="service-area.html">Service Area</a></li>
+          <li><a href="kihei-location.html">Kīhei Location</a></li>
+        </ul>
+      </details>
+    </li>
+    <li>
+      <details class="drawer-group" open>
+        <summary>Services</summary>
+        <ul role="list" class="drawer-sub">
+          <li><a href="services.html" aria-current="page">Services Overview</a></li>
+          <li><a href="mobile-physical-therapy.html">Mobile Physical Therapy</a></li>
+        </ul>
+      </details>
+    </li>
+    <li><a href="why-cash-pay.html">Why Cash-Pay</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="drawer-cta-row">
+    <a class="btn" data-variant="primary" href="schedule.html">Schedule <span class="arrow" aria-hidden="true">→</span></a>
+    <a class="btn" data-variant="outline" href="tel:808XXXXXXX">Call to book <span class="arrow" aria-hidden="true">→</span></a>
+  </div>
+  <p class="drawer-meta">
+    Mon – Fri · 8 AM – 6 PM<br>
+    Kīhei, Maui · In-home visits
+  </p>
+</aside>
+
+<main id="main">
+
+  <!-- ============= HERO ============= -->
+  <div class="wrap">
+    <section class="services-hero" aria-labelledby="hero-h">
+      <div class="photo" role="img" aria-label="Physical therapy session in a Maui home">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80&auto=format&fit=crop" alt="Therapist providing hands-on treatment during an in-home session">
+        <span class="stamp">Kīhei · Maui</span>
+      </div>
+      <div class="copy">
+        <header>
+          <span class="eyebrow" data-style="rule">Our Services</span>
+          <h1 id="hero-h">Physical Therapy Services on <i>Maui.</i></h1>
+          <p class="lead">One-to-one care for back pain, mobility, and strength — built around your body and your goals.</p>
+        </header>
+        <div class="actions">
+          <a class="btn" data-variant="primary-bone" href="schedule.html">Request a Consultation <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============= INTRO BLOCK ============= -->
+  <section class="block" id="intro">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">01 / APPROACH</div>
+        <h2>A Different Kind of Physical <i>Therapy.</i></h2>
+      </div>
+
+      <div class="intro-grid">
+        <div>
+          <span class="eyebrow" data-style="rule">Care That Listens. Treatment That Lasts.</span>
+          <p class="lead">Every service we offer is built on the same foundation: one-to-one care, an honest evaluation, and a plan designed to actually finish.</p>
+        </div>
+
+        <div class="body">
+          <p>At Island PT, every service we offer is built on the same foundation: one-to-one care, an honest evaluation, and a plan designed to actually finish — not stretch on indefinitely.</p>
+          <p>Whether you are working through chronic back pain, recovering from surgery, regaining your balance, or trying to stay strong as you get older, we treat the root cause of the issue rather than chasing the symptoms. That is the difference between feeling better for a few days and feeling better for good.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= THREE SPECIALTIES ============= -->
+  <section class="block" id="specialties">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">02 / SPECIALTIES</div>
+        <h2>Three Focused Areas of Expert <i>Care.</i></h2>
+      </div>
+      <p style="font-family:var(--serif); font-style:italic; font-size:clamp(22px,2vw,28px); line-height:1.4; color:var(--ocean-70); margin: 0 0 var(--gap-xl); max-width:48ch;">Each of our specialties shares the same philosophy: attentive, hands-on treatment that delivers lasting results.</p>
+
+      <div class="spread">
+
+        <article class="spread-row" data-layout="portrait-left">
+          <figure class="spread-media">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80&auto=format&fit=crop" alt="Therapist working on a patient's spine during a session" loading="lazy">
+            <figcaption>01 / Clinical</figcaption>
+          </figure>
+          <div class="spread-copy">
+            <span class="eyebrow" data-style="num">01 · Spine &amp; Back Care</span>
+            <h3>Move with confidence, <i>again.</i></h3>
+            <p>Evidence-based treatment for chronic back pain, disc issues, and postural concerns. We help you move with confidence again — without surgery, without endless visits, without simply learning to live with the pain.</p>
+            <p>Most people who come to us for back pain have already tried something else. Maybe injections that wore off. Maybe a few sessions at a high-volume clinic that did not change much. Our approach is different: a full evaluation to find what is actually driving the pain, followed by a focused treatment plan to fix it at the source.</p>
+            <p class="focus-tags">Common focus areas: Chronic pain · Disc issues · Posture · Mobility</p>
+            <a class="read-link" href="spine-back-care.html">Learn More About Spine &amp; Back Care</a>
+          </div>
+        </article>
+
+        <article class="spread-row" data-layout="overlay">
+          <figure class="spread-media overlay">
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1600&q=80&auto=format&fit=crop" alt="Adult walking confidently on a coastal trail at sunrise" loading="lazy">
+            <div class="overlay-copy">
+              <span class="eyebrow on-dark" data-style="dot">02 · Mobility &amp; Balance</span>
+              <h3>Range, stability, <i>independence.</i></h3>
+              <p>Structured rehabilitation that restores your range of motion, builds stability, and lowers your risk of falls. Especially valuable after surgery, after an injury, or when you have noticed yourself moving with less confidence than you used to.</p>
+            </div>
+          </figure>
+          <div class="spread-copy" style="padding: 0 4px;">
+            <p>We work with patients of every age — from people in their 40s recovering from a knee scope, to older adults focused on staying strong, mobile, and independent at home. The goal is the same in every case: get you moving with confidence again.</p>
+            <p class="focus-tags">Common focus areas: Post-surgery · Fall prevention · Gait training · Joint care</p>
+            <a class="read-link" href="mobility-balance.html">Learn More About Mobility &amp; Balance</a>
+          </div>
+        </article>
+
+        <article class="spread-row" data-layout="text-led">
+          <div class="spread-copy">
+            <span class="eyebrow" data-style="num">03 · Strength-Based Therapy</span>
+            <h3>Movement is <i>medicine.</i></h3>
+            <p>We believe movement is medicine. Through gentle, progressive strengthening, we keep your body capable and independent — at any age, at any starting point.</p>
+            <p>This is what comes after the pain is gone. Pain relief is the start, not the finish line. Strength-based therapy is how we make sure the relief lasts and your body holds up to whatever Maui life asks of it — paddles, hikes, gardening, long walks on the beach, or simply moving well into your 70s, 80s, and beyond.</p>
+            <p class="focus-tags">Common focus areas: Active care · Gradual progress · Long-term wellness</p>
+            <a class="read-link" href="strength-therapy.html">Learn More About Strength Therapy</a>
+          </div>
+          <figure class="spread-media small">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80&auto=format&fit=crop" alt="Person training with light resistance under guidance" loading="lazy">
+            <figcaption>03 / Strength</figcaption>
+          </figure>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= RUNNING ASSESSMENT ============= -->
+  <section class="block tight" id="running">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">03 / SPECIALIZED SERVICE</div>
+        <h2>Running Gait <i>Assessment.</i></h2>
+      </div>
+
+      <article class="running-section">
+        <figure class="visual">
+          <img src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=1200&q=80&auto=format&fit=crop" alt="Runner mid-stride on an open road, legs and running shoes in motion" loading="lazy">
+          <span class="stamp">RunEasi · Maui</span>
+        </figure>
+
+        <div class="copy">
+          <span class="eyebrow" data-style="dot">Specialized Service</span>
+
+          <p>Whether you are training for your first race or your fifteenth, our running gait assessment gives you a clear picture of how your body actually moves — and what that means for your injury risk and performance.</p>
+
+          <p>Using a small wearable sensor, we capture real-time data on impact loading, left-right symmetry, cadence, ground contact time, and more. In just a few minutes, you walk away with actionable insights you can use right away to run smarter, recover faster, and stay on the road longer.</p>
+
+          <p style="font-family:var(--mono); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink-95); font-weight:600; margin-top:8px;">What you get from the assessment</p>
+
+          <ul class="running-list">
+            <li>Impact loading rate and shock absorption analysis</li>
+            <li>Left and right symmetry breakdown</li>
+            <li>Cadence and ground contact time data</li>
+            <li>A personalized report with specific recommendations</li>
+          </ul>
+
+          <div style="margin-top: 8px;">
+            <a class="btn" data-variant="primary" href="schedule.html">Request a Running Assessment <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============= FORMATS WE OFFER ============= -->
+  <section class="block" id="formats">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">04 / HOW WE WORK</div>
+        <h2>In-Person and Virtual <i>Care.</i></h2>
+      </div>
+
+      <div class="formats-grid">
+        <article class="format-card">
+          <span class="eyebrow" data-style="num">In-Person</span>
+          <h3>Care in <i>Kīhei.</i></h3>
+          <p>Most of our work happens face-to-face in Kīhei. This is where the hands-on treatment, the manual therapy, and the bulk of the rehabilitation takes place. Sessions are one-to-one, the full appointment, every time.</p>
+        </article>
+
+        <article class="format-card">
+          <span class="eyebrow" data-style="num">Virtual</span>
+          <h3>Virtual <i>Consultations.</i></h3>
+          <p>For patients beyond Maui — or anyone who prefers it — we offer virtual consultations. These are especially useful for follow-up sessions, second opinions, and ongoing wellness check-ins once you have completed your initial treatment plan.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= YOUR JOURNEY ============= -->
+  <section class="block tight" id="journey">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">05 / YOUR JOURNEY</div>
+        <h2>A Clear Path From Recovery to Lasting <i>Wellness.</i></h2>
+      </div>
+
+      <div class="phases">
+        <div class="phase">
+          <span class="marker">i.</span>
+          <span class="label">Phase 01</span>
+          <h3>Evaluate &amp; <i>Relieve.</i></h3>
+          <p>A thorough evaluation followed by a focused treatment plan, typically eight visits, to address the root cause of your discomfort.</p>
+        </div>
+
+        <div class="phase">
+          <span class="marker">ii.</span>
+          <span class="label">Phase 02</span>
+          <h3>Rebuild &amp; <i>Strengthen.</i></h3>
+          <p>Gentle, progressive movement that rebuilds confidence in your body. No gym required, no intimidation.</p>
+        </div>
+
+        <div class="phase">
+          <span class="marker">iii.</span>
+          <span class="label">Phase 03</span>
+          <h3>Maintain &amp; <i>Thrive.</i></h3>
+          <p>Monthly wellness membership for long-term support — personal guidance built on the clinical foundation we created together.</p>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:center; margin-top:var(--gap-l);">
+        <a class="btn" data-variant="outline" href="your-journey.html">Learn More About the Process <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= WHO WE HELP ============= -->
+  <section class="block" id="who">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="num">06 / WHO WE SERVE</div>
+        <h2>Who We Work <i>With.</i></h2>
+      </div>
+
+      <div class="who-grid">
+        <p class="lede">Our services are built for a wide range of patients, including:</p>
+
+        <ul class="who-list">
+          <li>People dealing with persistent lower back pain or stiffness</li>
+          <li>Anyone recovering from surgery or a recent injury</li>
+          <li>Adults experiencing reduced mobility or balance concerns</li>
+          <li>Active patients who want to stay strong and capable as they age</li>
+          <li>Runners, paddlers, and athletes preparing for events or recovering from training</li>
+          <li>Patients who have tried other treatments without lasting results</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= CLOSING CTA ============= -->
+  <section class="block tight">
+    <div class="wrap">
+      <div class="closing-cta">
+        <div>
+          <span class="eyebrow" data-style="rule">Ready When You Are</span>
+          <h2>Not Sure Which Service Is Right For <i>You?</i></h2>
+          <p>That is what a consultation is for. Reach out, share what you are dealing with, and we will help you figure out the right starting point.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" data-variant="primary-bone" href="schedule.html">Request a Consultation <span class="arrow" aria-hidden="true">→</span></a>
+          <span class="meta">A limited number of consultations remain this month</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============= FOOTER ============= -->
+<footer class="footer-strip">
+  <div class="wrap">
+    <div class="word-row">
+      <h2 class="word">Island <i>PT.</i></h2>
+      <a class="word-cta" href="tel:808XXXXXXX">Call to book <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="row">
+      <div>
+        <h5>About</h5>
+        <p>Personalized physical therapy, spine care, and mobility rehabilitation. Rooted in Maui, serving our community with care.</p>
+      </div>
+
+      <div>
+        <h5>Practice</h5>
+        <a href="about.html">About Us</a>
+        <a href="meet-the-team.html">Meet The Team</a>
+        <a href="about.html#journey">Your Journey</a>
+        <a href="about.html#approach">Our Approach</a>
+        <a href="why-cash-pay.html">Why Cash-Pay</a>
+      </div>
+
+      <div>
+        <h5>Services</h5>
+        <a href="services.html">Services Overview</a>
+        <a href="mobile-physical-therapy.html">Mobile Physical Therapy</a>
+        <a href="spine-back-care.html">Spine &amp; Back Care</a>
+        <a href="mobility-balance.html">Mobility &amp; Balance</a>
+        <a href="strength-therapy.html">Strength Therapy</a>
+      </div>
+
+      <div>
+        <h5>Contact</h5>
+        <p class="contact-item"><b>Location</b><br>Kīhei, Maui, Hawaiʻi</p>
+        <p class="contact-item"><b>Tel</b><br><a href="tel:808XXXXXXX" style="padding:0; display:inline">(808) XXX-XXXX</a></p>
+        <p class="contact-item"><b>Email</b><br><a href="mailto:hello@example.com" style="padding:0; display:inline">[email address]</a></p>
+      </div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Island PT · All Rights Reserved</span>
+      <span>
+        <a href="privacy-policy.html" style="display:inline; padding:0">Privacy Policy</a>
+        &nbsp;·&nbsp;
+        <a href="terms.html" style="display:inline; padding:0">Terms &amp; Conditions</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<div class="call-bar" aria-label="Quick call">
+  <a href="tel:808XXXXXXX">
+    <span class="icon" aria-hidden="true">☎</span>
+    Call to book a session
+  </a>
+  <span class="sub">(808) XXX-XXXX · Mon – Fri</span>
+</div>
+
+<script>
+  (function () {
+    const toggle = document.querySelector('.nav-toggle');
+    const drawer = document.getElementById('nav-drawer');
+    if (!toggle || !drawer) return;
+    const close = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      drawer.dataset.open = 'false';
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.removeAttribute('data-drawer');
+    };
+    const open = () => {
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+      drawer.dataset.open = 'true';
+      drawer.setAttribute('aria-hidden', 'false');
+      document.body.setAttribute('data-drawer', 'open');
+    };
+    toggle.addEventListener('click', () => {
+      (toggle.getAttribute('aria-expanded') === 'true' ? close : open)();
+    });
+    drawer.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') close();
+    });
+  })();
+</script>
+
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js"></script>
+<!-- impeccable-live-end -->
+</body>
+</html>

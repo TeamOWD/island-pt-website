@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Terms &amp; Conditions — Island PT, Kīhei Maui</title>
+<meta name="robots" content="noindex" />
+<meta name="description" content="Terms and Conditions for the Island PT website. Use of the site, scheduling, payment, and other policies." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper-00: oklch(98.4% 0.008 82);
+    --paper-05: oklch(96.2% 0.012 82);
+    --paper-10: oklch(93.4% 0.018 82);
+    --paper-15: oklch(89.6% 0.022 82);
+    --paper-25: oklch(82.0% 0.026 82);
+    --ink-95: oklch(16.0% 0.012 82);
+    --ink-80: oklch(28.0% 0.014 82);
+    --ink-60: oklch(46.0% 0.016 82);
+    --ink-40: oklch(64.0% 0.014 82);
+    --ink-20: oklch(78.0% 0.012 82);
+    --ocean-90: oklch(20.0% 0.038 145);
+    --ocean-70: oklch(34.0% 0.060 142);
+    --ocean-55: oklch(46.0% 0.072 140);
+    --coral-55: oklch(56.0% 0.150 38);
+    --coral-65: oklch(64.0% 0.140 40);
+    --sun-70: oklch(78.0% 0.130 82);
+    --sun-55: oklch(64.0% 0.150 70);
+    --bone: oklch(98.8% 0.006 82);
+    --bone-dim: oklch(94.0% 0.008 82);
+    --serif: "Instrument Serif", "Times New Roman", serif;
+    --sans: "Inter", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --t-body: 17px;
+    --gap-m: 24px; --gap-l: 44px; --gap-xl: 72px; --gap-2x: 120px;
+    --r-flat: 2px; --r-soft: 6px; --r-arc: 18px;
+    --line-hair: 1px solid var(--paper-25);
+    --line-bold: 2px solid var(--ink-95);
+    --ease-out-q: cubic-bezier(0.22, 1, 0.36, 1);
+    --dur-fast: 140ms; --dur-mid: 240ms;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0; background: var(--paper-10); color: var(--ink-95);
+    font-family: var(--sans); font-size: var(--t-body); line-height: 1.55;
+    -webkit-font-smoothing: antialiased; overflow-x: clip;
+  }
+  a { color: inherit; } img { display: block; max-width: 100%; }
+  button { font: inherit; cursor: pointer; }
+  .skip { position: absolute; left: -9999px; top: 0; background: var(--ocean-90); color: var(--bone); padding: 12px 18px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; z-index: 100; }
+  .skip:focus { left: 16px; top: 16px; }
+  .wrap { max-width: 1350px; margin: 0 auto; padding: 0 25px; }
+
+  /* TOP BAR */
+  .top-bar { background: var(--ocean-90); color: var(--bone); border-bottom: 1px solid oklch(40% 0.014 82); }
+  .top-bar-row {
+    max-width: none; display: flex; align-items: center; justify-content: space-between;
+    gap: 18px; padding: 12px 24px; font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: oklch(94% 0.008 82 / 0.9);
+  }
+  .top-bar-row .stars { color: var(--sun-70); letter-spacing: 0.12em; }
+  .top-bar-row a { text-decoration: none; transition: color var(--dur-fast) var(--ease-out-q); }
+  .top-bar-row a:hover { color: var(--sun-70); }
+  .top-bar-row .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--sun-70); display: inline-block; margin: 0 14px; vertical-align: middle; }
+  @media (max-width: 720px) { .top-bar-row .areas, .top-bar-row .dot { display: none; } }
+
+  /* NAV */
+  .nav { display: flex; align-items: center; justify-content: space-between; background: var(--paper-00); border-bottom: var(--line-bold); padding: 18px 0; position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1350px; margin: 0 auto; padding: 0 25px; display: flex; align-items: center; justify-content: space-between; width: 100%; gap: var(--gap-m); }
+  .nav .brand { display: inline-flex; align-items: center; text-decoration: none; color: var(--ink-95); line-height: 1; }
+  .nav .brand img { display: block; height: 55px; width: auto; }
+  @media (max-width: 720px) { .nav .brand img { height: 44px; } }
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 28px; font-size: 15px; }
+  .nav > .nav-inner > ul > li { display: inline-flex; align-items: center; }
+  .nav ul a { text-decoration: none; color: var(--ink-95); padding: 6px 2px; border-bottom: 1.5px solid transparent; transition: border-color var(--dur-fast) var(--ease-out-q); }
+  .nav ul a:hover, .nav ul a[aria-current="page"] { border-bottom-color: var(--ocean-70); }
+  .nav-cta { background: var(--ocean-70); color: var(--bone); padding: 12px 18px; text-decoration: none; font-size: 14px; font-weight: 600; border-radius: var(--r-flat); transition: background var(--dur-fast) var(--ease-out-q); }
+  .nav-cta:hover { background: var(--ocean-90); }
+  .nav .has-submenu { position: relative; }
+  .nav .submenu-trigger { appearance: none; background: transparent; border: 0; font-family: inherit; font-size: 15px; color: var(--ink-95); padding: 6px 2px; cursor: pointer; border-bottom: 1.5px solid transparent; display: inline-flex; align-items: center; gap: 6px; transition: border-color var(--dur-fast) var(--ease-out-q); }
+  .nav .submenu-trigger .caret { font-size: 10px; transition: transform var(--dur-fast) var(--ease-out-q); line-height: 1; }
+  .nav .has-submenu:hover .submenu-trigger, .nav .has-submenu:focus-within .submenu-trigger { border-bottom-color: var(--ocean-70); }
+  .nav .has-submenu:hover .submenu-trigger .caret, .nav .has-submenu:focus-within .submenu-trigger .caret { transform: rotate(180deg); }
+  .nav .submenu { position: absolute; top: 100%; left: -18px; min-width: 240px; background: var(--paper-00); border: var(--line-bold); border-radius: var(--r-flat); padding: 8px 0; margin: 0; list-style: none; display: flex; flex-direction: column; gap: 0; opacity: 0; pointer-events: none; transform: translateY(-4px); transition: opacity 140ms var(--ease-out-q), transform 140ms var(--ease-out-q); z-index: 60; }
+  .nav .submenu::before { content: ""; position: absolute; top: -18px; left: 0; right: 0; height: 18px; }
+  .nav .has-submenu:hover .submenu, .nav .has-submenu:focus-within .submenu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .nav .submenu li { border: 0; }
+  .nav .submenu a { display: block; padding: 12px 22px; font-size: 14px; color: var(--ink-95); border-bottom: 0; white-space: nowrap; transition: background var(--dur-fast) var(--ease-out-q), color var(--dur-fast) var(--ease-out-q); }
+  .nav .submenu a:hover { background: var(--paper-10); color: var(--ocean-70); }
+  .drawer-group { width: 100%; }
+  .drawer-group summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 22px 4px; font-family: var(--serif); font-size: 28px; line-height: 1; letter-spacing: -0.018em; color: var(--ink-95); }
+  .drawer-group summary::-webkit-details-marker { display: none; }
+  .drawer-group summary::after { content: "+"; font-family: var(--mono); font-size: 22px; color: var(--ocean-70); }
+  .drawer-group[open] summary::after { content: "–"; }
+  .drawer-group .drawer-sub { border-top: 0; padding: 0 0 14px 16px; margin: 0; border-left: 1.5px solid var(--ocean-70); margin-left: 4px; }
+  .drawer-group .drawer-sub li { border-bottom: 0; }
+  .drawer-group .drawer-sub a { padding: 12px 0; font-size: 18px; font-family: var(--serif); letter-spacing: -0.01em; }
+  .nav-toggle { display: none; appearance: none; background: transparent; border: 1.5px solid var(--ink-95); border-radius: var(--r-flat); width: 44px; height: 44px; align-items: center; justify-content: center; padding: 0; cursor: pointer; }
+  .nav-toggle:focus-visible { outline: 2px solid var(--coral-55); outline-offset: 3px; }
+  .nav-toggle .bars { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+  .nav-toggle .bars span { display: block; width: 18px; height: 1.5px; background: var(--ink-95); transition: transform var(--dur-fast) var(--ease-out-q), opacity var(--dur-fast) var(--ease-out-q); }
+  .nav-toggle[aria-expanded="true"] .bars span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .bars span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .bars span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+  .nav-drawer { display: none; position: fixed; inset: 64px 0 0 0; background: var(--paper-00); z-index: 49; padding: 32px 25px 120px; overflow-y: auto; }
+  .nav-drawer[data-open="true"] { display: block; }
+  .nav-drawer > ul { list-style: none; margin: 0 0 32px; padding: 0; display: flex; flex-direction: column; gap: 0; border-top: var(--line-bold); }
+  .nav-drawer > ul > li { border-bottom: var(--line-hair); }
+  .nav-drawer > ul > li > a { display: block; padding: 22px 4px; text-decoration: none; color: var(--ink-95); font-family: var(--serif); font-size: 28px; line-height: 1; letter-spacing: -0.018em; }
+  .nav-drawer a { text-decoration: none; color: var(--ink-95); }
+  .nav-drawer .drawer-cta-row { display: flex; flex-direction: column; gap: 14px; padding-top: 32px; border-top: var(--line-hair); }
+  .nav-drawer .drawer-cta-row .btn { justify-content: center; }
+  .nav-drawer .drawer-meta { margin-top: 28px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-60); line-height: 1.8; }
+  .call-bar { display: none; position: fixed; left: 0; right: 0; bottom: 0; background: var(--ocean-90); color: var(--bone); z-index: 60; padding: 14px 18px; border-top: 1.5px solid oklch(40% 0.014 82); }
+  .call-bar a { display: flex; align-items: center; justify-content: center; gap: 12px; font-family: var(--sans); font-weight: 600; font-size: 16px; text-decoration: none; padding: 12px 18px; border-radius: var(--r-soft); background: var(--bone); color: var(--ocean-90); }
+  .call-bar a .icon { font-family: var(--serif); font-style: italic; font-size: 20px; line-height: 1; }
+  .call-bar .sub { text-align: center; display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: oklch(94% 0.008 82 / 0.75); margin-top: 8px; }
+  @media (max-width: 860px) { .nav ul { display: none; } .nav .nav-cta { display: none; } .nav-toggle { display: inline-flex; } body[data-drawer="open"] { overflow: hidden; } .call-bar { display: block; } main, footer { padding-bottom: 96px; } }
+
+  /* EYEBROWS */
+  .eyebrow { display: inline-flex; align-items: center; gap: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-95); font-weight: 600; }
+  .eyebrow[data-style="rule"]::before { content: ""; width: 36px; height: 1.5px; background: var(--ocean-70); }
+  .eyebrow.on-dark { color: oklch(94% 0.008 82 / 0.9); }
+  .eyebrow.on-dark[data-style="rule"]::before { background: var(--sun-70); }
+
+  /* BUTTONS */
+  .btn { appearance: none; border: 1.5px solid; padding: 14px 22px; font-family: var(--sans); font-size: 16px; font-weight: 600; border-radius: var(--r-soft); display: inline-flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; transition: background var(--dur-fast) var(--ease-out-q), color var(--dur-fast) var(--ease-out-q); }
+  .btn[data-variant="primary"] { background: var(--ocean-70); color: var(--bone); border-color: var(--ocean-70); }
+  .btn[data-variant="primary"]:hover { background: var(--ocean-90); border-color: var(--ocean-90); }
+  .btn[data-variant="outline"] { background: transparent; color: var(--ocean-70); border-color: var(--ocean-70); }
+  .btn[data-variant="outline"]:hover { background: var(--ocean-70); color: var(--bone); }
+  .btn[data-variant="primary-bone"] { background: var(--bone); color: var(--ocean-90); border-color: var(--bone); }
+  .btn[data-variant="primary-bone"]:hover { background: transparent; color: var(--bone); }
+  .btn[data-variant="outline-bone"] { background: transparent; color: var(--bone); border-color: var(--bone); }
+  .btn[data-variant="outline-bone"]:hover { background: var(--bone); color: var(--ocean-90); }
+  .btn .arrow { transition: transform var(--dur-mid) var(--ease-out-q); }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* LEGAL HERO · drenched */
+  .legal-hero {
+    background: var(--ocean-90); color: var(--bone);
+    border-radius: var(--r-arc);
+    margin-top: 28px;
+    padding: 64px 64px 56px;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: var(--gap-l); align-items: end;
+  }
+  .legal-hero .copy { display: flex; flex-direction: column; gap: 18px; }
+  .legal-hero .eyebrow { color: oklch(94% 0.008 82 / 0.85); }
+  .legal-hero .eyebrow[data-style="rule"]::before { background: var(--sun-70); }
+  .legal-hero h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(48px, 6.4vw, 96px);
+    line-height: 1.0; letter-spacing: -0.024em;
+    margin: 0; color: var(--bone); max-width: 14ch;
+  }
+  .legal-hero h1 i { color: var(--sun-70); font-style: italic; }
+  .legal-hero .meta {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: oklch(94% 0.008 82 / 0.7); font-weight: 600;
+    display: flex; flex-direction: column; gap: 8px;
+    text-align: right;
+  }
+  @media (max-width: 720px) {
+    .legal-hero { grid-template-columns: 1fr; padding: 36px 28px; }
+    .legal-hero .meta { text-align: left; }
+  }
+
+  /* IMPORTANT NOTE CALLOUT */
+  .note-callout {
+    background: var(--paper-15);
+    border: 1.5px solid var(--ink-20);
+    border-radius: var(--r-soft);
+    padding: 32px 36px;
+    margin: var(--gap-xl) 0 0;
+    display: grid; grid-template-columns: 180px 1fr;
+    gap: var(--gap-l); align-items: start;
+  }
+  .note-callout .label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--coral-55); font-weight: 700;
+    padding-top: 6px;
+  }
+  .note-callout p {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(17px, 1.4vw, 19px); line-height: 1.55;
+    color: var(--ink-80); margin: 0; max-width: 72ch;
+  }
+  @media (max-width: 720px) { .note-callout { grid-template-columns: 1fr; gap: 14px; padding: 24px 22px; } }
+
+  /* LONG-FORM BODY */
+  .legal-body {
+    display: grid; grid-template-columns: 220px 1fr;
+    gap: var(--gap-xl); align-items: start;
+    padding: var(--gap-xl) 0 var(--gap-2x);
+  }
+  .legal-toc {
+    position: sticky; top: 100px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-60); font-weight: 600;
+  }
+  .legal-toc h2 {
+    margin: 0 0 18px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-95); font-weight: 700;
+    padding-top: 12px; border-top: var(--line-bold);
+  }
+  .legal-toc ol {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .legal-toc a {
+    text-decoration: none; color: var(--ink-60);
+    transition: color var(--dur-fast) var(--ease-out-q);
+    display: block; line-height: 1.5;
+  }
+  .legal-toc a:hover { color: var(--ocean-70); }
+
+  .legal-content { display: flex; flex-direction: column; gap: var(--gap-l); }
+  .legal-content section { display: flex; flex-direction: column; gap: 16px; scroll-margin-top: 100px; }
+  .legal-content h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.1; letter-spacing: -0.018em;
+    color: var(--ink-95); margin: 0; max-width: 22ch;
+  }
+  .legal-content h2 i { color: var(--ocean-70); font-style: italic; }
+  .legal-content h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(22px, 2vw, 26px);
+    line-height: 1.2; letter-spacing: -0.012em;
+    color: var(--ink-95); margin: 14px 0 0;
+  }
+  .legal-content p {
+    font-size: var(--t-body); line-height: 1.75; color: var(--ink-80);
+    margin: 0; max-width: 72ch;
+  }
+  .legal-content ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .legal-content ul li {
+    display: grid; grid-template-columns: 16px 1fr; gap: 14px;
+    align-items: start;
+    font-size: var(--t-body); line-height: 1.6; color: var(--ink-80);
+    max-width: 72ch;
+  }
+  .legal-content ul li::before {
+    content: ""; width: 6px; height: 1.5px; background: var(--ocean-70);
+    margin-top: 14px;
+  }
+  .legal-content .contact-block {
+    margin-top: 22px; padding-top: 18px; border-top: var(--line-hair);
+    font-family: var(--sans); font-size: var(--t-body); line-height: 1.7; color: var(--ink-80);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .legal-content .contact-block b { font-weight: 600; color: var(--ink-95); }
+  @media (max-width: 860px) {
+    .legal-body { grid-template-columns: 1fr; gap: 32px; }
+    .legal-toc { position: static; }
+  }
+
+  /* FOOTER */
+  .footer-strip { background: var(--ink-95); color: var(--bone); padding: 80px 0 36px; margin-top: var(--gap-xl); }
+  .footer-strip .word-row { display: grid; grid-template-columns: 1fr auto; gap: var(--gap-l); align-items: end; margin: 0 0 48px; }
+  .footer-strip .word { font-family: var(--serif); font-weight: 400; font-size: clamp(56px, 9vw, 96px); line-height: 1; letter-spacing: -0.025em; margin: 0; color: var(--bone); }
+  .footer-strip .word i { color: var(--sun-70); font-style: italic; }
+  .footer-strip .word-cta { display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; background: var(--bone); color: var(--ink-95); font-family: var(--sans); font-size: 15px; font-weight: 600; text-decoration: none; border-radius: var(--r-soft); border: 1.5px solid var(--bone); align-self: end; white-space: nowrap; transition: background var(--dur-fast) var(--ease-out-q), color var(--dur-fast) var(--ease-out-q); }
+  .footer-strip .word-cta:hover { background: transparent; color: var(--bone); }
+  .footer-strip .word-cta .arrow { transition: transform var(--dur-mid) var(--ease-out-q); }
+  .footer-strip .word-cta:hover .arrow { transform: translateX(3px); }
+  .footer-strip .row { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: var(--gap-l); padding-bottom: 48px; border-bottom: 1px solid oklch(40% 0.014 82); }
+  .footer-strip h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sun-70); font-weight: 600; margin: 0 0 18px; }
+  .footer-strip a { display: block; color: oklch(94% 0.008 82 / 0.85); text-decoration: none; padding: 4px 0; font-size: 14px; transition: color var(--dur-fast) var(--ease-out-q); }
+  .footer-strip a:hover { color: var(--bone); }
+  .footer-strip p { font-size: 14px; max-width: 38ch; opacity: 0.85; margin: 0; line-height: 1.6; }
+  .footer-strip .contact-item { font-size: 14px; line-height: 1.6; color: oklch(94% 0.008 82 / 0.85); margin: 0 0 8px; }
+  .footer-strip .contact-item b { color: var(--bone); font-weight: 600; }
+  .footer-strip .legal { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 28px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: oklch(94% 0.008 82 / 0.6); }
+  @media (max-width: 720px) { .footer-strip .word-row { grid-template-columns: 1fr; align-items: start; gap: 24px; } .footer-strip .word-cta { justify-self: start; } }
+  @media (max-width: 860px) { .footer-strip .row { grid-template-columns: 1fr; gap: 32px; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-row">
+    <span><span class="stars">★★★★★</span> &nbsp; Rated 5.0 based on [#] Google Reviews</span>
+    <span>
+      <span class="areas">Areas We Visit</span>
+      <span class="dot" aria-hidden="true"></span>
+      <a href="tel:808XXXXXXX">(808) XXX-XXXX</a>
+    </span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Island PT — home">
+      <img src="img/IPH_Logo.webp" alt="Island PT">
+    </a>
+    <ul role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li class="has-submenu">
+        <button type="button" class="submenu-trigger" aria-expanded="false" aria-controls="sub-services">Services <span class="caret" aria-hidden="true">▾</span></button>
+        <ul id="sub-services" class="submenu" role="list">
+          <li><a href="services.html">Services Overview</a></li>
+          <li><a href="mobile-physical-therapy.html">Mobile Physical Therapy</a></li>
+        </ul>
+      </li>
+      <li><a href="service-area.html">Service Area</a></li>
+      <li><a href="why-cash-pay.html">Why Cash-Pay</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="schedule.html">Schedule</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="nav-drawer" aria-expanded="false">
+      <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</nav>
+
+<aside class="nav-drawer" id="nav-drawer" data-open="false" aria-hidden="true">
+  <ul role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li>
+      <details class="drawer-group">
+        <summary>Services</summary>
+        <ul role="list" class="drawer-sub">
+          <li><a href="services.html">Services Overview</a></li>
+          <li><a href="mobile-physical-therapy.html">Mobile Physical Therapy</a></li>
+        </ul>
+      </details>
+    </li>
+    <li><a href="service-area.html">Service Area</a></li>
+    <li><a href="why-cash-pay.html">Why Cash-Pay</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="drawer-cta-row">
+    <a class="btn" data-variant="primary" href="schedule.html">Schedule <span class="arrow" aria-hidden="true">→</span></a>
+    <a class="btn" data-variant="outline" href="tel:808XXXXXXX">Call to book <span class="arrow" aria-hidden="true">→</span></a>
+  </div>
+  <p class="drawer-meta">Mon – Fri · 8 AM – 6 PM<br>Kīhei, Maui · In-home visits</p>
+</aside>
+
+<main id="main">
+
+  <div class="wrap">
+
+    <!-- HERO -->
+    <section class="legal-hero" aria-labelledby="hero-h">
+      <div class="copy">
+        <span class="eyebrow" data-style="rule">Legal</span>
+        <h1 id="hero-h">Terms &amp; <i>Conditions.</i></h1>
+      </div>
+      <div class="meta">
+        <span>Effective</span>
+        <span>Last Updated · [Month Day, Year]</span>
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <div class="legal-body">
+
+      <aside class="legal-toc" aria-label="Section index">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#intro">Welcome to Island PT</a></li>
+          <li><a href="#sec-1">1. Use of the Site</a></li>
+          <li><a href="#sec-2">2. Not Medical Advice</a></li>
+          <li><a href="#sec-3">3. Appointments, Cancellations &amp; Payment</a></li>
+          <li><a href="#sec-4">4. Intellectual Property</a></li>
+          <li><a href="#sec-5">5. Information You Submit</a></li>
+          <li><a href="#sec-6">6. Links to Other Websites</a></li>
+          <li><a href="#sec-7">7. Disclaimer of Warranties</a></li>
+          <li><a href="#sec-8">8. Limitation of Liability</a></li>
+          <li><a href="#sec-9">9. Indemnification</a></li>
+          <li><a href="#sec-10">10. Governing Law</a></li>
+          <li><a href="#sec-11">11. Changes to These Terms</a></li>
+          <li><a href="#sec-12">12. Termination</a></li>
+          <li><a href="#sec-13">13. Contact Us</a></li>
+        </ol>
+      </aside>
+
+      <div class="legal-content">
+
+        <section id="intro">
+          <h2>Welcome to Island <i>PT.</i></h2>
+          <p>These Terms and Conditions ("Terms") govern your use of the Island PT website at islandptmaui.com (the "Site") and any services offered through it. By using this Site or scheduling an appointment with us, you agree to be bound by these Terms. If you do not agree, please do not use the Site.</p>
+          <p>Island PT ("we," "us," or "our") is a physical therapy practice located in Kīhei, Maui, Hawaiʻi. These Terms apply to all visitors, patients, and users of the Site.</p>
+        </section>
+
+        <section id="sec-1">
+          <h2>1. Use of the <i>Site.</i></h2>
+          <p>You may use this Site for lawful purposes only. By using it, you agree not to:</p>
+          <ul>
+            <li>Use the Site in any way that violates federal, state, or local laws</li>
+            <li>Attempt to gain unauthorized access to any portion of the Site or our systems</li>
+            <li>Interfere with the operation of the Site, including by introducing viruses or malicious code</li>
+            <li>Use the Site to harass, threaten, or harm any other person</li>
+            <li>Reproduce, distribute, or republish any content from the Site without our written permission</li>
+          </ul>
+        </section>
+
+        <section id="sec-2">
+          <h2>2. Not medical <i>advice.</i></h2>
+          <p>The information on this Site — including blog posts, service descriptions, and any general health content — is provided for informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+          <p>Reading information on this Site does not create a patient-provider relationship between you and Island PT. A patient-provider relationship is only established once you have scheduled and attended an appointment with us in person or through a virtual consultation.</p>
+          <p>Always consult a qualified healthcare professional before starting any new exercise program, treatment, or change in your care. If you believe you are experiencing a medical emergency, call 911 immediately.</p>
+        </section>
+
+        <section id="sec-3">
+          <h2>3. Appointments, cancellations &amp; <i>payment.</i></h2>
+
+          <h3>Scheduling</h3>
+          <p>Appointments can be requested through the contact form on our Site or by reaching out to us directly. Submitting a request does not guarantee an appointment; we will follow up to confirm availability.</p>
+
+          <h3>Cancellation Policy</h3>
+          <p>We ask that you provide at least [24 / 48] hours’ notice if you need to cancel or reschedule an appointment. Cancellations with less than [24 / 48] hours’ notice may be subject to a [$XX] fee, charged at our discretion.</p>
+
+          <h3>Late Arrivals</h3>
+          <p>If you arrive late to your appointment, your session may be shortened to avoid impacting other patients. Full session fees still apply.</p>
+
+          <h3>Payment</h3>
+          <p>Payment is due at the time of service unless other arrangements have been made in writing. We accept [list payment methods accepted]. Insurance billing arrangements, if applicable, are subject to our separate insurance and billing policy.</p>
+        </section>
+
+        <section id="sec-4">
+          <h2>4. Intellectual <i>property.</i></h2>
+          <p>All content on this Site — including text, images, logos, graphics, videos, and the overall design — is the property of Island PT or our licensors and is protected by United States and international copyright and trademark laws.</p>
+          <p>You may view and download content from this Site for your own personal, non-commercial use only. You may not copy, modify, distribute, sell, or republish any portion of this Site without our prior written consent.</p>
+        </section>
+
+        <section id="sec-5">
+          <h2>5. Information you <i>submit.</i></h2>
+          <p>When you submit information through forms on this Site — such as appointment requests, contact inquiries, or newsletter signups — you agree that the information you provide is accurate and complete.</p>
+          <p>Any personal or health information you submit is handled in accordance with our <a href="privacy-policy.html" style="border-bottom:1.5px solid var(--ocean-70); text-decoration:none; color:var(--ocean-70)">Privacy Policy</a>. We do not share your information with third parties except as described in that Privacy Policy or as required by law.</p>
+        </section>
+
+        <section id="sec-6">
+          <h2>6. Links to other <i>websites.</i></h2>
+          <p>This Site may contain links to third-party websites that are not owned or controlled by Island PT. We are not responsible for the content, privacy policies, or practices of any third-party sites. Use of any linked site is at your own risk, and we encourage you to review the terms and privacy policies of any site you visit.</p>
+        </section>
+
+        <section id="sec-7">
+          <h2>7. Disclaimer of <i>warranties.</i></h2>
+          <p>This Site and its content are provided on an "as is" and "as available" basis. To the fullest extent permitted by law, Island PT makes no warranties of any kind, whether express or implied, regarding:</p>
+          <ul>
+            <li>The accuracy, completeness, or reliability of the information on this Site</li>
+            <li>The continuous, uninterrupted, or error-free operation of this Site</li>
+            <li>The results you may obtain from using the Site or any services described on it</li>
+          </ul>
+          <p>Your use of this Site is at your own risk.</p>
+        </section>
+
+        <section id="sec-8">
+          <h2>8. Limitation of <i>liability.</i></h2>
+          <p>To the fullest extent permitted by law, Island PT and its owners, employees, and contractors will not be liable for any indirect, incidental, special, or consequential damages arising out of or related to your use of this Site — including but not limited to lost profits, lost data, or business interruption — even if we have been advised of the possibility of such damages.</p>
+          <p>Nothing in these Terms limits any liability that cannot be limited under applicable law, including liability for personal injury caused by negligence in the actual provision of physical therapy services.</p>
+        </section>
+
+        <section id="sec-9">
+          <h2>9. <i>Indemnification.</i></h2>
+          <p>You agree to defend, indemnify, and hold harmless Island PT and its owners, employees, and contractors from any claims, damages, losses, or expenses (including reasonable attorney fees) arising out of your use of this Site, your violation of these Terms, or your violation of any rights of another party.</p>
+        </section>
+
+        <section id="sec-10">
+          <h2>10. Governing <i>law.</i></h2>
+          <p>These Terms are governed by the laws of the State of Hawaiʻi, without regard to its conflict of laws principles. Any dispute arising out of or related to these Terms or your use of this Site will be subject to the exclusive jurisdiction of the state and federal courts located in Maui County, Hawaiʻi.</p>
+        </section>
+
+        <section id="sec-11">
+          <h2>11. Changes to these <i>terms.</i></h2>
+          <p>We may update these Terms from time to time. When we do, we will update the "Last Updated" date at the top of this page. Continued use of this Site after changes are posted means you accept the updated Terms.</p>
+        </section>
+
+        <section id="sec-12">
+          <h2>12. <i>Termination.</i></h2>
+          <p>We reserve the right to suspend or terminate your access to this Site at any time, without notice, if we believe you have violated these Terms or engaged in conduct we consider harmful to our practice, our patients, or other users.</p>
+        </section>
+
+        <section id="sec-13">
+          <h2>13. Contact <i>us.</i></h2>
+          <p>If you have any questions about these Terms, you can reach us at:</p>
+          <div class="contact-block">
+            <span><b>Island PT</b></span>
+            <span><b>Location:</b> Kīhei, Maui, Hawaiʻi</span>
+            <span><b>Tel:</b> <a href="tel:808XXXXXXX" style="border-bottom:1.5px solid var(--ocean-70); text-decoration:none; color:var(--ocean-70)">(808) XXX-XXXX</a></span>
+            <span><b>Email:</b> [email address]</span>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer-strip">
+  <div class="wrap">
+    <div class="word-row">
+      <h2 class="word">Island <i>PT.</i></h2>
+      <a class="word-cta" href="tel:808XXXXXXX">Call to book <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+    <div class="row">
+      <div>
+        <h5>About</h5>
+        <p>Personalized physical therapy, spine care, and mobility rehabilitation. Rooted in Maui — serving our community with care.</p>
+      </div>
+      <div>
+        <h5>Practice</h5>
+        <a href="about.html">About Us</a>
+        <a href="#">Your Journey</a>
+        <a href="#">Running Assessment</a>
+        <a href="#">Our Approach</a>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="#">Spine &amp; Back Care</a>
+        <a href="#">Mobility &amp; Balance</a>
+        <a href="#">Strength Therapy</a>
+        <a href="#">Wellness Membership</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <p class="contact-item"><b>Location</b><br>Kīhei, Maui, Hawaiʻi</p>
+        <p class="contact-item"><b>Tel</b><br><a href="tel:808XXXXXXX" style="padding:0; display:inline">(808) XXX-XXXX</a></p>
+        <p class="contact-item"><b>Email</b><br><a href="mailto:hello@example.com" style="padding:0; display:inline">[email address]</a></p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Island PT · All Rights Reserved</span>
+      <span>
+        <a href="privacy-policy.html" style="display:inline; padding:0">Privacy Policy</a>
+        &nbsp;·&nbsp;
+        <a href="terms.html" style="display:inline; padding:0">Terms &amp; Conditions</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<div class="call-bar" aria-label="Quick call">
+  <a href="tel:808XXXXXXX">
+    <span class="icon" aria-hidden="true">☎</span>
+    Call to book a session
+  </a>
+  <span class="sub">(808) XXX-XXXX · Mon – Fri</span>
+</div>
+
+<script>
+  (function () {
+    const toggle = document.querySelector('.nav-toggle');
+    const drawer = document.getElementById('nav-drawer');
+    if (!toggle || !drawer) return;
+    const close = () => { toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open menu'); drawer.dataset.open = 'false'; drawer.setAttribute('aria-hidden', 'true'); document.body.removeAttribute('data-drawer'); };
+    const open = () => { toggle.setAttribute('aria-expanded', 'true'); toggle.setAttribute('aria-label', 'Close menu'); drawer.dataset.open = 'true'; drawer.setAttribute('aria-hidden', 'false'); document.body.setAttribute('data-drawer', 'open'); };
+    toggle.addEventListener('click', () => { (toggle.getAttribute('aria-expanded') === 'true' ? close : open)(); });
+    drawer.addEventListener('click', (e) => { if (e.target.tagName === 'A') close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') close(); });
+  })();
+</script>
+
+<!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js"></script>
+<!-- impeccable-live-end -->
+</body>
+</html>
