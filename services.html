@@ -438,8 +438,6 @@
     .services-hero .photo { min-height: 320px; }
     .services-hero .copy { padding: 36px 28px 32px; }
   }
-    .services-hero .photo { min-height: 360px; }
-  }
 
   /* =================================================================
      SECTION CHROME
@@ -450,20 +448,31 @@
   section.block.drenched { background: var(--ocean-90); color: var(--bone); }
 
   .section-head {
-    display: grid; grid-template-columns: 220px 1fr; gap: var(--gap-m);
-    align-items: end; margin-bottom: var(--gap-xl);
+    display: grid; grid-template-columns: minmax(180px, 220px) 1fr;
+    gap: var(--gap-l);
+    align-items: end; margin-bottom: var(--gap-l);
   }
   .section-head .num {
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
     color: var(--ink-60); font-weight: 600;
     padding-top: 12px; border-top: var(--line-bold); align-self: start;
+    max-width: 22ch;
   }
   .section-head h2 {
     font-family: var(--serif); font-weight: 400;
     font-size: clamp(34px, 4.4vw, 56px);
     line-height: 1.04; letter-spacing: -0.018em;
-    margin: 0; max-width: 18ch;
+    margin: 0; max-width: 20ch;
   }
+  .section-lead {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(20px, 1.85vw, 26px); line-height: 1.4;
+    color: var(--ocean-70); margin: 0 0 var(--gap-l);
+    max-width: 52ch;
+    text-wrap: balance;
+  }
+  section.block.dark .section-lead,
+  section.block.drenched .section-lead { color: var(--sun-70); }
   .section-head h2 i { color: var(--ocean-70); font-style: italic; }
   section.block.dark .section-head .num,
   section.block.drenched .section-head .num { color: oklch(94% 0.008 82 / 0.55); border-top-color: var(--sun-70); }
@@ -501,7 +510,7 @@
   /* =================================================================
      SPREAD (Three Specialties)
      ================================================================= */
-  .spread { display: flex; flex-direction: column; gap: 110px; }
+  .spread { display: flex; flex-direction: column; gap: var(--gap-2x); }
   .spread-row { display: grid; align-items: center; gap: var(--gap-xl); }
   .spread-row[data-layout="portrait-left"]   { grid-template-columns: 5fr 7fr; }
   .spread-row[data-layout="text-led"]        { grid-template-columns: 7fr 5fr; align-items: end; }
@@ -519,7 +528,7 @@
   .spread-media:hover img { transform: scale(1.02); }
   .spread-row[data-layout="portrait-left"] .spread-media { aspect-ratio: 4 / 5; }
   .spread-row[data-layout="text-led"] .spread-media.small { aspect-ratio: 1 / 1; max-width: 380px; justify-self: end; width: 100%; }
-  .spread-row[data-layout="overlay"] .spread-media.overlay { aspect-ratio: 16 / 7; border-radius: var(--r-arc); position: relative; }
+  .spread-row[data-layout="overlay"] .spread-media.overlay { aspect-ratio: 16 / 9; border-radius: var(--r-arc); position: relative; min-height: 480px; }
   .spread-row[data-layout="overlay"] .spread-media.overlay::after {
     content: ""; position: absolute; inset: 0;
     background:
@@ -535,9 +544,10 @@
   }
 
   .overlay-copy {
-    position: absolute; bottom: 36px; left: 36px; right: 36px;
+    position: absolute; bottom: 44px; left: 44px; right: 44px;
     z-index: 1; color: var(--bone);
-    max-width: 36ch;
+    max-width: 56ch;
+    display: flex; flex-direction: column; gap: 14px;
   }
   .overlay-copy .eyebrow { color: var(--bone); }
   .overlay-copy .eyebrow[data-style="dot"]::before { background: var(--sun-70); }
@@ -545,7 +555,7 @@
     font-family: var(--serif); font-weight: 400;
     font-size: clamp(30px, 3.6vw, 48px);
     line-height: 1.04; letter-spacing: -0.02em;
-    color: var(--bone); margin: 12px 0 14px; max-width: 18ch;
+    color: var(--bone); margin: 6px 0 0; max-width: 18ch;
     text-shadow: 0 1px 16px oklch(14% 0.040 145 / 0.6);
   }
   .overlay-copy h3 i { color: var(--sun-70); font-style: italic; }
@@ -554,6 +564,22 @@
     color: oklch(98% 0.006 82 / 0.96); max-width: 52ch; margin: 0;
     text-shadow: 0 1px 16px oklch(14% 0.040 145 / 0.6);
   }
+  .overlay-copy .focus-tags {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: oklch(98% 0.006 82 / 0.85); font-weight: 600;
+    margin-top: 6px;
+  }
+  .overlay-copy .read-link {
+    margin-top: 4px; align-self: flex-start;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--sun-70);
+    text-decoration: none; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 10px;
+    border-bottom: 1.5px solid var(--sun-70);
+    padding-bottom: 6px;
+  }
+  .overlay-copy .read-link::after { content: "→"; transition: transform var(--dur-fast) var(--ease-out-q); }
+  .overlay-copy .read-link:hover::after { transform: translateX(4px); }
 
   .spread-copy { display: flex; flex-direction: column; gap: 16px; }
   .spread-copy h3 {
@@ -589,12 +615,12 @@
   .spread-copy .read-link:hover::after { transform: translateX(4px); }
 
   @media (max-width: 860px) {
-    .spread { gap: 64px; }
+    .spread { gap: var(--gap-xl); }
     .spread-row[data-layout="portrait-left"],
-    .spread-row[data-layout="text-led"] { grid-template-columns: 1fr; gap: 28px; }
+    .spread-row[data-layout="text-led"] { grid-template-columns: 1fr; gap: var(--gap-m); }
     .spread-row[data-layout="text-led"] .spread-media.small { justify-self: start; }
-    .spread-row[data-layout="overlay"] .spread-media.overlay { aspect-ratio: 4 / 5; }
-    .overlay-copy { left: 22px; right: 22px; bottom: 22px; }
+    .spread-row[data-layout="overlay"] .spread-media.overlay { aspect-ratio: 4 / 5; min-height: 0; }
+    .overlay-copy { left: 24px; right: 24px; bottom: 24px; }
   }
 
   /* =================================================================
@@ -650,6 +676,7 @@
     margin-top: 2px;
     border-radius: var(--r-flat);
   }
+  .running-cta { align-self: flex-start; margin-top: 6px; }
   @media (max-width: 860px) {
     .running-section { grid-template-columns: 1fr; padding: 36px 24px; gap: 36px; }
     .running-section .visual { max-width: 380px; }
@@ -718,6 +745,10 @@
     font-size: var(--t-body); line-height: 1.6; color: var(--ink-80);
     margin: 6px 0 0; max-width: 36ch;
   }
+  .journey-cta-row {
+    display: flex; justify-content: center;
+    margin-top: var(--gap-l);
+  }
   @media (max-width: 860px) {
     .phases { grid-template-columns: 1fr; }
     .phase { border-right: 0; border-bottom: var(--line-bold); }
@@ -772,11 +803,12 @@
   }
   .closing-cta .eyebrow { color: oklch(94% 0.008 82 / 0.85); }
   .closing-cta .eyebrow[data-style="rule"]::before { background: var(--sun-70); }
+  .closing-cta-copy { display: flex; flex-direction: column; gap: 20px; }
   .closing-cta h2 {
     font-family: var(--serif); font-weight: 400;
     font-size: clamp(44px, 6vw, 80px);
     line-height: 1.0; letter-spacing: -0.024em;
-    margin: 18px 0 18px; max-width: 16ch;
+    margin: 0; max-width: 16ch;
   }
   .closing-cta h2 i { color: var(--sun-70); font-style: italic; }
   .closing-cta p {
@@ -996,7 +1028,7 @@
         <div class="num">02 / SPECIALTIES</div>
         <h2>Three Focused Areas of Expert <i>Care.</i></h2>
       </div>
-      <p style="font-family:var(--serif); font-style:italic; font-size:clamp(22px,2vw,28px); line-height:1.4; color:var(--ocean-70); margin: 0 0 var(--gap-xl); max-width:48ch;">Each of our specialties shares the same philosophy: attentive, hands-on treatment that delivers lasting results.</p>
+      <p class="section-lead">Each of our specialties shares the same philosophy: attentive, hands-on treatment that delivers lasting results.</p>
 
       <div class="spread">
 
@@ -1022,13 +1054,10 @@
               <span class="eyebrow on-dark" data-style="dot">02 · Mobility &amp; Balance</span>
               <h3>Range, stability, <i>independence.</i></h3>
               <p>Structured rehabilitation that restores your range of motion, builds stability, and lowers your risk of falls. Especially valuable after surgery, after an injury, or when you have noticed yourself moving with less confidence than you used to.</p>
+              <p class="focus-tags">Common focus areas: Post-surgery · Fall prevention · Gait training · Joint care</p>
+              <a class="read-link" href="schedule.html">Schedule a Mobility &amp; Balance Consultation</a>
             </div>
           </figure>
-          <div class="spread-copy" style="padding: 0 4px;">
-            <p>We work with patients of every age — from people in their 40s recovering from a knee scope, to older adults focused on staying strong, mobile, and independent at home. The goal is the same in every case: get you moving with confidence again.</p>
-            <p class="focus-tags">Common focus areas: Post-surgery · Fall prevention · Gait training · Joint care</p>
-            <a class="read-link" href="schedule.html">Schedule a Mobility &amp; Balance Consultation</a>
-          </div>
         </article>
 
         <article class="spread-row" data-layout="text-led">
@@ -1054,7 +1083,7 @@
   <section class="block tight" id="running">
     <div class="wrap">
       <div class="section-head">
-        <div class="num">03 / SPECIALIZED SERVICE</div>
+        <div class="num">03 / RUNEASI ASSESSMENT</div>
         <h2>Running Gait <i>Assessment.</i></h2>
       </div>
 
@@ -1071,7 +1100,7 @@
 
           <p>Using a small wearable sensor, we capture real-time data on impact loading, left-right symmetry, cadence, ground contact time, and more. In just a few minutes, you walk away with actionable insights you can use right away to run smarter, recover faster, and stay on the road longer.</p>
 
-          <p style="font-family:var(--mono); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink-95); font-weight:600; margin-top:8px;">What you get from the assessment</p>
+          <span class="eyebrow" data-style="rule">What you get from the assessment</span>
 
           <ul class="running-list">
             <li>Impact loading rate and shock absorption analysis</li>
@@ -1080,9 +1109,7 @@
             <li>A personalized report with specific recommendations</li>
           </ul>
 
-          <div style="margin-top: 8px;">
-            <a class="btn" data-variant="primary" href="schedule.html">Request a Running Assessment <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
+          <a class="btn running-cta" data-variant="primary" href="schedule.html">Request a Running Assessment <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </article>
     </div>
@@ -1143,7 +1170,7 @@
         </div>
       </div>
 
-      <div style="display:flex; justify-content:center; margin-top:var(--gap-l);">
+      <div class="journey-cta-row">
         <a class="btn" data-variant="outline" href="about.html">Learn More About Our Approach <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
@@ -1176,7 +1203,7 @@
   <section class="block tight">
     <div class="wrap">
       <div class="closing-cta">
-        <div>
+        <div class="closing-cta-copy">
           <span class="eyebrow" data-style="rule">Ready When You Are</span>
           <h2>Not Sure Which Service Is Right For <i>You?</i></h2>
           <p>That is what a consultation is for. Reach out, share what you are dealing with, and we will help you figure out the right starting point.</p>
