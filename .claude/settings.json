@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git ls-remote *)"
+      "Bash(git ls-remote *)",
+      "Bash(python3 /tmp/replace_footer.py index.html about.html contact.html mobile-physical-therapy.html privacy-policy.html schedule.html service-area.html services.html terms.html thank-you.html why-cash-pay.html)"
     ]
   }
 }
