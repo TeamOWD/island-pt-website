@@ -515,6 +515,19 @@
     max-width: 60ch; margin: 0;
   }
   form.contact-form .privacy a { color: var(--ocean-70); border-bottom: 1.5px solid var(--ocean-70); text-decoration: none; }
+  .contact-form-embed { display: flex; flex-direction: column; gap: 18px; }
+  .contact-form-embed iframe {
+    width: 100%; height: 600px;
+    border: 0; background: transparent;
+    display: block;
+  }
+  .contact-form-embed .privacy {
+    font-family: var(--serif); font-style: italic;
+    font-size: 15px; line-height: 1.5; color: var(--ink-60);
+    max-width: 60ch; margin: 0;
+    padding-top: 14px; border-top: var(--line-hair);
+  }
+  .contact-form-embed .privacy a { color: var(--ocean-70); border-bottom: 1.5px solid var(--ocean-70); text-decoration: none; }
   @media (max-width: 860px) {
     .form-grid { grid-template-columns: 1fr; gap: 28px; }
     form.contact-form { grid-template-columns: 1fr; }
@@ -791,41 +804,27 @@
           <p class="note">Fields marked with an asterisk (*) are required.</p>
         </div>
 
-        <form class="contact-form" onsubmit="event.preventDefault();" aria-label="Contact form">
-          <div class="field">
-            <label for="c-name">Name <span class="req" aria-hidden="true">*</span></label>
-            <input id="c-name" name="name" type="text" placeholder="Your full name" required autocomplete="name">
-          </div>
-          <div class="field">
-            <label for="c-email">Email <span class="req" aria-hidden="true">*</span></label>
-            <input id="c-email" name="email" type="email" placeholder="name@example.com" required autocomplete="email">
-          </div>
-          <div class="field">
-            <label for="c-phone">Phone <span class="opt">Optional</span></label>
-            <input id="c-phone" name="phone" type="tel" placeholder="(808) XXX-XXXX  ·  Optional" autocomplete="tel">
-          </div>
-          <div class="field">
-            <label for="c-help">What Can We Help You With? <span class="req" aria-hidden="true">*</span></label>
-            <select id="c-help" name="help" required>
-              <option value="" disabled selected>Choose one</option>
-              <option>Booking a new appointment</option>
-              <option>Question about services</option>
-              <option>Question about pricing or insurance</option>
-              <option>Existing patient question</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="field full">
-            <label for="c-message">Your Message <span class="req" aria-hidden="true">*</span></label>
-            <textarea id="c-message" name="message" placeholder="A few sentences is plenty. Tell us what you are dealing with or what you would like to know." required></textarea>
-          </div>
-          <div class="submit-row">
-            <div class="actions">
-              <button type="submit" class="btn" data-variant="primary">Send Message <span class="arrow" aria-hidden="true">→</span></button>
-            </div>
-            <p class="privacy">By submitting this form, you agree to our <a href="privacy-policy.html">Privacy Policy</a>. We never share your information.</p>
-          </div>
-        </form>
+        <div class="contact-form-embed">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/3PWKPgpHKOrTs5gCxOc8"
+            style="width:100%;height:100%;border:none;border-radius:8px"
+            id="inline-3PWKPgpHKOrTs5gCxOc8"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Contact form website"
+            data-height="581"
+            data-layout-iframe-id="inline-3PWKPgpHKOrTs5gCxOc8"
+            data-form-id="3PWKPgpHKOrTs5gCxOc8"
+            title="Contact form website">
+          </iframe>
+          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+          <p class="privacy">By submitting this form, you agree to our <a href="privacy-policy.html">Privacy Policy</a>. We never share your information.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -983,8 +982,5 @@
   })();
 </script>
 
-<!-- impeccable-live-start -->
-<script src="http://localhost:8400/live.js"></script>
-<!-- impeccable-live-end -->
 </body>
 </html>

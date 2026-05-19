@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Privacy Policy — Island PT, Kīhei Maui</title>
+<title>Thank You — Island PT, Kīhei Maui</title>
 <meta name="robots" content="noindex" />
-<meta name="description" content="Privacy Policy for Island PT. How we collect, use, and protect the personal information you share with us through our website." />
+<meta name="description" content="Thank you for reaching out to Island PT. We will be in touch shortly to confirm the next step." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,12 +57,7 @@
 
   /* TOP BAR */
   .top-bar { background: var(--ocean-90); color: var(--bone); border-bottom: 1px solid oklch(40% 0.014 82); }
-  .top-bar-row {
-    max-width: none; display: flex; align-items: center; justify-content: space-between;
-    gap: 18px; padding: 12px 24px; font-family: var(--mono);
-    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: oklch(94% 0.008 82 / 0.9);
-  }
+  .top-bar-row { max-width: none; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 24px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: oklch(94% 0.008 82 / 0.9); }
   .top-bar-row .stars { color: var(--sun-70); letter-spacing: 0.12em; }
   .top-bar-row a { text-decoration: none; transition: color var(--dur-fast) var(--ease-out-q); }
   .top-bar-row a:hover { color: var(--sun-70); }
@@ -89,7 +84,6 @@
   .nav .submenu { position: absolute; top: 100%; left: -18px; min-width: 240px; background: var(--paper-00); border: var(--line-bold); border-radius: var(--r-flat); padding: 8px 0; margin: 0; list-style: none; display: flex; flex-direction: column; gap: 0; opacity: 0; pointer-events: none; transform: translateY(-4px); transition: opacity 140ms var(--ease-out-q), transform 140ms var(--ease-out-q); z-index: 60; }
   .nav .submenu::before { content: ""; position: absolute; top: -18px; left: 0; right: 0; height: 18px; }
   .nav .has-submenu:hover .submenu, .nav .has-submenu:focus-within .submenu { opacity: 1; pointer-events: auto; transform: translateY(0); }
-  .nav .submenu li { border: 0; }
   .nav .submenu a { display: block; padding: 12px 22px; font-size: 14px; color: var(--ink-95); border-bottom: 0; white-space: nowrap; transition: background var(--dur-fast) var(--ease-out-q), color var(--dur-fast) var(--ease-out-q); }
   .nav .submenu a:hover { background: var(--paper-10); color: var(--ocean-70); }
   .drawer-group { width: 100%; }
@@ -98,7 +92,6 @@
   .drawer-group summary::after { content: "+"; font-family: var(--mono); font-size: 22px; color: var(--ocean-70); }
   .drawer-group[open] summary::after { content: "–"; }
   .drawer-group .drawer-sub { border-top: 0; padding: 0 0 14px 16px; margin: 0; border-left: 1.5px solid var(--ocean-70); margin-left: 4px; }
-  .drawer-group .drawer-sub li { border-bottom: 0; }
   .drawer-group .drawer-sub a { padding: 12px 0; font-size: 18px; font-family: var(--serif); letter-spacing: -0.01em; }
   .nav-toggle { display: none; appearance: none; background: transparent; border: 1.5px solid var(--ink-95); border-radius: var(--r-flat); width: 44px; height: 44px; align-items: center; justify-content: center; padding: 0; cursor: pointer; }
   .nav-toggle:focus-visible { outline: 2px solid var(--coral-55); outline-offset: 3px; }
@@ -112,7 +105,6 @@
   .nav-drawer > ul { list-style: none; margin: 0 0 32px; padding: 0; display: flex; flex-direction: column; gap: 0; border-top: var(--line-bold); }
   .nav-drawer > ul > li { border-bottom: var(--line-hair); }
   .nav-drawer > ul > li > a { display: block; padding: 22px 4px; text-decoration: none; color: var(--ink-95); font-family: var(--serif); font-size: 28px; line-height: 1; letter-spacing: -0.018em; }
-  .nav-drawer a { text-decoration: none; color: var(--ink-95); }
   .nav-drawer .drawer-cta-row { display: flex; flex-direction: column; gap: 14px; padding-top: 32px; border-top: var(--line-hair); }
   .nav-drawer .drawer-cta-row .btn { justify-content: center; }
   .nav-drawer .drawer-meta { margin-top: 28px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-60); line-height: 1.8; }
@@ -141,128 +133,98 @@
   .btn .arrow { transition: transform var(--dur-mid) var(--ease-out-q); }
   .btn:hover .arrow { transform: translateX(3px); }
 
-  /* LEGAL HERO · drenched */
-  .legal-hero {
+  /* THANK YOU HERO */
+  .ty-hero {
+    margin-top: 28px;
     background: var(--ocean-90); color: var(--bone);
     border-radius: var(--r-arc);
-    margin-top: 28px;
-    padding: 64px 64px 56px;
-    display: grid; grid-template-columns: 1fr auto;
-    gap: var(--gap-l); align-items: end;
+    padding: 80px 64px;
+    display: grid; grid-template-columns: 1fr 380px;
+    gap: var(--gap-xl); align-items: center;
   }
-  .legal-hero .copy { display: flex; flex-direction: column; gap: 18px; }
-  .legal-hero .eyebrow { color: oklch(94% 0.008 82 / 0.85); }
-  .legal-hero .eyebrow[data-style="rule"]::before { background: var(--sun-70); }
-  .legal-hero h1 {
+  .ty-hero .copy { display: flex; flex-direction: column; gap: 22px; max-width: 56ch; }
+  .ty-hero .eyebrow { color: oklch(94% 0.008 82 / 0.9); }
+  .ty-hero .eyebrow[data-style="rule"]::before { background: var(--sun-70); }
+  .ty-hero h1 {
     font-family: var(--serif); font-weight: 400;
-    font-size: clamp(48px, 6.4vw, 96px);
+    font-size: clamp(48px, 6vw, 88px);
     line-height: 1.0; letter-spacing: -0.024em;
-    margin: 0; color: var(--bone); max-width: 14ch;
+    margin: 0; color: var(--bone); max-width: 16ch;
   }
-  .legal-hero h1 i { color: var(--sun-70); font-style: italic; }
-  .legal-hero .meta {
+  .ty-hero h1 i { color: var(--sun-70); font-style: italic; }
+  .ty-hero .lead {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(20px, 1.8vw, 26px); line-height: 1.45;
+    color: oklch(94% 0.008 82 / 0.92); margin: 0; max-width: 44ch;
+  }
+  .ty-hero .body { font-size: var(--t-body); line-height: 1.7; color: oklch(94% 0.008 82 / 0.85); margin: 0; max-width: 56ch; }
+  .ty-hero .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+  .ty-hero .meta {
+    margin-top: 14px; padding-top: 18px;
+    border-top: 1px solid oklch(94% 0.008 82 / 0.18);
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
     text-transform: uppercase; color: oklch(94% 0.008 82 / 0.7); font-weight: 600;
-    display: flex; flex-direction: column; gap: 8px;
-    text-align: right;
+    display: flex; flex-wrap: wrap; gap: 22px;
   }
-  @media (max-width: 720px) {
-    .legal-hero { grid-template-columns: 1fr; padding: 36px 28px; }
-    .legal-hero .meta { text-align: left; }
-  }
+  .ty-hero .meta span { display: inline-flex; gap: 8px; }
+  .ty-hero .meta b { color: var(--sun-70); font-weight: 600; }
 
-  /* IMPORTANT NOTE CALLOUT */
-  .note-callout {
-    background: var(--paper-15);
-    border: 1.5px solid var(--ink-20);
-    border-radius: var(--r-soft);
-    padding: 32px 36px;
-    margin: var(--gap-xl) 0 0;
-    display: grid; grid-template-columns: 180px 1fr;
-    gap: var(--gap-l); align-items: start;
+  .ty-portrait {
+    position: relative; border-radius: var(--r-arc); overflow: hidden;
+    border: 1px solid oklch(94% 0.008 82 / 0.18);
+    aspect-ratio: 3 / 4;
   }
-  .note-callout .label {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--coral-55); font-weight: 700;
-    padding-top: 6px;
-  }
-  .note-callout p {
-    font-family: var(--serif); font-style: italic;
-    font-size: clamp(17px, 1.4vw, 19px); line-height: 1.55;
-    color: var(--ink-80); margin: 0; max-width: 72ch;
-  }
-  @media (max-width: 720px) { .note-callout { grid-template-columns: 1fr; gap: 14px; padding: 24px 22px; } }
-
-  /* LONG-FORM BODY */
-  .legal-body {
-    display: grid; grid-template-columns: 220px 1fr;
-    gap: var(--gap-xl); align-items: start;
-    padding: var(--gap-xl) 0 var(--gap-2x);
-  }
-  .legal-toc {
-    position: sticky; top: 100px;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--ink-60); font-weight: 600;
-  }
-  .legal-toc h2 {
-    margin: 0 0 18px;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--ink-95); font-weight: 700;
-    padding-top: 12px; border-top: var(--line-bold);
-  }
-  .legal-toc ol {
-    list-style: none; margin: 0; padding: 0;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .legal-toc a {
-    text-decoration: none; color: var(--ink-60);
-    transition: color var(--dur-fast) var(--ease-out-q);
-    display: block; line-height: 1.5;
-  }
-  .legal-toc a:hover { color: var(--ocean-70); }
-
-  .legal-content { display: flex; flex-direction: column; gap: var(--gap-l); }
-  .legal-content section { display: flex; flex-direction: column; gap: 16px; scroll-margin-top: 100px; }
-  .legal-content h2 {
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(28px, 3vw, 40px);
-    line-height: 1.1; letter-spacing: -0.018em;
-    color: var(--ink-95); margin: 0; max-width: 22ch;
-  }
-  .legal-content h2 i { color: var(--ocean-70); font-style: italic; }
-  .legal-content h3 {
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(22px, 2vw, 26px);
-    line-height: 1.2; letter-spacing: -0.012em;
-    color: var(--ink-95); margin: 14px 0 0;
-  }
-  .legal-content p {
-    font-size: var(--t-body); line-height: 1.75; color: var(--ink-80);
-    margin: 0; max-width: 72ch;
-  }
-  .legal-content ul {
-    list-style: none; padding: 0; margin: 0;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .legal-content ul li {
-    display: grid; grid-template-columns: 16px 1fr; gap: 14px;
-    align-items: start;
-    font-size: var(--t-body); line-height: 1.6; color: var(--ink-80);
-    max-width: 72ch;
-  }
-  .legal-content ul li::before {
-    content: ""; width: 6px; height: 1.5px; background: var(--ocean-70);
-    margin-top: 14px;
-  }
-  .legal-content .contact-block {
-    margin-top: 22px; padding-top: 18px; border-top: var(--line-hair);
-    font-family: var(--sans); font-size: var(--t-body); line-height: 1.7; color: var(--ink-80);
+  .ty-portrait img { width: 100%; height: 100%; object-fit: cover; }
+  .ty-portrait .caption {
+    position: absolute; left: 18px; right: 18px; bottom: 18px;
+    background: oklch(20.0% 0.038 145 / 0.78); backdrop-filter: blur(6px);
+    color: var(--bone); border-radius: var(--r-soft);
+    padding: 14px 18px;
     display: flex; flex-direction: column; gap: 4px;
   }
-  .legal-content .contact-block b { font-weight: 600; color: var(--ink-95); }
+  .ty-portrait .caption .who {
+    font-family: var(--serif); font-size: 22px; line-height: 1.1;
+  }
+  .ty-portrait .caption .who i { color: var(--sun-70); font-style: italic; }
+  .ty-portrait .caption .role {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: oklch(94% 0.008 82 / 0.75);
+  }
   @media (max-width: 860px) {
-    .legal-body { grid-template-columns: 1fr; gap: 32px; }
-    .legal-toc { position: static; }
+    .ty-hero { grid-template-columns: 1fr; padding: 44px 28px; gap: var(--gap-l); }
+    .ty-portrait { max-width: 320px; margin: 0 auto; }
+  }
+
+  /* NEXT STEPS */
+  .next-block { padding: var(--gap-2x) 0; }
+  .next-head { display: flex; flex-direction: column; gap: 14px; margin: 0 0 var(--gap-l); }
+  .next-head .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-60); font-weight: 600; padding-top: 14px; border-top: var(--line-bold); }
+  .next-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 4vw, 56px); line-height: 1.05; letter-spacing: -0.022em; margin: 0; max-width: 22ch; color: var(--ink-95); }
+  .next-head h2 i { color: var(--ocean-70); font-style: italic; }
+  .next-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: var(--line-bold); border-bottom: var(--line-bold);
+  }
+  .next-grid .step {
+    padding: 36px 32px; display: flex; flex-direction: column; gap: 14px;
+    border-right: var(--line-hair);
+  }
+  .next-grid .step:last-child { border-right: 0; }
+  .next-grid .step .n {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ocean-70); font-weight: 700;
+  }
+  .next-grid .step h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(22px, 2vw, 26px); line-height: 1.2;
+    color: var(--ink-95); margin: 0; max-width: 16ch;
+  }
+  .next-grid .step h3 i { color: var(--ocean-70); font-style: italic; }
+  .next-grid .step p { font-size: 15px; line-height: 1.65; color: var(--ink-80); margin: 0; max-width: 32ch; }
+  @media (max-width: 860px) {
+    .next-grid { grid-template-columns: 1fr; }
+    .next-grid .step { border-right: 0; border-bottom: var(--line-hair); }
+    .next-grid .step:last-child { border-bottom: 0; }
   }
 
   /* FOOTER */
@@ -358,166 +320,56 @@
 
   <div class="wrap">
 
-    <!-- HERO -->
-    <section class="legal-hero" aria-labelledby="hero-h">
+    <!-- HERO · Thank You -->
+    <section class="ty-hero" aria-labelledby="ty-h">
       <div class="copy">
-        <span class="eyebrow" data-style="rule">Legal</span>
-        <h1 id="hero-h">Privacy <i>Policy.</i></h1>
+        <span class="eyebrow" data-style="rule">Message received</span>
+        <h1 id="ty-h">Mahalo. We will be <i>in touch.</i></h1>
+        <p class="lead">Your request has reached us. We read every message personally — no automated triage.</p>
+        <p class="body">Teddy or someone from the Island PT team will reach out within one business day to confirm next steps. If your request is time-sensitive, you are always welcome to call us directly.</p>
+        <div class="actions">
+          <a class="btn" data-variant="primary-bone" href="index.html"><span aria-hidden="true">←</span> Back to the site</a>
+          <a class="btn" data-variant="outline-bone" href="tel:808XXXXXXX">Call (808) XXX-XXXX</a>
+        </div>
+        <div class="meta">
+          <span><b>Hours</b> Mon – Fri · 8 AM – 6 PM</span>
+          <span><b>Location</b> Kīhei, Maui</span>
+        </div>
       </div>
-      <div class="meta">
-        <span>Effective</span>
-        <span>Last Updated · [Month Day, Year]</span>
-      </div>
+
+      <figure class="ty-portrait">
+        <img src="https://kokua-physical-therapy-vermont.com/wp-content/uploads/2025/06/Teddy-Zabel-Certified-Physical-Therapist-in-Northern-Vermont-683x1024.webp" alt="Teddy Zabel, Doctor of Physical Therapy and founder of Island PT" loading="lazy">
+        <figcaption class="caption">
+          <span class="who">Teddy <i>Zabel.</i></span>
+          <span class="role">DPT · OCS · Founder</span>
+        </figcaption>
+      </figure>
     </section>
 
-    <!-- BODY -->
-    <div class="legal-body">
-
-      <aside class="legal-toc" aria-label="Section index">
-        <h2>Contents</h2>
-        <ol>
-          <li><a href="#intro">Your Privacy Matters</a></li>
-          <li><a href="#sec-1">1. Information We Collect</a></li>
-          <li><a href="#sec-2">2. How We Use Your Information</a></li>
-          <li><a href="#sec-3">3. How We Share Your Information</a></li>
-          <li><a href="#sec-4">4. Cookies and Tracking</a></li>
-          <li><a href="#sec-5">5. Third-Party Services and Links</a></li>
-          <li><a href="#sec-6">6. How We Protect Your Information</a></li>
-          <li><a href="#sec-7">7. Your Choices</a></li>
-          <li><a href="#sec-8">8. Children's Privacy</a></li>
-          <li><a href="#sec-9">9. State Privacy Rights</a></li>
-          <li><a href="#sec-10">10. Changes to This Policy</a></li>
-          <li><a href="#sec-11">11. Contact Us</a></li>
-        </ol>
-      </aside>
-
-      <div class="legal-content">
-
-        <section id="intro">
-          <h2>Your privacy <i>matters.</i></h2>
-          <p>Island PT ("we," "us," or "our") respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains what information we collect through our website at islandptmaui.com (the "Site"), how we use it, who we share it with, and the choices you have.</p>
-          <p>This policy applies to information collected through the Site. Health information you share with us as a patient is governed by a separate Notice of Privacy Practices, which we provide to you under the Health Insurance Portability and Accountability Act (HIPAA).</p>
-        </section>
-
-        <section id="sec-1">
-          <h2>1. Information we <i>collect.</i></h2>
-
-          <h3>Information You Provide Directly</h3>
-          <p>When you interact with our Site, you may choose to share information with us, including:</p>
-          <ul>
-            <li>Your name, email address, and phone number when you submit an appointment request or contact form</li>
-            <li>Basic details about your reason for reaching out (for example, the type of pain or injury you want help with)</li>
-            <li>Your email address when you sign up for our newsletter</li>
-            <li>Any other information you choose to include in messages to us</li>
-          </ul>
-
-          <h3>Information Collected Automatically</h3>
-          <p>Like most websites, our Site automatically collects certain technical information when you visit:</p>
-          <ul>
-            <li>Your IP address and approximate location</li>
-            <li>Your browser type, device type, and operating system</li>
-            <li>Pages you view on the Site and how long you spend on them</li>
-            <li>The website or source you came from before visiting us</li>
-            <li>Cookies and similar tracking technologies (see Section 4)</li>
-          </ul>
-
-          <h3>Information We Do Not Collect Through the Site</h3>
-          <p>We do not request or collect protected health information, insurance details, or sensitive medical records through forms on this Site. Any health information shared during your care as a patient is handled separately under HIPAA.</p>
-        </section>
-
-        <section id="sec-2">
-          <h2>2. How we use your <i>information.</i></h2>
-          <p>We use the information described above to:</p>
-          <ul>
-            <li>Respond to appointment requests, questions, and other inquiries</li>
-            <li>Schedule and confirm your visits with us</li>
-            <li>Send newsletter emails if you have signed up to receive them</li>
-            <li>Improve our Site, our services, and the experience we provide</li>
-            <li>Understand how visitors find and use the Site</li>
-            <li>Comply with applicable legal and regulatory obligations</li>
-          </ul>
-          <p>We do not sell your personal information to third parties.</p>
-        </section>
-
-        <section id="sec-3">
-          <h2>3. How we share your <i>information.</i></h2>
-          <p>We share your information only in limited circumstances:</p>
-
-          <h3>Service Providers</h3>
-          <p>We use trusted third-party providers to help us operate our Site and practice — such as hosting services, scheduling platforms, email marketing tools, and analytics services. These providers only access the information they need to perform their work and are obligated to keep it confidential.</p>
-
-          <h3>Legal Requirements</h3>
-          <p>We may disclose information if required by law, court order, or government request, or if we believe disclosure is necessary to protect our rights, the safety of our patients, or the safety of others.</p>
-
-          <h3>Business Transfers</h3>
-          <p>If Island PT is ever involved in a merger, acquisition, or transfer of business assets, information may be transferred as part of that transaction, subject to standard confidentiality protections.</p>
-        </section>
-
-        <section id="sec-4">
-          <h2>4. Cookies and tracking <i>technologies.</i></h2>
-          <p>Our Site uses cookies and similar technologies to make the Site work properly, remember your preferences, and help us understand how the Site is used.</p>
-
-          <h3>Types of Cookies We Use</h3>
-          <ul>
-            <li>Essential cookies that enable basic site functions</li>
-            <li>Analytics cookies that help us see how visitors use the Site (for example, Google Analytics)</li>
-            <li>Marketing cookies that may help us reach the right audience with relevant ads</li>
-          </ul>
-          <p>You can control or disable cookies through your browser settings. Disabling certain cookies may affect how the Site functions.</p>
-        </section>
-
-        <section id="sec-5">
-          <h2>5. Third-party services and <i>links.</i></h2>
-          <p>Our Site may include links to other websites or third-party services (for example, scheduling tools, social media platforms, or video hosting providers). We are not responsible for the privacy practices of these third parties. We encourage you to review their privacy policies before sharing any information with them.</p>
-        </section>
-
-        <section id="sec-6">
-          <h2>6. How we protect your <i>information.</i></h2>
-          <p>We use reasonable administrative, technical, and physical safeguards to protect the personal information you share with us. However, no method of transmission over the internet or electronic storage is completely secure. While we work to protect your information, we cannot guarantee absolute security.</p>
-          <p>Please do not send sensitive health or medical information through our Site's contact forms or email. If you need to share that kind of information, we will provide a secure way to do so once you become a patient.</p>
-        </section>
-
-        <section id="sec-7">
-          <h2>7. Your <i>choices.</i></h2>
-
-          <h3>Email Communications</h3>
-          <p>If you receive newsletter emails from us, you can unsubscribe at any time using the link at the bottom of those emails. We will continue to send essential communications related to appointments or your care.</p>
-
-          <h3>Browser Controls</h3>
-          <p>You can adjust your browser settings to refuse cookies or alert you when a cookie is being sent. You can also opt out of certain analytics tracking through tools provided by services like Google.</p>
-
-          <h3>Requesting Access or Deletion</h3>
-          <p>You may contact us at any time to request access to the personal information we have collected through the Site, or to request that we update or delete it. We will respond as required by applicable law.</p>
-        </section>
-
-        <section id="sec-8">
-          <h2>8. Children's <i>privacy.</i></h2>
-          <p>Our Site is not directed to children under 13, and we do not knowingly collect personal information from children under 13. If we become aware that we have collected information from a child under 13 without parental consent, we will delete it promptly.</p>
-        </section>
-
-        <section id="sec-9">
-          <h2>9. State privacy <i>rights.</i></h2>
-          <p>Depending on your state of residence, you may have additional privacy rights — including the right to know what personal information we have collected, the right to request deletion, and the right to opt out of certain uses of your information. To exercise any of these rights, please contact us using the information below.</p>
-        </section>
-
-        <section id="sec-10">
-          <h2>10. Changes to this <i>policy.</i></h2>
-          <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last Updated" date at the top of this page. We encourage you to review this policy occasionally to stay informed about how we protect your information.</p>
-        </section>
-
-        <section id="sec-11">
-          <h2>11. Contact <i>us.</i></h2>
-          <p>If you have questions about this Privacy Policy or how we handle your information, please reach out to us:</p>
-          <div class="contact-block">
-            <span><b>Island PT</b></span>
-            <span><b>Location:</b> Kīhei, Maui, Hawaiʻi</span>
-            <span><b>Tel:</b> <a href="tel:808XXXXXXX" style="border-bottom:1.5px solid var(--ocean-70); text-decoration:none; color:var(--ocean-70)">(808) XXX-XXXX</a></span>
-            <span><b>Email:</b> [email address]</span>
-          </div>
-        </section>
-
+    <!-- NEXT STEPS -->
+    <section class="next-block" aria-labelledby="next-h">
+      <header class="next-head">
+        <span class="num">What happens next</span>
+        <h2 id="next-h">Three short <i>steps.</i></h2>
+      </header>
+      <div class="next-grid">
+        <div class="step">
+          <span class="n">01</span>
+          <h3>We <i>read</i> your note.</h3>
+          <p>Teddy personally reviews every request to understand what you are dealing with before reaching out.</p>
+        </div>
+        <div class="step">
+          <span class="n">02</span>
+          <h3>We get <i>in touch.</i></h3>
+          <p>You will hear from us within one business day by phone, text, or email — whichever you preferred on the form.</p>
+        </div>
+        <div class="step">
+          <span class="n">03</span>
+          <h3>We find a <i>time.</i></h3>
+          <p>Together we choose a visit type and a time that fits your schedule. No pressure, no automated reminders.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
   </div>
 

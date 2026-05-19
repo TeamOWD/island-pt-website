@@ -571,6 +571,19 @@
     max-width: 60ch; margin: 0;
   }
   form.booking-form .privacy a { color: var(--ocean-70); border-bottom: 1.5px solid var(--ocean-70); text-decoration: none; }
+  .booking-form-embed { display: flex; flex-direction: column; gap: 18px; }
+  .booking-form-embed iframe {
+    width: 100%; height: 1040px;
+    border: 0; background: transparent;
+    display: block;
+  }
+  .booking-form-embed .privacy {
+    font-family: var(--serif); font-style: italic;
+    font-size: 15px; line-height: 1.5; color: var(--ink-60);
+    max-width: 60ch; margin: 0;
+    padding-top: 14px; border-top: var(--line-hair);
+  }
+  .booking-form-embed .privacy a { color: var(--ocean-70); border-bottom: 1.5px solid var(--ocean-70); text-decoration: none; }
   @media (max-width: 860px) {
     .booking-form-wrap { padding: 36px 28px; }
     form.booking-form { grid-template-columns: 1fr; }
@@ -975,90 +988,27 @@
           <p class="note">Fields marked with an asterisk (*) are required.</p>
         </div>
 
-        <form class="booking-form" onsubmit="event.preventDefault();" aria-label="Appointment request form">
-          <div class="field full">
-            <label for="s-name">Full Name <span class="req" aria-hidden="true">*</span></label>
-            <input id="s-name" name="name" type="text" placeholder="Your first and last name" required autocomplete="name">
-          </div>
-
-          <div class="field">
-            <label for="s-email">Email Address <span class="req" aria-hidden="true">*</span></label>
-            <input id="s-email" name="email" type="email" placeholder="name@example.com" required autocomplete="email">
-          </div>
-
-          <div class="field">
-            <label for="s-phone">Phone Number <span class="req" aria-hidden="true">*</span></label>
-            <input id="s-phone" name="phone" type="tel" placeholder="(808) XXX-XXXX  ·  We will text or call to confirm" required autocomplete="tel">
-          </div>
-
-          <fieldset class="group inline">
-            <legend>Preferred Contact Method</legend>
-            <div class="options">
-              <label class="opt-item"><input type="radio" name="contact_method" value="phone"> <span>Phone call</span></label>
-              <label class="opt-item"><input type="radio" name="contact_method" value="text"> <span>Text message</span></label>
-              <label class="opt-item"><input type="radio" name="contact_method" value="email"> <span>Email</span></label>
-            </div>
-          </fieldset>
-
-          <fieldset class="group">
-            <legend>What Are You Looking For Help With? <span class="req" aria-hidden="true">*</span></legend>
-            <div class="options">
-              <label class="opt-item"><input type="checkbox" name="needs" value="back-spine"> <span>Back pain or spine issues</span></label>
-              <label class="opt-item"><input type="checkbox" name="needs" value="mobility-balance"> <span>Mobility, balance, or fall prevention</span></label>
-              <label class="opt-item"><input type="checkbox" name="needs" value="post-surgical"> <span>Post-surgical recovery</span></label>
-              <label class="opt-item"><input type="checkbox" name="needs" value="strength-aging"> <span>Strength and active aging</span></label>
-              <label class="opt-item"><input type="checkbox" name="needs" value="running-gait"> <span>Running gait assessment</span></label>
-              <label class="opt-item"><input type="checkbox" name="needs" value="orthotics"> <span>Custom orthotics</span></label>
-              <label class="opt-item"><input type="checkbox" name="needs" value="wellness"> <span>Wellness membership / ongoing care</span></label>
-              <label class="opt-item"><input type="checkbox" name="needs" value="other"> <span>Other (please describe below)</span></label>
-            </div>
-          </fieldset>
-
-          <div class="field full">
-            <label for="s-experience">Tell Us a Little About What You Are Experiencing <span class="req" aria-hidden="true">*</span></label>
-            <textarea id="s-experience" name="experience" placeholder="A few sentences is plenty — when did it start, what makes it better or worse, what activities you are trying to get back to. No need to write an essay." required></textarea>
-          </div>
-
-          <fieldset class="group">
-            <legend>Visit Type <span class="req" aria-hidden="true">*</span></legend>
-            <div class="options">
-              <label class="opt-item"><input type="radio" name="visit_type" value="in-person" required> <span>In-person in Kīhei</span></label>
-              <label class="opt-item"><input type="radio" name="visit_type" value="in-home"> <span>In-home (mobile PT — South Maui)</span></label>
-              <label class="opt-item"><input type="radio" name="visit_type" value="virtual"> <span>Virtual consultation</span></label>
-              <label class="opt-item"><input type="radio" name="visit_type" value="not-sure"> <span>Not sure — help me decide</span></label>
-            </div>
-          </fieldset>
-
-          <div class="field full">
-            <label for="s-times">Preferred Days &amp; Times</label>
-            <input id="s-times" name="preferred_times" type="text" placeholder="Weekday mornings, Thursdays after 3pm, etc. We will work with you to find a time that fits.">
-          </div>
-
-          <div class="field full">
-            <label for="s-source">How Did You Hear About Us?</label>
-            <select id="s-source" name="source">
-              <option value="" disabled selected>Choose one</option>
-              <option>Google search</option>
-              <option>Referral from a friend or family member</option>
-              <option>Referral from a doctor or other provider</option>
-              <option>Instagram</option>
-              <option>Facebook</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="field full">
-            <label for="s-extra">Anything Else You Want Us to Know? <span class="opt">Optional</span></label>
-            <textarea id="s-extra" name="extra" placeholder="Allergies, accessibility needs, scheduling constraints, anything else you want us to know before we reach out."></textarea>
-          </div>
-
-          <div class="submit-row">
-            <div class="actions">
-              <button type="submit" class="btn" data-variant="primary">Submit Request <span class="arrow" aria-hidden="true">→</span></button>
-            </div>
-            <p class="privacy">By submitting this form, you agree to our <a href="privacy-policy.html">Privacy Policy</a>. We never share your information.</p>
-          </div>
-        </form>
+        <div class="booking-form-embed">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/FoKiS4EDv6s5OPs9MYdm"
+            style="width:100%;height:100%;border:none;border-radius:8px"
+            id="inline-FoKiS4EDv6s5OPs9MYdm"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Schedule"
+            data-height="1019"
+            data-layout-iframe-id="inline-FoKiS4EDv6s5OPs9MYdm"
+            data-form-id="FoKiS4EDv6s5OPs9MYdm"
+            title="Schedule">
+          </iframe>
+          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+          <p class="privacy">By submitting this form, you agree to our <a href="privacy-policy.html">Privacy Policy</a>. We never share your information.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1319,8 +1269,5 @@
   })();
 </script>
 
-<!-- impeccable-live-start -->
-<script src="http://localhost:8400/live.js"></script>
-<!-- impeccable-live-end -->
 </body>
 </html>
