@@ -1778,10 +1778,16 @@
         <div>
           <p>Stay connected with Maui's premier in-home physical therapy practice. Get exclusive movement tips, injury prevention advice, and inspiring client success stories delivered straight to your inbox. Plus, be the first to know about seasonal wellness guidance for Maui's active lifestyle and see the dramatic before-and-after transformations of clients who've overcome pain to return to the activities they love.</p>
 
-          <form class="newsletter-form" onsubmit="event.preventDefault();">
+          <form class="newsletter-form" action="https://formsubmit.co/marketing@outworkemdigital.com" method="POST">
+            <input type="hidden" name="_subject" value="New Kōkua Newsletter Signup">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://islandptmaui.com/thank-you.html">
+            <input type="hidden" name="_autoresponse" value="Mahalo for subscribing to the Kōkua Newsletter. We will be in touch with movement tips, injury prevention advice, and client stories from Island PT. — The Island PT Team">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
             <div class="field">
               <label for="nl-email">Email</label>
-              <input id="nl-email" type="email" placeholder="you@example.com" required>
+              <input id="nl-email" name="email" type="email" placeholder="your@email.com" required autocomplete="email">
             </div>
             <button class="btn" data-variant="primary" type="submit">Sign Up For Free <span class="arrow" aria-hidden="true">→</span></button>
           </form>
